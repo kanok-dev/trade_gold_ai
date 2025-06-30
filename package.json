@@ -1,0 +1,28 @@
+{
+  "name": "trade_gold_ai",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node gemini-bot-fixed.js",
+    "dev": "nodemon gemini-bot-fixed.js",
+    "gemini-bot": "node gemini-bot.js",
+    "gemini-bot-fixed": "node gemini-bot-fixed.js",
+    "gold-bot-2025": "node gold-trading-bot-2025.js",
+    "test-tools": "node test-gemini-tools.js",
+    "test-working": "node test-working.js",
+    "demo": "node demo-cli.js",
+    "setup": "./setup.sh",
+    "openai-bot": "node openAI-bot.js"
+  },
+  "dependencies": {
+    "axios": "^1.10.0",
+    "child_process": "^1.0.2",
+    "dotenv": "^17.0.0",
+    "openai": "^5.8.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
