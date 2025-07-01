@@ -130,7 +130,8 @@ const EnhancedDashboard = () => {
             <span className='text-sm text-gray-300'>Last Update: {lastUpdate.toLocaleTimeString()}</span>
             {dataFreshness && <span className='text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full'>Data: {dataFreshness}min old</span>}
           </div>
-          {analysisData?.spot_price?.timestamp && <span className='text-xs text-gray-400'>Price Data: {new Date(analysisData.spot_price.timestamp).toLocaleString()}</span>}
+          {/* Show timestamp from unified analysis metadata */}
+          <span className='text-xs text-gray-400'>Analysis Time: {new Date().toLocaleString()}</span>
         </div>
 
         <button
@@ -152,7 +153,12 @@ const EnhancedDashboard = () => {
             {analysisData?.spot_price ? (
               <div>
                 <div className='text-center mb-6'>
-                  <div className='text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2'>${analysisData.spot_price.value?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                  <div className='text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2'>
+                    $
+                    {typeof analysisData.spot_price === 'number'
+                      ? analysisData.spot_price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                      : analysisData.spot_price.value?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  </div>
                   <div className={`text-base sm:text-lg font-medium px-3 py-1 rounded-full inline-flex items-center gap-1 ${(analysisData.price_change?.daily_pct || 0) >= 0 ? 'text-green-400 bg-green-500/20' : 'text-red-400 bg-red-500/20'}`}>
                     <span>{(analysisData.price_change?.daily_pct || 0) >= 0 ? '↗' : '↘'}</span>
                     {(analysisData.price_change?.daily_pct || 0) >= 0 ? '+' : ''}
@@ -171,11 +177,13 @@ const EnhancedDashboard = () => {
 
                   <div className='bg-gray-800/50 p-3 rounded-lg'>
                     <div className='text-xs text-gray-400 mb-1'>Source</div>
-                    <div className='text-sm font-medium text-gray-300'>{analysisData.spot_price.source}</div>
+                    <div className='text-sm font-medium text-gray-300'>{typeof analysisData.spot_price === 'object' ? analysisData.spot_price.source : 'Unified AI Analysis'}</div>
                   </div>
                 </div>
 
-                <div className='text-xs text-gray-400 text-center'>Last Updated: {new Date(analysisData.spot_price.timestamp).toLocaleString()}</div>
+                <div className='text-xs text-gray-400 text-center'>
+                  Last Updated: {typeof analysisData.spot_price === 'object' && analysisData.spot_price.timestamp ? new Date(analysisData.spot_price.timestamp).toLocaleString() : lastUpdate.toLocaleString()}
+                </div>
               </div>
             ) : (
               <div className='text-center text-gray-400 py-8'>No price data available</div>
@@ -315,11 +323,24 @@ const EnhancedDashboard = () => {
             {analysisData?.key_events && analysisData.key_events.length > 0 ? (
               <div className='space-y-3'>
                 {analysisData.key_events.map((event, index) => (
-                  <div key={index} className='bg-purple-500/10 border border-purple-500/20 p-3 rounded-lg'>
-                    <div className='text-xs text-purple-400 mb-1'>{event.date}</div>
-                    <div className='text-sm text-gray-200 mb-1'>{event.event}</div>
-                    <div className={`text-xs px-2 py-1 rounded-full inline-block ${event.impact === 'High' ? 'bg-red-500/20 text-red-400' : event.impact === 'Medium' ? 'bg-yellow-500/20 text-yellow-400' : 'bg-green-500/20 text-green-400'}`}>
-                      {event.impact} Impact
+                  <div
+                    key={index}
+                    className={`p-3 rounded-lg border ${
+                      event.impact === 'high' || event.impact === 'High' ? 'bg-red-500/10 border-red-500/30' : event.impact === 'medium' || event.impact === 'Medium' ? 'bg-orange-500/10 border-orange-500/30' : 'bg-green-500/10 border-green-500/30'
+                    }`}
+                  >
+                    <div className={`text-xs mb-1 ${event.impact === 'high' || event.impact === 'High' ? 'text-red-400' : event.impact === 'medium' || event.impact === 'Medium' ? 'text-orange-400' : 'text-green-400'}`}>{event.date}</div>
+                    <div className='text-sm text-gray-200 mb-2'>{event.event}</div>
+                    <div
+                      className={`text-xs px-2 py-1 rounded-full inline-block font-medium ${
+                        event.impact === 'high' || event.impact === 'High'
+                          ? 'bg-red-500/20 text-red-300 border border-red-500/30'
+                          : event.impact === 'medium' || event.impact === 'Medium'
+                          ? 'bg-orange-500/20 text-orange-300 border border-orange-500/30'
+                          : 'bg-green-500/20 text-green-300 border border-green-500/30'
+                      }`}
+                    >
+                      {event.impact === 'high' || event.impact === 'High' ? '🔴 High Impact' : event.impact === 'medium' || event.impact === 'Medium' ? '🟠 Medium Impact' : '🟢 Low Impact'}
                     </div>
                   </div>
                 ))}

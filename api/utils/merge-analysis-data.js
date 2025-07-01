@@ -97,7 +97,7 @@ EXAMPLES:
 
   # Merge specific files
   node merge-analysis-data.js --openai ./openai.json --claude ./claude.json --output ./merged.json
-
+      
   # Watch for changes and auto-merge
   node merge-analysis-data.js --watch --verbose
 

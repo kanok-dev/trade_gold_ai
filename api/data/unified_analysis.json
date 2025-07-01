@@ -1,397 +1,182 @@
 {
-  "timestamp": "2025-07-01T07:55:18.028Z",
-  "data_freshness_minutes": 158,
-  "source": "claude_primary",
+  "timestamp": "2025-07-01T15:00:00Z",
+  "data_freshness_minutes": 0,
+  "source": "merged_ai",
   "unified_analysis": {
-    "spot_price": {
-      "value": 3374.27,
-      "timestamp": "2025-07-01T04:30:00Z",
-      "source": "XAU Today",
-      "url": "https://xau.today/",
-      "spread_ok": false,
-      "spread_value": 100.02
-    },
+    "spot_price": 3337.48,
     "price_change": {
-      "daily_pct": -0.64,
-      "weekly_pct": -1.59,
+      "daily_pct": 1.05,
+      "weekly_pct": -0.87,
       "monthly_pct": null
     },
     "technical_indicators": {
-      "rsi_14": null,
+      "rsi_14": 42.8,
       "atr_14": null,
       "supports": [
-        3300,
-        3250
+        3250,
+        3246,
+        3200,
+        3300
       ],
       "resistances": [
-        3400,
-        3450
+        3350,
+        3370,
+        3400
       ],
-      "trend": null,
-      "momentum": "Negative"
+      "trend": "neutral",
+      "momentum": "neutral"
     },
     "signals": {
-      "short_term": "Sell",
-      "medium_term": "Neutral",
-      "long_term": "Buy"
+      "short_term": "hold",
+      "medium_term": "hold",
+      "long_term": "hold"
     },
     "market_sentiment": {
-      "overall": "Negative",
-      "summary": "Based on my analysis of the current gold market data, here is a comprehensive assessment in JSON format:\n\n```json\n{\n  \"timestamp\": \"2025-07-01T12:00:00Z\",\n  \"price_data\": {\n    \"spot\": 3338.47,\n    \"change_daily\": 1.07,\n    \"change_weekly\": -1.28,\n    \"sources\": [\n      {\"name\": \"Trading Economics\", \"price\": 3338.47},\n      {\"name\": \"LiteFinance\", \"price\": 3280.50}\n    ]\n  },\n  \"news\": [\n    {\n      \"headline\": \"Middle East ceasefire between Iran-Israel reduces safe-haven demand\",\n      \"sentiment\": \"bearish\",\n      \"impact\": \"high\"\n    },\n    {\n      \"headline\": \"Fed signals slower pace of rate cuts, Powell expects meaningful inflation\",\n      \"sentiment\": \"bearish\", \n      \"impact\": \"high\"\n    },\n    {\n      \"headline\": \"US-China trade talks show progress, reducing geopolitical tensions\",\n      \"sentiment\": \"bearish\",\n      \"impact\": \"medium\"\n    },\n    {\n      \"headline\": \"Central banks maintain strong gold buying at 900 tonnes expected in 2025\",\n      \"sentiment\": \"bullish\",\n      \"impact\": \"medium\"\n    },\n    {\n      \"headline\": \"Gold breaks below critical $3,300 support level amid selling pressure\",\n      \"sentiment\": \"bearish\",\n      \"impact\": \"high\"\n    }\n  ],\n  \"technical\": {\n    \"support\": 3250,\n    \"resistance\": 3370,\n    \"rsi\": 35.57,\n    \"trend\": \"bearish\"\n  },\n  \"recommendation\": {\n    \"action\": \"SELL\",\n    \"confidence\": 75,\n    \"reasoning\": \"RSI oversold at 35.57, broke key $3,300 support, geopolitical tensions easing, Fed hawkish stance reducing safe-haven appeal\"\n  },\n  \"summary_thai\": \"ทองคำอยู่ในแนวโน้มขาลง หลังเจรจาสันติภาพตะวันออกกลางลดความต้องการ safe-haven Fed ชะลอการลดดอกเบี้ย ทำให้ดอลลาร์แข็งค่า เทคนิคแสดง RSI oversold ที่ 35.57 แต่ยังไม่ถึงจุดกลับตัว แนะนำขายใกล้แนวต้าน $3,370 เป้าหมาย $3,250 หยุดขาดทุน $3,400\"\n}\n```\n\n**Key Analysis Points:**\n\n\n\nGold rose to 3,338.47 USD/t.oz on July 1, 2025, up 1.07% from the previous day\n\n, but \n\nover the past month, Gold's price has fallen 1.28%\n\n.\n\n**Technical Analysis:**\n- \n\nRSI is at 35.57, suggesting a bearish trend\n\n\n- \n\nKey support levels are at 3352.00, 3350.00, and 3349.00, while resistance levels stand strong at 3370.00, 3375.00, and 3380.00\n\n\n- \n\nGold (XAU/USD) came strong under selling pressure and fell below $3,300 as geopolitical tensions in the Middle East eased\n\n\n\n**News Impact:**\n- \n\nThe de-escalation of the situation is leading to a decline in interest in the metal. The announced ceasefire between Iran and Israel has reduced demand for gold\n\n\n- \n\nThe U.S. Federal Reserve held interest rates steady and signaled a slower pace of cuts in the future\n\n\n- \n\nCentral banks wanting to cut their exposure to U.S. and we think further diversification into gold will amount to around 900 tonnes of CB buying in 2025\n\n\n\nThe bearish recommendation is based on weakening technical indicators, reduced geopolitical tensions, and a more hawkish Fed stance that strengthens the dollar against gold.",
-      "confidence": null
+      "overall": "neutral",
+      "summary": "Gold is consolidating after a volatile week, supported by USD weakness and ongoing geopolitical/tariff uncertainty, but capped by easing Middle East tensions and mixed Fed expectations.",
+      "confidence": "medium"
     },
     "news_highlights": [
       {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold Forecast, News and Analysis (XAU/USD) - FXStreet",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "fxstreet.com",
-        "url": "https://www.fxstreet.com/markets/commodities/metals/gold",
-        "origin": "claude"
+        "headline": "Gold rose to 3,352.41 USD/t.oz on July 1, 2025, up 1.49% from the previous day",
+        "source": "TradingEconomics",
+        "sentiment": "bullish",
+        "impact": "high",
+        "category": "technical"
       },
       {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold (XAU) Price Today, Live Chart & Forecasts | FXEmpire",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "fxempire.com",
-        "url": "https://www.fxempire.com/commodities/gold",
-        "origin": "claude"
+        "headline": "Gold price builds on recovery and gains positive traction for second successive day",
+        "source": "FXStreet",
+        "sentiment": "bullish",
+        "impact": "high",
+        "category": "technical"
       },
       {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold - Price - Chart - Historical Data - News",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "tradingeconomics.com",
-        "url": "https://tradingeconomics.com/commodity/gold",
-        "origin": "claude"
+        "headline": "USD drops to lowest level since February 2022 on fiscal concerns",
+        "source": "FXStreet",
+        "sentiment": "bullish",
+        "impact": "high",
+        "category": "fed"
       },
       {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold (XAU/USD) Price Prediction for 2025, 2026, 2030-2040",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "tradersunion.com",
-        "url": "https://tradersunion.com/currencies/forecast/gold/",
-        "origin": "claude"
+        "headline": "Trump tariff deadline uncertainty benefits gold's safe-haven status",
+        "source": "FXStreet",
+        "sentiment": "bullish",
+        "impact": "medium",
+        "category": "geopolitical"
       },
       {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "XAU to USD Forecast: Gold vs US dollar 2025, 2026-2030 | CoinCodex",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "coincodex.com",
-        "url": "https://coincodex.com/forex/xau-usd/forecast/",
-        "origin": "claude"
+        "headline": "Markets price 74% probability of Fed rate cut in September",
+        "source": "FXStreet",
+        "sentiment": "bullish",
+        "impact": "medium",
+        "category": "fed"
       },
       {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "XAU/USD | Gold Spot US Dollar Price - Investing.com",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "investing.com",
-        "url": "https://www.investing.com/currencies/xau-usd",
-        "origin": "claude"
+        "headline": "Gold price takes a beating on ceasefire news, falls $50 an ounce",
+        "source": "Mining.com",
+        "sentiment": "bearish",
+        "impact": "high",
+        "category": "geopolitical"
       },
       {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold Analysis Today 23/06: Will XAU/USD Rise (Chart)",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "dailyforex.com",
-        "url": "https://www.dailyforex.com/forex-technical-analysis/2025/06/gold-analysis-23-june-2025/230092",
-        "origin": "claude"
+        "headline": "Israel and Iran agree to complete ceasefire per Trump announcement",
+        "source": "Mining.com",
+        "sentiment": "bearish",
+        "impact": "high",
+        "category": "geopolitical"
       },
       {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold Price Forecast & Predictions for 2025, 2026, 2027-2030, 2040 and Beyond | LiteFinance",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "litefinance.org",
-        "url": "https://www.litefinance.org/blog/analysts-opinions/gold-price-prediction-forecast/",
-        "origin": "claude"
+        "headline": "Global gold ETFs see record inflows of $9.4bn in February",
+        "source": "World Gold Council",
+        "sentiment": "bullish",
+        "impact": "medium",
+        "category": "institutional"
       },
       {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "XAUUSD Chart — Gold Spot US Dollar Price — TradingView",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "tradingview.com",
-        "url": "https://www.tradingview.com/symbols/XAUUSD/",
-        "origin": "claude"
+        "headline": "Central banks double gold purchases to over 1,000 tonnes annually",
+        "source": "MarketPulse",
+        "sentiment": "bullish",
+        "impact": "medium",
+        "category": "institutional"
       },
       {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold Spot / U.S. Dollar Trade Ideas — OANDA:XAUUSD — TradingView",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "tradingview.com",
-        "url": "https://www.tradingview.com/symbols/XAUUSD/ideas/?sort=recent",
-        "origin": "claude"
+        "headline": "RSI at 35.57 suggests bearish trend with strong ADX momentum at 41.86",
+        "source": "FXLeaders",
+        "sentiment": "bearish",
+        "impact": "medium",
+        "category": "technical"
       },
       {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "A new high? | Gold price predictions from J.P. Morgan Research",
-        "sentiment": "Positive",
-        "reason": "Web search result from Claude analysis",
-        "source": "jpmorgan.com",
-        "url": "https://www.jpmorgan.com/insights/global-research/commodities/gold-prices",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold rises over 2%, spotlight on Fed meet | Reuters",
-        "sentiment": "Positive",
-        "reason": "Web search result from Claude analysis",
-        "source": "reuters.com",
-        "url": "https://www.reuters.com/markets/commodities/gold-hits-two-week-high-safe-haven-demand-fed-decision-looms-2025-05-06/",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold Forecast, News and Analysis (XAU/USD) - FXStreet",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "fxstreet.com",
-        "url": "https://www.fxstreet.com/markets/commodities/metals/gold",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold falls after Fed expects slower pace of future rate cuts | Reuters",
-        "sentiment": "Negative",
-        "reason": "Web search result from Claude analysis",
-        "source": "reuters.com",
-        "url": "https://www.reuters.com/world/india/gold-flat-investors-stay-sidelines-ahead-fed-decision-2025-06-18/",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold - Price - Chart - Historical Data - News",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "tradingeconomics.com",
-        "url": "https://tradingeconomics.com/commodity/gold",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold soars to record high after Fed holds rates steady, signals two cuts in 2025 | Reuters",
-        "sentiment": "Positive",
-        "reason": "Web search result from Claude analysis",
-        "source": "reuters.com",
-        "url": "https://www.reuters.com/markets/commodities/gold-hovers-near-record-high-safe-haven-demand-fed-decision-focus-2025-03-19/",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold falls 3% as US and China strike tariff deal | Reuters",
-        "sentiment": "Negative",
-        "reason": "Web search result from Claude analysis",
-        "source": "reuters.com",
-        "url": "https://www.reuters.com/markets/currencies/gold-falls-positive-us-china-talks-erode-safe-haven-appeal-2025-05-12/",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold 2025 Outlook: More Room to Run",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "ssga.com",
-        "url": "https://www.ssga.com/us/en/intermediary/insights/gold-2025-outlook-more-room-to-run",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "The Project 2025 Monetary Policy, Gold Standard and Federal Reserve",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "blog.uwsp.edu",
-        "url": "https://blog.uwsp.edu/cps/2024/09/12/the-project-2025-monetary-policy-gold-standard-and-federal-reserve/",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold Price Forecast & Predictions for 2025, 2026, 2027-2030, 2040 and Beyond | LiteFinance",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "litefinance.org",
-        "url": "https://www.litefinance.org/blog/analysts-opinions/gold-price-prediction-forecast/",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold Forecast, News and Analysis (XAU/USD) - FXStreet",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "fxstreet.com",
-        "url": "https://www.fxstreet.com/markets/commodities/metals/gold",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold Futures Technical Analysis - Investing.com India",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "in.investing.com",
-        "url": "https://in.investing.com/commodities/gold-technical",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "GOLD Price, Signals, Charts & Technical Analysis - FXleaders",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "fxleaders.com",
-        "url": "https://www.fxleaders.com/live-rates/gold/",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "XAU USD Technical Analysis - Investing.com",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "investing.com",
-        "url": "https://www.investing.com/currencies/xau-usd-technical",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold Price Forecast & Predictions for 2025, 2026, 2027-2030, 2040 and Beyond | LiteFinance",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "litefinance.org",
-        "url": "https://www.litefinance.org/blog/analysts-opinions/gold-price-prediction-forecast/",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold Analysis | Gold Technical Analysis | Spot Gold - economies.com",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "economies.com",
-        "url": "https://www.economies.com/commodities/gold-analysis",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Relative Strength Index (RSI) Indicator Explained With Formula",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "investopedia.com",
-        "url": "https://www.investopedia.com/terms/r/rsi.asp",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold Price Forecasts Today: Expert Analysis & Predictions | FXEmpire",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "fxempire.com",
-        "url": "https://www.fxempire.com/forecasts/gold",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "XAUUSD Chart — Gold Spot US Dollar Price — TradingView",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "tradingview.com",
-        "url": "https://www.tradingview.com/symbols/XAUUSD/",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T07:55:18.028Z",
-        "headline": "Gold Aug '25 Futures Technical Analysis - Barchart.com",
-        "sentiment": "Neutral",
-        "reason": "Web search result from Claude analysis",
-        "source": "barchart.com",
-        "url": "https://www.barchart.com/futures/quotes/GC*0/technical-analysis",
-        "origin": "claude"
-      },
-      {
-        "timestamp": "2025-07-01T04:40:23Z",
-        "headline": "ราคาทองคำปรับตัวขึ้นจากค่าเงินดอลลาร์ที่อ่อนค่าลงและความไม่แน่นอนเกี่ยวกับภาษี",
-        "sentiment": "Positive",
-        "reason": "ค่าเงินดอลลาร์ที่อ่อนค่าลงทำให้ทองคำมีความน่าสนใจมากขึ้น",
+        "headline": "Gold rises on weaker dollar, tariff uncertainty before deadline",
         "source": "Reuters",
-        "url": "https://www.reuters.com/world/india/gold-rises-weaker-dollar-tariff-uncertainty-before-deadline-2025-07-01/",
-        "origin": "openai"
+        "sentiment": "bullish",
+        "impact": "high",
+        "category": "geopolitical"
+      },
+      {
+        "headline": "Gold rebounds from over one-month low on weaker dollar",
+        "source": "Reuters",
+        "sentiment": "bullish",
+        "impact": "medium",
+        "category": "technical"
+      },
+      {
+        "headline": "Gold set for second weekly loss; US inflation data in focus",
+        "source": "Reuters",
+        "sentiment": "bearish",
+        "impact": "medium",
+        "category": "economic"
+      },
+      {
+        "headline": "Gold Futures",
+        "source": "AP News",
+        "sentiment": "neutral",
+        "impact": "low",
+        "category": "institutional"
       }
     ],
     "forecast_scenarios": {
-      "short": "ราคาทองคำอาจปรับตัวลงสู่แนวรับที่ $3,300 หากความไม่แน่นอนทางเศรษฐกิจลดลง",
-      "medium": "ราคาทองคำมีแนวโน้มเคลื่อนไหวในกรอบ $3,300 - $3,400 ตามปัจจัยเศรษฐกิจและการเมือง",
-      "long": "ราคาทองคำอาจปรับตัวขึ้นสู่ระดับสูงสุดใหม่หากมีความไม่แน่นอนทางเศรษฐกิจและการเมืองเพิ่มขึ้น"
+      "short": "Gold likely to remain range-bound between 3,250 and 3,370 in the short term, with upside potential if resistance at 3,370 is broken.",
+      "medium": "Fed policy decisions and US economic data will drive direction; sustained USD weakness and renewed geopolitical risks could push gold above 3,400.",
+      "long": "Institutional buying and central bank demand provide long-term support, but further upside depends on macroeconomic and geopolitical developments."
     },
     "key_events": [
       {
-        "date": "2025-07-04",
-        "event": "รายงานการจ้างงานนอกภาคเกษตรของสหรัฐฯ",
-        "impact": "High",
-        "origin": "openai"
+        "date": "2025-07-09",
+        "event": "Trump tariff deadline; potential new tariffs if no trade deal",
+        "impact": "high"
       },
       {
-        "date": "2025-07-09",
-        "event": "กำหนดเส้นตายการปรับขึ้นภาษีของสหรัฐฯ",
-        "impact": "High",
-        "origin": "openai"
+        "date": "2025-09-18",
+        "event": "Expected Fed rate decision (74% probability of rate cut)",
+        "impact": "high"
+      },
+      {
+        "date": "2025-06-24",
+        "event": "Israel-Iran ceasefire announcement",
+        "impact": "high"
       }
     ],
     "risk_factors": [
-      {
-        "factor": "ความไม่แน่นอนเกี่ยวกับนโยบายภาษีของสหรัฐฯ",
-        "origin": "openai"
-      },
-      {
-        "factor": "ความผันผวนของค่าเงินดอลลาร์สหรัฐฯ",
-        "origin": "openai"
-      },
-      {
-        "factor": "ความตึงเครียดทางการเมืองระหว่างประเทศ",
-        "origin": "openai"
-      }
+      "USD volatility",
+      "Geopolitical developments (Middle East ceasefire, tariff deadlines)",
+      "Fed rate policy uncertainty",
+      "Institutional flows",
+      "Inflation data surprises"
     ],
     "final_decision": {
-      "action": "HOLD",
-      "confidence": 70,
-      "reasoning": "ราคาทองคำมีแนวโน้มเคลื่อนไหวในกรอบแคบ โดยมีปัจจัยเสี่ยงที่ต้องติดตาม",
-      "consensus": "MAJORITY",
-      "decisions": [
-        {
-          "source": "TECHNICAL",
-          "action": "SELL",
-          "weight": 0.4,
-          "confidence": 60,
-          "reasoning": "รูปแบบสามเหลี่ยมขาลงและโมเมนตัมเชิงลบ"
-        },
-        {
-          "source": "AI",
-          "action": "HOLD",
-          "weight": 0.3,
-          "confidence": 70,
-          "reasoning": "ความไม่แน่นอนทางเศรษฐกิจและการเมือง"
-        },
-        {
-          "source": "RISK",
-          "action": "BUY",
-          "weight": 0.3,
-          "confidence": 80,
-          "reasoning": "ความเสี่ยงทางเศรษฐกิจและการเมืองที่เพิ่มขึ้น"
-        }
-      ]
+      "action": "hold",
+      "confidence": 65,
+      "reasoning": "Both AI sources indicate mixed technicals and sentiment: USD weakness and institutional demand support gold, but easing geopolitical risks and uncertain Fed timing cap upside. Consensus is to hold with cautious optimism for a breakout if resistance is cleared.",
+      "consensus": "moderate"
     }
   },
   "metadata": {
-    "bot_version": "openAI-bot2",
-    "data_source": "OpenAI GPT-4.1",
+    "bot_version": "openai_merger_v1.0",
+    "data_source": "claude_and_openai_merged",
     "format_version": "3.0",
-    "processing_time": null,
-    "token_usage": {
-      "input_tokens": 67686,
-      "output_tokens": 1329
-    }
+    "processing_time": "2025-07-01T15:00:00Z",
+    "token_usage": null
   }
 }

@@ -274,24 +274,35 @@ Make sure the JSON is valid and properly formatted at the end of your response.
 `
     })
 
-    console.log('🏆 GOLD TRADING AI ANALYSIS WITH WEB SEARCH')
-    console.log('===========================================')
-    console.log(resp.output_text)
+    // Validate news credibility and accuracy
+    const validationResults = await validateNewsCredibility(resp.output_text)
 
-    // Save results with timestamp
+    // Save results with validation
+    await saveAnalysisWithValidation(resp, validationResults)
+
+    // Also save original format for compatibility
     await saveAnalysisResults(resp)
 
     // Extract and display key findings
-    displayKeyFindings(resp.output_text)
+    displayKeyFindings(resp.output_text, validationResults)
   } catch (error) {
     console.error('❌ Error analyzing gold market:', error.message)
 
-    // Save error results
+    // Save error results with validation placeholder
     const errorResults = {
       timestamp: new Date().toISOString(),
       error: error.message,
       status: 'failed'
     }
+
+    const errorValidation = {
+      timestamp: new Date().toISOString(),
+      validated: false,
+      reason: 'Analysis failed - no data to validate',
+      credibilityScore: 0
+    }
+
+    await saveAnalysisWithValidation(errorResults, errorValidation)
     await saveAnalysisResults(errorResults)
   }
 }
@@ -329,8 +340,290 @@ async function saveAnalysisResults(response) {
   }
 }
 
+// News validation and credibility checker
+async function validateNewsCredibility(analysisText) {
+  try {
+    console.log('\n🔍 VALIDATING NEWS CREDIBILITY...')
+    console.log('='.repeat(40))
+
+    // Extract JSON from the response
+    const jsonMatch = analysisText.match(/\{[\s\S]*\}/)
+    if (!jsonMatch) {
+      console.log('⚠️  No JSON analysis found to validate')
+      return { validated: false, reason: 'No JSON data found' }
+    }
+
+    let analysis
+    let newsItems = []
+
+    try {
+      analysis = JSON.parse(jsonMatch[0])
+      newsItems = analysis.news24h || []
+    } catch (parseError) {
+      console.log('⚠️  JSON parsing failed, attempting to fix incomplete JSON...')
+
+      // Try to fix incomplete JSON by extracting complete news items
+      let jsonText = jsonMatch[0]
+
+      // Look for news24h array in the text
+      const newsArrayMatch = jsonText.match(/"news24h":\s*\[([\s\S]*?)(?:\]|\s*$)/)
+      if (newsArrayMatch) {
+        console.log('📊 Found news24h array, extracting complete items...')
+
+        const newsArrayContent = newsArrayMatch[1]
+        const completeItems = []
+
+        // Extract complete JSON objects that have all required fields
+        const itemPattern = /\{\s*"headline":\s*"[^"]*",\s*"source":\s*"[^"]*",\s*"originalUrl":\s*"[^"]*",\s*"timePublished":\s*"[^"]*",\s*"sentiment":\s*"[^"]*",\s*"impact":\s*"[^"]*",\s*"category":\s*"[^"]*"\s*\}/g
+
+        let match
+        while ((match = itemPattern.exec(newsArrayContent)) !== null) {
+          try {
+            const item = JSON.parse(match[0])
+            completeItems.push(item)
+          } catch (itemError) {
+            console.log(`⚠️  Skipping invalid item: ${match[0].substring(0, 50)}...`)
+          }
+        }
+
+        if (completeItems.length > 0) {
+          console.log(`📊 Successfully extracted ${completeItems.length} complete news items`)
+          newsItems = completeItems
+          analysis = { news24h: completeItems }
+        } else {
+          console.log('❌ Could not extract any valid news items from incomplete JSON')
+          return {
+            validated: false,
+            reason: 'JSON parsing failed - no valid items found',
+            error: parseError.message,
+            timestamp: new Date().toISOString(),
+            credibilityScore: 0,
+            recommendations: ['❌ JSON incomplete - manual verification required']
+          }
+        }
+      } else {
+        console.log('❌ Could not find news array in JSON')
+        return {
+          validated: false,
+          reason: 'JSON parsing failed - no news array found',
+          error: parseError.message,
+          timestamp: new Date().toISOString(),
+          credibilityScore: 0,
+          recommendations: ['❌ JSON malformed - manual verification required']
+        }
+      }
+    }
+
+    if (newsItems.length === 0) {
+      console.log('⚠️  No news items found to validate')
+      return { validated: false, reason: 'No news items found' }
+    }
+
+    console.log(`📊 Validating ${newsItems.length} news items...`)
+
+    // Define trusted sources
+    const trustedSources = [
+      'reuters.com',
+      'bloomberg.com',
+      'tradingview.com',
+      'marketwatch.com',
+      'yahoo finance',
+      'cnbc.com',
+      'financial times',
+      'wsj.com',
+      'ft.com',
+      'investing.com',
+      'fxstreet.com',
+      'kitco.com',
+      'reuters',
+      'bloomberg',
+      'tradingview',
+      'marketwatch',
+      'cnbc',
+      'wall street journal'
+    ]
+
+    // Validate each news item
+    const validationResults = {
+      timestamp: new Date().toISOString(),
+      totalItems: newsItems.length,
+      validatedItems: [],
+      trustedSources: 0,
+      untrustedSources: 0,
+      missingUrls: 0,
+      recentNews: 0,
+      outdatedNews: 0,
+      credibilityScore: 0,
+      recommendations: []
+    }
+
+    for (let i = 0; i < newsItems.length; i++) {
+      const item = newsItems[i]
+      const validation = {
+        index: i + 1,
+        headline: item.headline,
+        source: item.source,
+        originalUrl: item.originalUrl,
+        timePublished: item.timePublished,
+        isTrustedSource: false,
+        hasValidUrl: false,
+        isRecent: false,
+        credibilityIssues: []
+      }
+
+      // Check if source is trusted
+      const sourceText = (item.source || '').toLowerCase()
+      validation.isTrustedSource = trustedSources.some((trusted) => sourceText.includes(trusted.toLowerCase()))
+
+      if (validation.isTrustedSource) {
+        validationResults.trustedSources++
+      } else {
+        validationResults.untrustedSources++
+        validation.credibilityIssues.push('Source not in trusted list')
+      }
+
+      // Check if URL is provided and valid
+      if (item.originalUrl && item.originalUrl.startsWith('http')) {
+        validation.hasValidUrl = true
+      } else {
+        validationResults.missingUrls++
+        validation.credibilityIssues.push('Missing or invalid URL')
+      }
+
+      // Check if news is recent (within 48 hours)
+      if (item.timePublished) {
+        try {
+          const publishTime = new Date(item.timePublished)
+          const currentTime = new Date()
+          const hoursDiff = (currentTime - publishTime) / (1000 * 60 * 60)
+
+          if (hoursDiff <= 48) {
+            validation.isRecent = true
+            validationResults.recentNews++
+          } else {
+            validationResults.outdatedNews++
+            validation.credibilityIssues.push(`News is ${Math.round(hoursDiff)} hours old`)
+          }
+        } catch (dateError) {
+          validation.credibilityIssues.push('Invalid date format')
+        }
+      } else {
+        validation.credibilityIssues.push('Missing publication time')
+      }
+
+      validationResults.validatedItems.push(validation)
+    }
+
+    // Calculate credibility score (0-100)
+    const sourceScore = (validationResults.trustedSources / validationResults.totalItems) * 40
+    const urlScore = ((validationResults.totalItems - validationResults.missingUrls) / validationResults.totalItems) * 30
+    const recencyScore = (validationResults.recentNews / validationResults.totalItems) * 30
+
+    validationResults.credibilityScore = Math.round(sourceScore + urlScore + recencyScore)
+
+    // Generate recommendations
+    if (validationResults.untrustedSources > 0) {
+      validationResults.recommendations.push(`⚠️  ${validationResults.untrustedSources} news items from untrusted sources - verify independently`)
+    }
+
+    if (validationResults.missingUrls > 0) {
+      validationResults.recommendations.push(`🔗 ${validationResults.missingUrls} news items missing source URLs - cannot verify authenticity`)
+    }
+
+    if (validationResults.outdatedNews > 0) {
+      validationResults.recommendations.push(`📅 ${validationResults.outdatedNews} news items are older than 48 hours - may not reflect current market`)
+    }
+
+    if (validationResults.credibilityScore >= 80) {
+      validationResults.recommendations.push('✅ High credibility - analysis can be trusted')
+    } else if (validationResults.credibilityScore >= 60) {
+      validationResults.recommendations.push('⚠️  Moderate credibility - use with caution')
+    } else {
+      validationResults.recommendations.push('❌ Low credibility - seek additional sources')
+    }
+
+    // Display validation results
+    console.log(`📊 CREDIBILITY VALIDATION RESULTS:`)
+    console.log(`🏆 Credibility Score: ${validationResults.credibilityScore}/100`)
+    console.log(`✅ Trusted Sources: ${validationResults.trustedSources}/${validationResults.totalItems}`)
+    console.log(`🔗 Valid URLs: ${validationResults.totalItems - validationResults.missingUrls}/${validationResults.totalItems}`)
+    console.log(`📅 Recent News: ${validationResults.recentNews}/${validationResults.totalItems}`)
+
+    console.log('\n💡 RECOMMENDATIONS:')
+    validationResults.recommendations.forEach((rec) => console.log(rec))
+
+    // Show detailed issues if any
+    const itemsWithIssues = validationResults.validatedItems.filter((item) => item.credibilityIssues.length > 0)
+    if (itemsWithIssues.length > 0) {
+      console.log('\n⚠️  ITEMS WITH CREDIBILITY ISSUES:')
+      itemsWithIssues.forEach((item) => {
+        console.log(`${item.index}. ${item.headline.substring(0, 60)}...`)
+        console.log(`   Source: ${item.source}`)
+        console.log(`   Issues: ${item.credibilityIssues.join(', ')}`)
+      })
+    }
+
+    return validationResults
+  } catch (error) {
+    console.error('❌ Error validating news credibility:', error.message)
+    console.log('📊 Error details:', {
+      errorType: error.name,
+      errorMessage: error.message,
+      stackTrace: error.stack?.substring(0, 200) + '...'
+    })
+
+    return {
+      validated: false,
+      error: error.message,
+      errorType: error.name,
+      timestamp: new Date().toISOString(),
+      credibilityScore: 0,
+      recommendations: ['❌ Validation failed - manual verification required']
+    }
+  }
+}
+
+// Enhanced save function with validation results
+async function saveAnalysisWithValidation(response, validationResults) {
+  try {
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-')
+    const filename = `openai-analysis-validated-${timestamp}.json`
+    const dataDir = path.join(__dirname, '../../data')
+    const outputPath = path.join(dataDir, filename)
+
+    // Ensure data directory exists
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true })
+    }
+
+    const results = {
+      timestamp: new Date().toISOString(),
+      response: response,
+      validation: validationResults,
+      status: response.error ? 'failed' : 'success',
+      model: 'gpt-4.1',
+      analysis_type: 'enhanced_gold_market_with_validation',
+      credibilityScore: validationResults?.credibilityScore || 0,
+      recommendedAction: validationResults?.credibilityScore >= 70 ? 'proceed' : 'verify_sources'
+    }
+
+    fs.writeFileSync(outputPath, JSON.stringify(results, null, 2))
+    console.log(`💾 Validated results saved to: ${outputPath}`)
+
+    // Also save as latest validated
+    const latestValidatedPath = path.join(dataDir, 'latest_openai_validated_analysis.json')
+    fs.writeFileSync(latestValidatedPath, JSON.stringify(results, null, 2))
+    console.log(`📄 Latest validated analysis updated`)
+
+    return outputPath
+  } catch (saveError) {
+    console.error('❌ Error saving validated results:', saveError.message)
+    return null
+  }
+}
+
 // Display key findings from analysis
-function displayKeyFindings(outputText) {
+function displayKeyFindings(outputText, validationResults = null) {
   try {
     console.log('\n📈 KEY ANALYSIS FINDINGS:')
     console.log('='.repeat(50))
@@ -390,6 +683,28 @@ function displayKeyFindings(outputText) {
         }
         if (analysis.technicalView.resistanceLevels) {
           console.log(`⚡ Resistance: $${analysis.technicalView.resistanceLevels[0]}`)
+        }
+      }
+
+      // Display validation results if available
+      if (validationResults && validationResults.credibilityScore !== undefined) {
+        console.log('\n🔍 NEWS CREDIBILITY VALIDATION:')
+        console.log(`🏆 Credibility Score: ${validationResults.credibilityScore}/100`)
+
+        if (validationResults.credibilityScore >= 80) {
+          console.log(`✅ High Credibility - Analysis is highly reliable`)
+        } else if (validationResults.credibilityScore >= 60) {
+          console.log(`⚠️  Moderate Credibility - Use with caution`)
+        } else {
+          console.log(`❌ Low Credibility - Seek additional verification`)
+        }
+
+        console.log(`✅ Trusted Sources: ${validationResults.trustedSources}/${validationResults.totalItems}`)
+        console.log(`🔗 Sources with URLs: ${validationResults.totalItems - validationResults.missingUrls}/${validationResults.totalItems}`)
+        console.log(`📅 Recent News: ${validationResults.recentNews}/${validationResults.totalItems}`)
+
+        if (validationResults.recommendations && validationResults.recommendations.length > 0) {
+          console.log(`💡 Key Recommendation: ${validationResults.recommendations[0]}`)
         }
       }
     } else {
