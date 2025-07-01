@@ -6,171 +6,157 @@
     "spot_price": 3334.1,
     "price_change": {
       "daily_pct": 0.94,
-      "weekly_pct": 0.47,
+      "weekly_pct": -1.07,
       "monthly_pct": null
     },
     "technical_indicators": {
-      "rsi_14": 50.3,
+      "rsi_14": 51.8,
       "atr_14": null,
       "supports": [
-        3300,
-        3277,
         3250,
-        3200
+        3277,
+        3300
       ],
       "resistances": [
         3350,
         3370,
-        3400,
-        3450
+        3400
       ],
       "trend": "bullish",
       "momentum": "positive"
     },
     "signals": {
       "short_term": "buy",
-      "medium_term": "hold",
+      "medium_term": "buy",
       "long_term": "hold"
     },
     "market_sentiment": {
       "overall": "bullish",
-      "summary": "Gold is showing bullish momentum driven by USD weakness, Fed rate cut expectations, and tariff/geopolitical uncertainty, but some caution is warranted due to recent volatility and mixed technicals.",
+      "summary": "ราคาทองคำยังคงมีแนวโน้มขาขึ้นในระยะสั้น ได้แรงหนุนจากค่าเงินดอลลาร์สหรัฐที่อ่อนค่า ความไม่แน่นอนด้านนโยบายภาษีของสหรัฐ และคาดการณ์การปรับลดอัตราดอกเบี้ยของเฟด แม้จะมีแรงขายจากข่าวหยุดยิงและแรงกดดันจากข้อมูลเงินเฟ้อ แต่ภาพรวมยังเป็นบวก",
       "confidence": "medium"
     },
     "news_highlights": [
       {
-        "headline": "Gold rose to 3,345.65 USD/t.oz on July 1, 2025, up 1.28% from the previous day",
+        "headline": "ราคาทองคำปรับขึ้นแตะ 3,345.65 ดอลลาร์ต่อออนซ์ เมื่อวันที่ 1 กรกฎาคม 2025 เพิ่มขึ้น 1.28% จากวันก่อนหน้า",
         "source": "TradingEconomics",
         "sentiment": "bullish",
         "impact": "high",
-        "category": "technical"
+        "category": "เทคนิคอล"
       },
       {
-        "headline": "Gold price builds on recovery from $3,248-3,247 region gaining positive traction for second successive day",
+        "headline": "ราคาทองคำฟื้นตัวต่อเนื่องจากโซน 3,247-3,248 ดอลลาร์ ได้แรงซื้อรอบใหม่เป็นวันที่สองติดต่อกัน",
         "source": "FXStreet",
         "sentiment": "bullish",
         "impact": "high",
-        "category": "technical"
+        "category": "เทคนิคอล"
       },
       {
-        "headline": "Concerns about worsening US fiscal conditions drag USD to lowest level since February 2022",
+        "headline": "ความกังวลต่อสถานะการคลังสหรัฐฯ ที่แย่ลง กดดันดอลลาร์สหรัฐให้อ่อนค่าต่ำสุดในรอบ 3 ปี",
         "source": "FXStreet",
         "sentiment": "bullish",
         "impact": "high",
-        "category": "fed"
+        "category": "นโยบายการเงินสหรัฐ"
       },
       {
-        "headline": "Heightened uncertainty over Trump's tariff policies ahead of July 9 deadline benefits gold's safe-haven status",
+        "headline": "ความไม่แน่นอนด้านนโยบายภาษีของสหรัฐฯ ก่อนเส้นตาย 9 กรกฎาคม หนุนสถานะสินทรัพย์ปลอดภัยของทองคำ",
+        "source": "Reuters",
+        "sentiment": "bullish",
+        "impact": "high",
+        "category": "ภูมิรัฐศาสตร์"
+      },
+      {
+        "headline": "ทรัมป์เพิ่มแรงกดดันต่อประธานเฟดให้ลดอัตราดอกเบี้ย",
         "source": "FXStreet",
         "sentiment": "bullish",
         "impact": "medium",
-        "category": "geopolitical"
+        "category": "นโยบายการเงินสหรัฐ"
       },
       {
-        "headline": "Trump steps up pressure campaign on Federal Reserve Chair Jerome Powell to lower borrowing costs",
-        "source": "FXStreet",
-        "sentiment": "bullish",
-        "impact": "medium",
-        "category": "fed"
-      },
-      {
-        "headline": "Markets pricing in 74% probability of Fed rate cut as soon as September",
+        "headline": "ตลาดคาดการณ์โอกาส 74% ที่เฟดจะลดดอกเบี้ยในเดือนกันยายน",
         "source": "FXStreet",
         "sentiment": "bullish",
         "impact": "high",
-        "category": "fed"
+        "category": "นโยบายการเงินสหรัฐ"
       },
       {
-        "headline": "Gold price takes a beating on ceasefire news falling more than $50 an ounce",
+        "headline": "ราคาทองคำร่วงแรงกว่า 50 ดอลลาร์ต่อออนซ์ หลังมีข่าวหยุดยิง",
         "source": "Mining.com",
         "sentiment": "bearish",
         "impact": "high",
-        "category": "geopolitical"
+        "category": "ภูมิรัฐศาสตร์"
       },
       {
-        "headline": "Gold Slips to $3,298 as Ceasefire & Dollar Strength Trigger selling pressure",
+        "headline": "ราคาทองคำอ่อนตัวลงแตะ 3,298 ดอลลาร์ จากแรงขายหลังข่าวหยุดยิงและดอลลาร์แข็งค่า",
         "source": "FXLeaders",
         "sentiment": "bearish",
         "impact": "medium",
-        "category": "geopolitical"
+        "category": "ภูมิรัฐศาสตร์"
       },
       {
-        "headline": "Global gold ETF flows remained positive in 2025 at US$30bn despite May outflows",
+        "headline": "กองทุน ETF ทองคำทั่วโลกยังคงมีเงินไหลเข้าสุทธิในปี 2025 แม้จะมีการไหลออกในเดือนพฤษภาคม",
         "source": "World Gold Council",
         "sentiment": "neutral",
         "impact": "medium",
-        "category": "institutional"
+        "category": "สถาบันการเงิน"
       },
       {
-        "headline": "Central banks doubled annual gold purchases from 500 to over 1,000 metric tonnes since Russia-Ukraine war",
+        "headline": "ธนาคารกลางทั่วโลกเพิ่มการซื้อทองคำเป็นสองเท่าตั้งแต่เกิดสงครามรัสเซีย-ยูเครน",
         "source": "MarketPulse",
         "sentiment": "bullish",
         "impact": "high",
-        "category": "institutional"
+        "category": "สถาบันการเงิน"
       },
       {
-        "headline": "Gold rises on weaker dollar, tariff uncertainty before deadline",
+        "headline": "ราคาทองคำปรับขึ้นจากดอลลาร์อ่อนและความไม่แน่นอนด้านภาษี ก่อนถึงเส้นตาย",
         "source": "Reuters",
         "sentiment": "bullish",
         "impact": "high",
-        "category": "geopolitical"
+        "category": "ภูมิรัฐศาสตร์"
       },
       {
-        "headline": "Gold rebounds from over one-month low on weaker dollar",
+        "headline": "ราคาทองคำฟื้นตัวจากจุดต่ำสุดในรอบกว่า 1 เดือน จากแรงหนุนดอลลาร์อ่อน",
         "source": "Reuters",
         "sentiment": "bullish",
         "impact": "medium",
-        "category": "technical"
+        "category": "เทคนิคอล"
       },
       {
-        "headline": "Gold set for second weekly loss; US inflation data in focus",
+        "headline": "ราคาทองคำมีแนวโน้มขาดทุนเป็นสัปดาห์ที่สอง ข้อมูลเงินเฟ้อสหรัฐเป็นปัจจัยสำคัญ",
         "source": "Reuters",
         "sentiment": "bearish",
         "impact": "medium",
-        "category": "economic"
-      },
-      {
-        "headline": "Gold Futures",
-        "source": "AP News",
-        "sentiment": "neutral",
-        "impact": "low",
-        "category": "institutional"
+        "category": "เศรษฐกิจ"
       }
     ],
     "forecast_scenarios": {
-      "short": "Upside potential to $3,400 if strength persists above $3,370; monitor for volatility around U.S. data and Fed signals.",
-      "medium": "Range-bound between $3,250 and $3,400 as market digests Fed policy and tariff outcomes.",
-      "long": "Sustained institutional buying and central bank demand could support higher prices, but risks remain from easing geopolitical tensions and changing Fed stance."
+      "short": "ราคาทองคำมีโอกาสปรับขึ้นต่อเนื่อง หากสามารถยืนเหนือแนวต้าน 3,350-3,370 ดอลลาร์ โดยมีเป้าหมายระยะสั้นที่ 3,400 ดอลลาร์",
+      "medium": "แนวโน้มยังเป็นขาขึ้นต่อเนื่อง หากเฟดส่งสัญญาณลดดอกเบี้ยและดอลลาร์ยังอ่อนค่า แต่ควรระวังแรงขายจากข่าวภูมิรัฐศาสตร์และข้อมูลเงินเฟ้อ",
+      "long": "ระยะยาวยังต้องติดตามนโยบายการเงินของเฟดและการเคลื่อนไหวของธนาคารกลางทั่วโลก รวมถึงความไม่แน่นอนทางภูมิรัฐศาสตร์"
     },
     "key_events": [
       {
         "date": "2025-07-09",
-        "event": "U.S. tariff policy deadline",
+        "event": "เส้นตายการตัดสินใจนโยบายภาษีของสหรัฐฯ อาจส่งผลต่อความผันผวนของราคาทองคำ",
         "impact": "high"
       },
       {
-        "date": "2025-09-01",
-        "event": "Expected Fed rate decision window",
+        "date": "2025-09-18",
+        "event": "การประชุม FOMC ที่ตลาดคาดการณ์โอกาสลดดอกเบี้ย",
         "impact": "high"
-      },
-      {
-        "date": "2025-07-05",
-        "event": "U.S. labor market data release",
-        "impact": "medium"
       }
     ],
     "risk_factors": [
-      "USD volatility",
-      "Fed policy uncertainty",
-      "Geopolitical developments (e.g., Middle East ceasefire)",
-      "Tariff/trade policy changes",
-      "Institutional flow reversals"
+      "ความผันผวนของค่าเงินดอลลาร์สหรัฐ",
+      "ความไม่แน่นอนด้านนโยบายการเงินของเฟด",
+      "แรงขายจากข่าวภูมิรัฐศาสตร์ เช่น ข้อตกลงหยุดยิง",
+      "ข้อมูลเงินเฟ้อและเศรษฐกิจสหรัฐ",
+      "แรงซื้อขายของกองทุน ETF และธนาคารกลาง"
     ],
     "final_decision": {
       "action": "buy",
-      "confidence": 70,
-      "reasoning": "Consensus is moderately bullish: both sources cite USD weakness, Fed rate cut expectations, and tariff/geopolitical uncertainty as supportive. Technicals are mixed but lean bullish, and institutional flows remain positive. However, recent volatility and potential for reversal warrant some caution.",
-      "consensus": "moderate"
+      "confidence": 80,
+      "reasoning": "ราคาทองคำได้รับแรงหนุนจากดอลลาร์อ่อน ความคาดหวังการลดดอกเบี้ยของเฟด และความไม่แน่นอนด้านภูมิรัฐศาสตร์ แม้จะมีแรงขายจากข่าวหยุดยิงและข้อมูลเศรษฐกิจ แต่แนวโน้มเทคนิคอลยังเป็นขาขึ้น เหมาะสำหรับกลยุทธ์ซื้อในระยะสั้นถึงกลาง",
+      "consensus": "strong"
     }
   },
   "metadata": {

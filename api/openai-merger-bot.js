@@ -72,6 +72,8 @@ class OpenAIAnalysisMerger {
     const prompt = `
 You are an expert financial analyst tasked with merging gold market analysis data from two AI sources into a unified format.
 
+IMPORTANT: All text content in the output must be in Thai language (ภาษาไทย). Use proper Thai financial terminology.
+
 TASK: Merge the following analysis data into the exact JSON structure provided below. Use intelligent reasoning to:
 1. Reconcile price differences by averaging or selecting most recent/reliable data
 2. Combine technical indicators intelligently
@@ -112,35 +114,35 @@ OUTPUT FORMAT (copy this exact structure and fill with merged data):
     },
     "market_sentiment": {
       "overall": "bullish|bearish|neutral|null",
-      "summary": "STRING_OR_NULL",
+      "summary": "STRING_IN_THAI_OR_NULL",
       "confidence": "high|medium|low|null"
     },
     "news_highlights": [
       {
-        "headline": "STRING",
-        "source": "STRING",
+        "headline": "STRING_IN_THAI",
+        "source": "STRING_IN_THAI",
         "sentiment": "bullish|bearish|neutral",
         "impact": "high|medium|low",
-        "category": "STRING"
+        "category": "STRING_IN_THAI"
       }
     ],
     "forecast_scenarios": {
-      "short": "STRING_OR_NULL",
-      "medium": "STRING_OR_NULL",
-      "long": "STRING_OR_NULL"
+      "short": "STRING_IN_THAI_OR_NULL",
+      "medium": "STRING_IN_THAI_OR_NULL",
+      "long": "STRING_IN_THAI_OR_NULL"
     },
     "key_events": [
       {
         "date": "DATE_STRING",
-        "event": "STRING",
+        "event": "STRING_IN_THAI",
         "impact": "high|medium|low"
       }
     ],
-    "risk_factors": ["ARRAY_OF_STRINGS"],
+    "risk_factors": ["ARRAY_OF_STRINGS_IN_THAI"],
     "final_decision": {
       "action": "buy|sell|hold|null",
       "confidence": NUMBER_0_TO_100_OR_NULL,
-      "reasoning": "STRING_OR_NULL",
+      "reasoning": "STRING_IN_THAI_OR_NULL",
       "consensus": "strong|moderate|weak|split|null"
     }
   },
@@ -162,6 +164,9 @@ CRITICAL INSTRUCTIONS:
 - Combine news highlights without duplication (check headlines for similarity)
 - Create intelligent consensus for final decision
 - Fill null values only when data is not available or cannot be reasonably inferred
+- ALL TEXT CONTENT (summary, headlines, reasoning, events, risk_factors, etc.) MUST BE IN THAI LANGUAGE
+- Use proper Thai financial and market terminology
+- Maintain professional tone in Thai language
 `
 
     try {
@@ -181,10 +186,10 @@ CRITICAL INSTRUCTIONS:
 
       // Clean the response to extract JSON
       let responseText = response.choices[0].message.content
-      
+
       // Remove markdown code blocks if present
       responseText = responseText.replace(/```json\s*/g, '').replace(/```\s*$/g, '')
-      
+
       // Trim whitespace
       responseText = responseText.trim()
 
@@ -199,7 +204,7 @@ CRITICAL INSTRUCTIONS:
   }
 
   /**
-   * Fallback merger using rule-based logic
+   * Fallback merger using rule-based logic with Thai language support
    */
   createFallbackMerge(claudeData, openaiData) {
     const now = new Date().toISOString()
@@ -210,7 +215,32 @@ CRITICAL INSTRUCTIONS:
     if (claudeData && !openaiData) source = 'claude_only'
     if (!claudeData && !openaiData) source = 'no_data'
 
-    // Basic merge logic
+    // Thai language mappings for common terms
+    const translateToThai = (englishText) => {
+      if (!englishText) return null
+
+      const translations = {
+        bullish: 'เป็นบวก',
+        bearish: 'เป็นลบ',
+        neutral: 'เป็นกลาง',
+        buy: 'ซื้อ',
+        sell: 'ขาย',
+        hold: 'ถือ',
+        high: 'สูง',
+        medium: 'ปานกลาง',
+        low: 'ต่ำ',
+        positive: 'เชิงบวก',
+        negative: 'เชิงลบ'
+      }
+
+      let result = englishText.toString()
+      Object.entries(translations).forEach(([eng, thai]) => {
+        result = result.replace(new RegExp(eng, 'gi'), thai)
+      })
+      return result
+    }
+
+    // Basic merge logic with Thai translations
     const merged = {
       timestamp: now,
       data_freshness_minutes: 0,
@@ -236,22 +266,27 @@ CRITICAL INSTRUCTIONS:
           long_term: null
         },
         market_sentiment: {
-          overall: claudeData?.sentiment || openaiData?.sentiment || null,
-          summary: claudeData?.summary || openaiData?.summary || null,
-          confidence: claudeData?.confidence || openaiData?.confidence || null
+          overall: translateToThai(claudeData?.sentiment || openaiData?.sentiment) || null,
+          summary: translateToThai(claudeData?.summary || openaiData?.summary) || 'ไม่มีข้อมูลการวิเคราะห์โดยละเอียด',
+          confidence: translateToThai(claudeData?.confidence || openaiData?.confidence) || null
         },
-        news_highlights: claudeData?.news24h || openaiData?.news24h || [],
+        news_highlights: (claudeData?.news24h || openaiData?.news24h || []).map((news) => ({
+          ...news,
+          headline: translateToThai(news.headline) || news.headline,
+          source: translateToThai(news.source) || news.source,
+          category: translateToThai(news.category) || news.category
+        })),
         forecast_scenarios: {
-          short: claudeData?.priceTarget || openaiData?.priceTarget || null,
+          short: translateToThai(claudeData?.priceTarget || openaiData?.priceTarget) || null,
           medium: null,
           long: null
         },
         key_events: [],
-        risk_factors: claudeData?.keyFactors || openaiData?.keyFactors || [],
+        risk_factors: (claudeData?.keyFactors || openaiData?.keyFactors || []).map((factor) => translateToThai(factor) || factor),
         final_decision: {
-          action: claudeData?.signal || openaiData?.signal || null,
+          action: translateToThai(claudeData?.signal || openaiData?.signal) || null,
           confidence: (claudeData?.confidence === 'medium' ? 70 : null) || null,
-          reasoning: claudeData?.summary || openaiData?.summary || null,
+          reasoning: translateToThai(claudeData?.summary || openaiData?.summary) || 'ไม่มีข้อมูลการวิเคราะห์',
           consensus: null
         }
       },
@@ -324,16 +359,16 @@ CRITICAL INSTRUCTIONS:
 
         // Display summary
         const analysis = mergedData.unified_analysis
-        console.log('\n📊 MERGED ANALYSIS SUMMARY')
+        console.log('\n📊 MERGED ANALYSIS SUMMARY / สรุปการวิเคราะห์รวม')
         console.log('=========================')
-        console.log(`💰 Spot Price: $${analysis.spot_price || 'N/A'}`)
-        console.log(`📈 Daily Change: ${analysis.price_change.daily_pct || 'N/A'}%`)
-        console.log(`🔍 Trend: ${analysis.technical_indicators.trend || 'N/A'}`)
-        console.log(`📡 Signal: ${analysis.signals.short_term || 'N/A'}`)
-        console.log(`😊 Sentiment: ${analysis.market_sentiment.overall || 'N/A'}`)
-        console.log(`🎯 Action: ${analysis.final_decision.action || 'N/A'}`)
-        console.log(`📰 News Items: ${analysis.news_highlights.length}`)
-        console.log(`⚠️  Risk Factors: ${analysis.risk_factors.length}`)
+        console.log(`💰 Spot Price / ราคาทองคำ: $${analysis.spot_price || 'N/A'}`)
+        console.log(`📈 Daily Change / การเปลี่ยนแปลงรายวัน: ${analysis.price_change.daily_pct || 'N/A'}%`)
+        console.log(`🔍 Trend / แนวโน้ม: ${analysis.technical_indicators.trend || 'N/A'}`)
+        console.log(`📡 Signal / สัญญาณ: ${analysis.signals.short_term || 'N/A'}`)
+        console.log(`😊 Sentiment / ความรู้สึกตลาด: ${analysis.market_sentiment.overall || 'N/A'}`)
+        console.log(`🎯 Action / การดำเนินการ: ${analysis.final_decision.action || 'N/A'}`)
+        console.log(`📰 News Items / ข่าวสาร: ${analysis.news_highlights.length}`)
+        console.log(`⚠️  Risk Factors / ปัจจัยเสี่ยง: ${analysis.risk_factors.length}`)
 
         return true
       }
