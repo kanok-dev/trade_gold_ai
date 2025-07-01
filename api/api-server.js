@@ -10,6 +10,9 @@ import analysisRoutes from './routes/analysis.js'
 import tradingRoutes from './routes/trading.js'
 import portfolioRoutes from './routes/portfolio.js'
 
+// Import crontab manager
+import crontabManager, { initializeCrontab } from './analysis-crontab.js'
+
 dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url)
@@ -20,6 +23,7 @@ class GoldTradingAPIServer {
     this.app = express()
     this.port = process.env.API_PORT || 3001
     this.server = null
+    this.crontabManager = null
 
     // In-memory data store (in production, use a proper database)
     this.dataStore = {
@@ -51,7 +55,29 @@ class GoldTradingAPIServer {
     // Load any persisted data
     await this.loadPersistedData()
 
+    // Initialize crontab manager
+    await this.initializeCrontab()
+
     console.log('✅ Gold Trading API Server initialized')
+  }
+
+  /**
+   * Initialize crontab manager for automated analysis
+   */
+  async initializeCrontab() {
+    try {
+      console.log('🕐 Initializing automated analysis crontab...')
+
+      this.crontabManager = await initializeCrontab()
+
+      if (this.crontabManager) {
+        console.log('✅ Crontab manager initialized - analysis will run every 6 hours')
+      } else {
+        console.log('⚠️  Crontab manager failed to initialize')
+      }
+    } catch (error) {
+      console.error('❌ Error initializing crontab:', error.message)
+    }
   }
 
   setupMiddleware() {
@@ -89,19 +115,156 @@ class GoldTradingAPIServer {
 
     // API status endpoint
     this.app.get('/api/status', (req, res) => {
+      const crontabStatus = this.crontabManager ? this.crontabManager.getStatus() : null
+
       res.json({
         success: true,
         data: {
           serverStatus: 'RUNNING',
           systemStatus: this.dataStore.systemStatus,
           lastUpdate: new Date().toISOString(),
+          crontab: crontabStatus,
           endpoints: {
             analysis: '/api/analysis',
             trading: '/api/trading',
-            portfolio: '/api/portfolio'
+            portfolio: '/api/portfolio',
+            crontab: '/api/crontab'
           }
         }
       })
+    })
+
+    // Crontab management endpoints
+    this.app.get('/api/crontab/status', (req, res) => {
+      try {
+        const status = this.crontabManager ? this.crontabManager.getStatus() : null
+        res.json({
+          success: true,
+          data: status || { error: 'Crontab manager not initialized' }
+        })
+      } catch (error) {
+        res.status(500).json({
+          success: false,
+          error: error.message
+        })
+      }
+    })
+
+    this.app.post('/api/crontab/trigger', async (req, res) => {
+      try {
+        if (!this.crontabManager) {
+          return res.status(400).json({
+            success: false,
+            error: 'Crontab manager not initialized'
+          })
+        }
+
+        console.log('🔧 Manual analysis trigger requested via API')
+        const success = await this.crontabManager.triggerManual()
+
+        res.json({
+          success: true,
+          data: {
+            triggered: true,
+            success: success,
+            message: success ? 'Analysis completed successfully' : 'Analysis completed with errors'
+          }
+        })
+      } catch (error) {
+        res.status(500).json({
+          success: false,
+          error: error.message
+        })
+      }
+    })
+
+    this.app.post('/api/crontab/schedule', (req, res) => {
+      try {
+        if (!this.crontabManager) {
+          return res.status(400).json({
+            success: false,
+            error: 'Crontab manager not initialized'
+          })
+        }
+
+        const { schedule } = req.body
+        if (!schedule) {
+          return res.status(400).json({
+            success: false,
+            error: 'Schedule parameter required'
+          })
+        }
+
+        const success = this.crontabManager.changeSchedule(schedule)
+
+        res.json({
+          success: true,
+          data: {
+            scheduleChanged: success,
+            newSchedule: success ? schedule : null,
+            message: success ? 'Schedule updated successfully' : 'Invalid schedule format'
+          }
+        })
+      } catch (error) {
+        res.status(500).json({
+          success: false,
+          error: error.message
+        })
+      }
+    })
+
+    this.app.post('/api/crontab/start', (req, res) => {
+      try {
+        if (!this.crontabManager) {
+          return res.status(400).json({
+            success: false,
+            error: 'Crontab manager not initialized'
+          })
+        }
+
+        const { schedule } = req.body
+        const success = this.crontabManager.start(schedule)
+
+        res.json({
+          success: true,
+          data: {
+            started: success,
+            schedule: schedule || this.crontabManager.schedule,
+            message: success ? 'Crontab started successfully' : 'Failed to start crontab'
+          }
+        })
+      } catch (error) {
+        res.status(500).json({
+          success: false,
+          error: error.message
+        })
+      }
+    })
+
+    this.app.post('/api/crontab/stop', (req, res) => {
+      try {
+        if (!this.crontabManager) {
+          return res.status(400).json({
+            success: false,
+            error: 'Crontab manager not initialized'
+          })
+        }
+
+        const success = this.crontabManager.stop()
+
+        res.json({
+          success: true,
+          data: {
+            stopped: success,
+            message: success ? 'Crontab stopped successfully' : 'No active crontab to stop'
+          }
+        })
+      } catch (error) {
+        res.status(500).json({
+          success: false,
+          error: error.message
+        })
+      }
     })
 
     // Mount API route modules

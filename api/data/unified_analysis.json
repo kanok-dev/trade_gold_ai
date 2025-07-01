@@ -1,111 +1,112 @@
 {
-  "timestamp": "2025-07-01T15:00:00Z",
+  "timestamp": "2025-07-01T16:00:00Z",
   "data_freshness_minutes": 0,
   "source": "merged_ai",
   "unified_analysis": {
-    "spot_price": 3337.48,
+    "spot_price": 3334.1,
     "price_change": {
-      "daily_pct": 1.05,
-      "weekly_pct": -0.87,
+      "daily_pct": 0.94,
+      "weekly_pct": 0.47,
       "monthly_pct": null
     },
     "technical_indicators": {
-      "rsi_14": 42.8,
+      "rsi_14": 50.3,
       "atr_14": null,
       "supports": [
+        3300,
+        3277,
         3250,
-        3246,
-        3200,
-        3300
+        3200
       ],
       "resistances": [
         3350,
         3370,
-        3400
+        3400,
+        3450
       ],
-      "trend": "neutral",
-      "momentum": "neutral"
+      "trend": "bullish",
+      "momentum": "positive"
     },
     "signals": {
-      "short_term": "hold",
+      "short_term": "buy",
       "medium_term": "hold",
       "long_term": "hold"
     },
     "market_sentiment": {
-      "overall": "neutral",
-      "summary": "Gold is consolidating after a volatile week, supported by USD weakness and ongoing geopolitical/tariff uncertainty, but capped by easing Middle East tensions and mixed Fed expectations.",
+      "overall": "bullish",
+      "summary": "Gold is showing bullish momentum driven by USD weakness, Fed rate cut expectations, and tariff/geopolitical uncertainty, but some caution is warranted due to recent volatility and mixed technicals.",
       "confidence": "medium"
     },
     "news_highlights": [
       {
-        "headline": "Gold rose to 3,352.41 USD/t.oz on July 1, 2025, up 1.49% from the previous day",
+        "headline": "Gold rose to 3,345.65 USD/t.oz on July 1, 2025, up 1.28% from the previous day",
         "source": "TradingEconomics",
         "sentiment": "bullish",
         "impact": "high",
         "category": "technical"
       },
       {
-        "headline": "Gold price builds on recovery and gains positive traction for second successive day",
+        "headline": "Gold price builds on recovery from $3,248-3,247 region gaining positive traction for second successive day",
         "source": "FXStreet",
         "sentiment": "bullish",
         "impact": "high",
         "category": "technical"
       },
       {
-        "headline": "USD drops to lowest level since February 2022 on fiscal concerns",
+        "headline": "Concerns about worsening US fiscal conditions drag USD to lowest level since February 2022",
         "source": "FXStreet",
         "sentiment": "bullish",
         "impact": "high",
         "category": "fed"
       },
       {
-        "headline": "Trump tariff deadline uncertainty benefits gold's safe-haven status",
+        "headline": "Heightened uncertainty over Trump's tariff policies ahead of July 9 deadline benefits gold's safe-haven status",
         "source": "FXStreet",
         "sentiment": "bullish",
         "impact": "medium",
         "category": "geopolitical"
       },
       {
-        "headline": "Markets price 74% probability of Fed rate cut in September",
+        "headline": "Trump steps up pressure campaign on Federal Reserve Chair Jerome Powell to lower borrowing costs",
         "source": "FXStreet",
         "sentiment": "bullish",
         "impact": "medium",
         "category": "fed"
       },
       {
-        "headline": "Gold price takes a beating on ceasefire news, falls $50 an ounce",
+        "headline": "Markets pricing in 74% probability of Fed rate cut as soon as September",
+        "source": "FXStreet",
+        "sentiment": "bullish",
+        "impact": "high",
+        "category": "fed"
+      },
+      {
+        "headline": "Gold price takes a beating on ceasefire news falling more than $50 an ounce",
         "source": "Mining.com",
         "sentiment": "bearish",
         "impact": "high",
         "category": "geopolitical"
       },
       {
-        "headline": "Israel and Iran agree to complete ceasefire per Trump announcement",
-        "source": "Mining.com",
-        "sentiment": "bearish",
-        "impact": "high",
-        "category": "geopolitical"
-      },
-      {
-        "headline": "Global gold ETFs see record inflows of $9.4bn in February",
-        "source": "World Gold Council",
-        "sentiment": "bullish",
-        "impact": "medium",
-        "category": "institutional"
-      },
-      {
-        "headline": "Central banks double gold purchases to over 1,000 tonnes annually",
-        "source": "MarketPulse",
-        "sentiment": "bullish",
-        "impact": "medium",
-        "category": "institutional"
-      },
-      {
-        "headline": "RSI at 35.57 suggests bearish trend with strong ADX momentum at 41.86",
+        "headline": "Gold Slips to $3,298 as Ceasefire & Dollar Strength Trigger selling pressure",
         "source": "FXLeaders",
         "sentiment": "bearish",
         "impact": "medium",
-        "category": "technical"
+        "category": "geopolitical"
+      },
+      {
+        "headline": "Global gold ETF flows remained positive in 2025 at US$30bn despite May outflows",
+        "source": "World Gold Council",
+        "sentiment": "neutral",
+        "impact": "medium",
+        "category": "institutional"
+      },
+      {
+        "headline": "Central banks doubled annual gold purchases from 500 to over 1,000 metric tonnes since Russia-Ukraine war",
+        "source": "MarketPulse",
+        "sentiment": "bullish",
+        "impact": "high",
+        "category": "institutional"
       },
       {
         "headline": "Gold rises on weaker dollar, tariff uncertainty before deadline",
@@ -137,38 +138,38 @@
       }
     ],
     "forecast_scenarios": {
-      "short": "Gold likely to remain range-bound between 3,250 and 3,370 in the short term, with upside potential if resistance at 3,370 is broken.",
-      "medium": "Fed policy decisions and US economic data will drive direction; sustained USD weakness and renewed geopolitical risks could push gold above 3,400.",
-      "long": "Institutional buying and central bank demand provide long-term support, but further upside depends on macroeconomic and geopolitical developments."
+      "short": "Upside potential to $3,400 if strength persists above $3,370; monitor for volatility around U.S. data and Fed signals.",
+      "medium": "Range-bound between $3,250 and $3,400 as market digests Fed policy and tariff outcomes.",
+      "long": "Sustained institutional buying and central bank demand could support higher prices, but risks remain from easing geopolitical tensions and changing Fed stance."
     },
     "key_events": [
       {
         "date": "2025-07-09",
-        "event": "Trump tariff deadline; potential new tariffs if no trade deal",
+        "event": "U.S. tariff policy deadline",
         "impact": "high"
       },
       {
-        "date": "2025-09-18",
-        "event": "Expected Fed rate decision (74% probability of rate cut)",
+        "date": "2025-09-01",
+        "event": "Expected Fed rate decision window",
         "impact": "high"
       },
       {
-        "date": "2025-06-24",
-        "event": "Israel-Iran ceasefire announcement",
-        "impact": "high"
+        "date": "2025-07-05",
+        "event": "U.S. labor market data release",
+        "impact": "medium"
       }
     ],
     "risk_factors": [
       "USD volatility",
-      "Geopolitical developments (Middle East ceasefire, tariff deadlines)",
-      "Fed rate policy uncertainty",
-      "Institutional flows",
-      "Inflation data surprises"
+      "Fed policy uncertainty",
+      "Geopolitical developments (e.g., Middle East ceasefire)",
+      "Tariff/trade policy changes",
+      "Institutional flow reversals"
     ],
     "final_decision": {
-      "action": "hold",
-      "confidence": 65,
-      "reasoning": "Both AI sources indicate mixed technicals and sentiment: USD weakness and institutional demand support gold, but easing geopolitical risks and uncertain Fed timing cap upside. Consensus is to hold with cautious optimism for a breakout if resistance is cleared.",
+      "action": "buy",
+      "confidence": 70,
+      "reasoning": "Consensus is moderately bullish: both sources cite USD weakness, Fed rate cut expectations, and tariff/geopolitical uncertainty as supportive. Technicals are mixed but lean bullish, and institutional flows remain positive. However, recent volatility and potential for reversal warrant some caution.",
       "consensus": "moderate"
     }
   },
@@ -176,7 +177,7 @@
     "bot_version": "openai_merger_v1.0",
     "data_source": "claude_and_openai_merged",
     "format_version": "3.0",
-    "processing_time": "2025-07-01T15:00:00Z",
+    "processing_time": "2025-07-01T16:00:00Z",
     "token_usage": null
   }
 }

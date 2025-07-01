@@ -4,7 +4,7 @@ const MarketSentimentCard = ({ sentimentData, loading }) => {
   if (loading) {
     return (
       <div className='glass-card p-4 sm:p-6 rounded-xl h-full'>
-        <h2 className='text-lg sm:text-xl font-semibold text-gray-200 mb-4'>🌊 Market Sentiment</h2>
+        <h2 className='text-lg sm:text-xl font-semibold text-gray-200 mb-4'>📊 Market Sentiment</h2>
         <div className='flex items-center justify-center py-8'>
           <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-purple-400'></div>
           <span className='ml-3 text-gray-300'>Loading sentiment...</span>
@@ -16,7 +16,7 @@ const MarketSentimentCard = ({ sentimentData, loading }) => {
   if (!sentimentData) {
     return (
       <div className='glass-card p-4 sm:p-6 rounded-xl h-full'>
-        <h2 className='text-lg sm:text-xl font-semibold text-gray-200 mb-4'>🌊 Market Sentiment</h2>
+        <h2 className='text-lg sm:text-xl font-semibold text-gray-200 mb-4'>📊 Market Sentiment</h2>
         <div className='text-center text-gray-400 py-8'>
           <span>No sentiment data available</span>
         </div>
@@ -74,7 +74,7 @@ const MarketSentimentCard = ({ sentimentData, loading }) => {
   return (
     <div className='glass-card p-4 sm:p-6 rounded-xl h-full'>
       <h2 className='text-lg sm:text-xl font-semibold text-gray-200 mb-4 flex items-center gap-2'>
-        🌊 <span className='hidden sm:inline'>Market Sentiment</span>
+        📊 <span className='hidden sm:inline'>Market Sentiment</span>
         <span className='sm:hidden'>Sentiment</span>
       </h2>
 
@@ -86,7 +86,7 @@ const MarketSentimentCard = ({ sentimentData, loading }) => {
               overall === 'Positive' ? 'text-green-400 bg-green-500/20' : overall === 'Negative' ? 'text-red-400 bg-red-500/20' : 'text-yellow-400 bg-yellow-500/20'
             }`}
           >
-            {overall === 'Positive' ? '😊' : overall === 'Negative' ? '😰' : '😐'}
+            {overall === 'Positive' ? '📈' : overall === 'Negative' ? '📉' : '📊'}
             <span className='text-base'>{overall}</span>
           </div>
         </div>
@@ -96,7 +96,7 @@ const MarketSentimentCard = ({ sentimentData, loading }) => {
       {insights.rsi && (
         <div className='mb-4'>
           <div className='flex justify-between items-center mb-2'>
-            <span className='text-sm text-gray-400'>RSI (14)</span>
+            <span className='text-sm text-gray-400 flex items-center gap-1'>📊 RSI (14)</span>
             <span className={`text-lg font-bold px-3 py-1 rounded-full ${insights.rsi >= 70 ? 'text-red-400 bg-red-500/20' : insights.rsi <= 30 ? 'text-green-400 bg-green-500/20' : 'text-yellow-400 bg-yellow-500/20'}`}>
               {insights.rsi.toFixed(1)}
             </span>
@@ -104,14 +104,14 @@ const MarketSentimentCard = ({ sentimentData, loading }) => {
           <div className='w-full bg-gray-700 rounded-full h-2 mb-1'>
             <div className={`h-2 rounded-full transition-all duration-300 ${insights.rsi >= 70 ? 'bg-red-400' : insights.rsi <= 30 ? 'bg-green-400' : 'bg-yellow-400'}`} style={{ width: `${Math.min(100, insights.rsi)}%` }} />
           </div>
-          <div className='text-xs text-center text-gray-400'>{insights.rsi >= 70 ? 'Overbought' : insights.rsi <= 30 ? 'Oversold' : 'Neutral'}</div>
+          <div className='text-xs text-center text-gray-400 flex items-center justify-center gap-1'>{insights.rsi >= 70 ? '🔴 Overbought' : insights.rsi <= 30 ? '🟢 Oversold' : '🟡 Neutral'}</div>
         </div>
       )}
 
       {/* Central Bank Demand */}
       {insights.centralBankDemand && (
         <div className='bg-gray-800/50 p-3 rounded-lg mb-3'>
-          <div className='text-xs text-gray-400 mb-1'>Central Bank Demand</div>
+          <div className='text-xs text-gray-400 mb-1 flex items-center gap-1'>🏦 Central Bank Demand</div>
           <div className='text-sm font-medium text-green-400'>{insights.centralBankDemand}</div>
         </div>
       )}
@@ -119,7 +119,7 @@ const MarketSentimentCard = ({ sentimentData, loading }) => {
       {/* Geopolitical Factors */}
       {insights.geopolitical && (
         <div className='bg-gray-800/50 p-3 rounded-lg mb-3'>
-          <div className='text-xs text-gray-400 mb-1'>Geopolitical Factors</div>
+          <div className='text-xs text-gray-400 mb-1 flex items-center gap-1'>🌍 Geopolitical Factors</div>
           <div className='text-sm font-medium text-yellow-400'>{insights.geopolitical}</div>
         </div>
       )}
@@ -127,7 +127,7 @@ const MarketSentimentCard = ({ sentimentData, loading }) => {
       {/* Fed Policy */}
       {insights.fedPolicy && (
         <div className='bg-gray-800/50 p-3 rounded-lg mb-3'>
-          <div className='text-xs text-gray-400 mb-1'>Fed Policy</div>
+          <div className='text-xs text-gray-400 mb-1 flex items-center gap-1'>🏛️ Fed Policy</div>
           <div className='text-sm font-medium text-red-400'>{insights.fedPolicy}</div>
         </div>
       )}
@@ -135,8 +135,9 @@ const MarketSentimentCard = ({ sentimentData, loading }) => {
       {/* Trading Recommendation */}
       {insights.recommendation && (
         <div className='bg-gray-800/50 p-3 rounded-lg mb-3'>
-          <div className='text-xs text-gray-400 mb-1'>Recommendation</div>
-          <div className={`text-sm font-medium ${insights.recommendation === 'SELL' ? 'text-red-400' : insights.recommendation === 'BUY' ? 'text-green-400' : 'text-yellow-400'}`}>
+          <div className='text-xs text-gray-400 mb-1 flex items-center gap-1'>💡 Recommendation</div>
+          <div className={`text-sm font-medium flex items-center gap-1 ${insights.recommendation === 'SELL' ? 'text-red-400' : insights.recommendation === 'BUY' ? 'text-green-400' : 'text-yellow-400'}`}>
+            {insights.recommendation === 'SELL' ? '📉' : insights.recommendation === 'BUY' ? '📈' : '⏸️'}
             {insights.recommendation}
             {insights.confidence && <span className='ml-2 text-xs text-gray-400'>({insights.confidence}% confidence)</span>}
           </div>
@@ -146,8 +147,8 @@ const MarketSentimentCard = ({ sentimentData, loading }) => {
       {/* If no specific insights, show fallback */}
       {!insights.rsi && !insights.centralBankDemand && !insights.geopolitical && !insights.fedPolicy && !insights.recommendation && (
         <div className='bg-gray-800/50 p-3 rounded-lg'>
-          <div className='text-xs text-gray-400 mb-1'>Analysis Summary</div>
-          <div className='text-sm text-gray-300'>{summary.length > 100 ? `${summary.substring(0, 100)}...` : summary || 'No detailed analysis available'}</div>
+          <div className='text-xs text-gray-400 mb-1 flex items-center gap-1'>📝 Analysis Summary</div>
+          <div className='text-sm text-gray-300 whitespace-pre-wrap'>{summary || 'No detailed analysis available'}</div>
         </div>
       )}
     </div>
