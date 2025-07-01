@@ -1,27 +1,57 @@
+import Config from './config.js'
+
 // API service for communicating with backend
 class ApiService {
   constructor() {
-    this.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+    this.baseURL = Config.API_BASE_URL
+    this.timeout = Config.API_TIMEOUT
+    this.enableDebugLogs = Config.ENABLE_DEBUG_LOGS
+
+    // Validate configuration on startup
+    Config.validateConfig()
+    Config.logConfig()
   }
 
   async makeRequest(endpoint, options = {}) {
     try {
       const url = `${this.baseURL}${endpoint}`
+
+      // Create AbortController for timeout
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), this.timeout)
+
+      if (this.enableDebugLogs) {
+        console.log(`🌐 API Request: ${url}`)
+      }
+
       const response = await fetch(url, {
         headers: {
           'Content-Type': 'application/json',
           ...options.headers
         },
+        signal: controller.signal,
         ...options
       })
+
+      clearTimeout(timeoutId)
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
 
-      return await response.json()
+      const data = await response.json()
+
+      if (this.enableDebugLogs) {
+        console.log(`✅ API Response: ${url}`, data)
+      }
+
+      return data
     } catch (error) {
-      console.error(`API request failed for ${endpoint}:`, error)
+      if (error.name === 'AbortError') {
+        console.error(`⏰ API request timeout for ${endpoint}`)
+        throw new Error(`Request timeout after ${this.timeout}ms`)
+      }
+      console.error(`❌ API request failed for ${endpoint}:`, error)
       throw error
     }
   }
