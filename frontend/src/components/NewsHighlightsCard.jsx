@@ -118,9 +118,9 @@ const NewsHighlightsCard = ({ newsData, loading }) => {
             )}
 
             {/* Source Link */}
-            {news.source_ref && (
+            {(news.source_ref || news.url) && (
               <div className='flex justify-between items-center pt-2 border-t border-gray-700/50'>
-                <a href={news.source_ref} target='_blank' rel='noopener noreferrer' className='text-xs text-blue-400 hover:text-blue-300 underline flex items-center gap-1'>
+                <a href={news.source_ref || news.url} target='_blank' rel='noopener noreferrer' className='text-xs text-blue-400 hover:text-blue-300 underline flex items-center gap-1'>
                   <span>🔗</span>
                   <span className='hidden sm:inline'>View Source</span>
                   <span className='sm:hidden'>Source</span>

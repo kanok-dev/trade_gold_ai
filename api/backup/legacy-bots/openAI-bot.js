@@ -85,42 +85,114 @@ REAL-TIME PRICE DATA (VERIFY FROM MULTIPLE SOURCES):
 - Cross-reference with Reuters gold market data
 - Include timestamps and percentage changes (24h, weekly)
 
-NEWS & ANALYSIS (LAST 24 HOURS ONLY - MINIMUM 10 NEWS ITEMS):
-PERFORM MULTIPLE COMPREHENSIVE SEARCHES - Search each of these topics separately:
-1. Search "gold news today latest 24 hours" - verify publication timestamps
-2. Search "Federal Reserve gold policy latest news today" - Fed decisions impact
-3. Search "gold technical analysis today chart patterns" - current technical view
-4. Search "gold ETF flows institutional buying selling today" - institutional activity
-5. Search "geopolitical events gold safe haven demand today" - current events
-6. Search "inflation data gold price reaction latest" - macro economic impact
-7. Search "central bank gold reserves purchases today" - CB activities
-8. Search "mining industry gold production news today" - supply updates
-9. Search "XAU/USD analysis forecast today" - trading analysis
-10. Search "precious metals market news today gold silver" - broader metals coverage
-11. Search "USD dollar strength impact gold today" - currency correlation
-12. Search "gold futures options trading volume today" - market activity
-13. Search "China India gold demand consumption latest" - demand analysis
-14. Search "jewelry industry gold prices impact today" - industrial demand
-15. Search "economic data GDP employment gold correlation" - macro fundamentals
+GOLD MARKET ANALYSIS - LATEST 24 HOURS
+RESEARCH STRATEGY
+Conduct targeted searches to gather comprehensive gold market intelligence from the past 24 hours. Use the minimum number of searches needed to provide thorough coverage.
+SEARCH SEQUENCE (3-8 searches recommended)
+Core Market Searches:
+
+Latest Gold News: Search "gold price news today" - Focus on major developments
+Technical Analysis: Search "gold technical analysis today" - Current chart patterns and levels
+Economic Drivers: Search "Fed inflation data gold" - Macro economic impacts
+Institutional Activity: Search "gold ETF flows central bank" - Major player movements
+
+Additional Searches (if needed):
+
+Geopolitical Factors: Search "geopolitical events gold safe haven" - Risk-on/risk-off sentiment
+Currency Impact: Search "USD gold correlation today" - Dollar strength/weakness effects
+Supply/Demand: Search "gold demand production latest" - Fundamental supply/demand factors
+Market Sentiment: Search "gold futures trading volume" - Market participation and positioning
+
+SEARCH GUIDELINES
+
+Keep queries concise (1-4 words maximum)
+Search progressively - start broad, then narrow if needed
+Never repeat similar queries - make each search unique
+Prioritize recent content - focus on last 24-48 hours
+Stop searching when sufficient information is gathered
+
+ANALYSIS REQUIREMENTS
+Content Standards:
+
+Verify timestamps - ensure news is actually from last 24 hours
+Cross-reference sources - confirm information across multiple outlets
+Cite all claims - use proper  tags for every factual statement
+Quote sparingly - maximum one short quote (<15 words) in quotation marks
+
+Report Structure:
+
+Executive Summary (2-3 sentences - key takeaways)
+Price Action (current levels, daily/weekly changes)
+Major News Events (significant developments affecting gold)
+Technical Analysis (support/resistance, chart patterns)
+Economic Drivers (Fed policy, inflation, USD movement)
+Institutional Activity (ETF flows, central bank actions)
+Market Sentiment (risk-on/risk-off, trading volumes)
+Outlook (near-term catalysts and risks)
+
+QUALITY CONTROL
+
+Source Priority: Reuters > Bloomberg > Financial Times > MarketWatch > TradingView
+Fact Verification: Cross-check price data with multiple sources
+Recency Check: Confirm all news items are actually from past 24 hours
+Copyright Compliance: Never reproduce large text blocks, use short quotes only
+
+OUTPUT FORMAT
+Provide a comprehensive yet concise analysis (800-1200 words) with:
+
+Clear headers for each section
+Proper citations for all claims
+Actionable insights for traders/investors
+Risk disclaimers where appropriate
+
+SUCCESS METRICS
+
+Accuracy: All price data and news verified
+Timeliness: Focus on truly recent developments
+Completeness: Cover all major market-moving factors
+Actionability: Provide clear takeaways for decision-making
+
+TRUSTED SOURCES PRIORITY (ใช้แหล่งข้อมูลที่เชื่อถือได้):
+PRIMARY SOURCES (Must prioritize these):
+- Reuters (reuters.com) - Global financial news leader
+- Bloomberg (bloomberg.com) - Premier financial data and analysis
+- TradingView (tradingview.com) - Technical analysis and market data
+- MarketWatch (marketwatch.com) - Real-time market news
+- Yahoo Finance (finance.yahoo.com) - Comprehensive market coverage
+- CNBC (cnbc.com) - Business and financial news
+- Financial Times (ft.com) - International financial journalism
+- Wall Street Journal (wsj.com) - Business and market analysis
+
+SECONDARY SOURCES (Additional verification):
+- Investing.com - Market data and analysis
+- FXStreet (fxstreet.com) - Forex and commodities analysis
+- Kitco News (kitco.com) - Precious metals specialist
+- GoldSeek (goldseek.com) - Gold market focus
+- BullionVault - Gold market insights
 
 SEARCH INSTRUCTIONS:
 - Perform EACH search query above individually
-- Gather news from MULTIPLE sources (Reuters, Bloomberg, MarketWatch, CNBC, Yahoo Finance, etc.)
+- PRIORITIZE news from Reuters, Bloomberg, TradingView, and MarketWatch
+- Gather news from MULTIPLE trusted sources only
 - Include news from different time zones and markets (US, Asia, Europe)
-- MINIMUM 10 unique news articles required
-- If fewer than 10 found, expand search to include slightly older articles (within 48 hours)
+- MINIMUM 10 unique news articles required from TRUSTED SOURCES ONLY
+- If fewer than 10 found from trusted sources, expand search to include slightly older articles (within 48 hours)
+- VERIFY source credibility before including any news item
+- EXCLUDE social media, blogs, or unverified sources
 
 CRITICAL REQUIREMENTS:
 - MANDATORY: Include MINIMUM 10 news items (this is ESSENTIAL)
 - ONLY include news from the last 24-48 hours (verify timestamps)
-- SEARCH MULTIPLE SOURCES: Reuters, Bloomberg, MarketWatch, CNBC, Yahoo Finance, etc.
-- INCLUDE the original URL/link for each news article
+- SEARCH TRUSTED SOURCES ONLY: Reuters, Bloomberg, TradingView, MarketWatch, Yahoo Finance, CNBC, Financial Times, WSJ
+- EXCLUDE social media, blogs, forums, or unverified sources
+- INCLUDE the original URL/link for each news article from trusted sources
 - FORMAT timePublished as MM/DD/YYYY HH:MM (e.g., "07/01/2025 14:30")
-- Get prices from minimum 3 different reliable sources
+- Get prices from minimum 3 different reliable sources (TradingView, Investing.com, MarketWatch)
 - Include exact price levels, support/resistance with numbers
 - Verify all data is current and not outdated
-- Prioritize high-impact news that affects gold prices
-- If less than 10 recent articles found, expand time window to 48 hours
+- Prioritize high-impact news that affects gold prices from established financial news organizations
+- If less than 10 recent articles found from trusted sources, expand time window to 48 hours
+- VERIFY source credibility - only use established financial news organizations
 
 ANALYSIS FRAMEWORK:
 1. Recent Fed rate decisions and their immediate/future impact on gold
