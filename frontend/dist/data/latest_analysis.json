@@ -1,190 +1,122 @@
 {
-  "timestamp": "2024-06-20T06:35:47Z",
-  "data_freshness_minutes": 2,
+  "timestamp": "2025-07-01T07:02:25Z",
+  "data_freshness_minutes": 0,
   "spot_price_verification": {
     "sources": [
       {
-        "name": "Investing.com",
-        "spot": 2326.5,
-        "url": "https://www.investing.com/commodities/gold"
+        "name": "XAU Today",
+        "spot": 3374.27,
+        "timestamp": "2025-07-01T04:30:00Z",
+        "url": "https://xau.today/"
       },
       {
-        "name": "TradingView (XAUUSD)",
-        "spot": 2326.7,
-        "url": "https://www.tradingview.com/symbols/XAUUSD/"
+        "name": "Investing.com",
+        "spot": 3274.25,
+        "timestamp": "2025-06-27T00:00:00Z",
+        "url": "https://www.investing.com/currencies/xau-usd"
       }
     ],
-    "match_result": true,
-    "spread_usd": 0.2
+    "spread_ok": false,
+    "spread_value": 100.02,
+    "reason": "Significant discrepancy between sources; possible data staleness."
   },
   "price_statistics": {
-    "spot_usd": 2326.6,
-    "prev_close": 2332.1,
-    "d_d_pct": -0.24,
-    "w_w_pct": 0.78,
-    "ath_usd": 2450.07,
-    "ath_date": "2024-05-20",
-    "from_ath_pct": -5.04,
-    "atr_14d": 38.15,
-    "rsi_14": 51.2,
-    "sources": {
-      "tradingview_url": "https://www.tradingview.com/symbols/XAUUSD/"
-    }
+    "change_DD_pct": -0.64,
+    "change_WW_pct": -1.59,
+    "days_from_ATH": 0,
+    "ath_value": 3500.33,
+    "ath_date": "2025-06-27T00:00:00Z",
+    "ATR_14": "N/A",
+    "RSI_14": "N/A"
   },
   "technical_analysis": {
-    "ema_50d": 2341.6,
-    "ema_100d": 2272.9,
-    "fibo_38_2_pct": 2301.8,
-    "pivot": 2335.45,
-    "pattern_detected": "Descending Triangle (breakdown not confirmed)",
-    "pattern_condition": "Confirm <2300 with volume>70% avg",
-    "momentum": "Neutral to mildly bearish",
-    "trend": "Sideways, weak bias down",
-    "signal": "HOLD"
+    "supports": [
+      3300,
+      3250
+    ],
+    "resistances": [
+      3400,
+      3450
+    ],
+    "patterns": [
+      {
+        "pattern": "Descending Triangle",
+        "found": false,
+        "details": "N/A"
+      }
+    ],
+    "momentum": "Neutral",
+    "short_signal": "Hold",
+    "mid_signal": "Hold",
+    "long_signal": "Buy"
   },
   "market_sentiment": {
     "overall": "Neutral",
-    "recent_sentiment": [
-      {
-        "headline": "Fed Signals Only One Rate Cut Likely in 2024",
-        "sentiment": "-",
-        "reason": "ลดโอกาสทองพุ่งสูง"
-      },
-      {
-        "headline": "US CPI Remains Stable in May",
-        "sentiment": "+",
-        "reason": "เงินเฟ้อต่ำกระตุ้นคาดหวังดอกเบี้ยลด"
-      },
-      {
-        "headline": "Geopolitical Tensions Ease in Middle-East",
-        "sentiment": "-",
-        "reason": "ทองขาดแรงหนุนความเสี่ยง"
-      },
-      {
-        "headline": "China’s Gold Demand Slows Slightly",
-        "sentiment": "-",
-        "reason": "แรงซื้อลดลง"
-      }
-    ]
+    "summary": "Mixed signals from economic indicators and geopolitical events."
   },
   "news_highlights": [
     {
-      "headline": "Fed holds rates, signals one cut for 2024",
-      "sentiment": "-",
-      "reason": "hawkish statement",
-      "url": "https://www.reuters.com/markets/rates-bonds/fed-leaves-interest-rates-unchanged-flags-one-cut-this-year-2024-06-12/"
-    },
-    {
-      "headline": "Gold Firms as Dollar Eases Slightly",
-      "sentiment": "+",
-      "reason": "ดอลลาร์อ่อนค่าระยะสั้น",
-      "url": "https://www.bloomberg.com/news/articles/2024-06-19/gold-steadies-as-dollar-eases-after-data"
-    },
-    {
-      "headline": "China gold reserve growth slows",
-      "sentiment": "-",
-      "reason": "ทุนสำรองจีนโตช้าลง",
-      "url": "https://www.kitco.com/news/article/2024-06-17/china-gold-reserves-growth-slows"
-    },
-    {
-      "headline": "US Jobless Claims Rise",
-      "sentiment": "+",
-      "reason": "ตลาดแรงงานเริ่มชะลอ-เอื้อลดดอกเบี้ย",
-      "url": "https://www.wsj.com/economy/jobs/economic-data-report-jobless-claims-0614-1001a669"
-    },
-    {
-      "headline": "Middle East Tensions Remain, but No Escalation",
-      "sentiment": "Neutral",
-      "reason": "ไร้ข่าวร้ายใหม่",
-      "url": "https://cmegroup.com/markets/metals/precious/gold.html"
-    },
-    {
-      "headline": "Gold ETF Flows Remain Outflow",
-      "sentiment": "-",
-      "reason": "fund flow ไม่สนับสนุน",
-      "url": "https://www.gold.org/data/gold-etf-flows"
-    },
-    {
-      "headline": "ECB holds as inflation outlook unclear",
-      "sentiment": "Neutral",
-      "reason": "ECB ไม่เปลี่ยนแปลงนโยบายล่าสุด",
-      "url": "https://www.reuters.com/world/europe/ecb-leaves-policy-unchanged-inflation-challenges-remain-2024-06-18/"
-    },
-    {
-      "headline": "US Retail Sales Below Estimates",
-      "sentiment": "+",
-      "reason": "เศรษฐกิจเริ่มชะลอ",
-      "url": "https://www.kitco.com/news/article/2024-06-18/retail-sales-below-estimate"
+      "time": "2025-07-01T04:40:23Z",
+      "headline": "Gold rises on weaker dollar, tariff uncertainty before deadline",
+      "sentiment": "Positive",
+      "reason": "Weaker dollar and tariff concerns boost gold demand.",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/india/gold-rises-weaker-dollar-tariff-uncertainty-before-deadline-2025-07-01/"
     }
   ],
   "forecast_scenarios": {
-    "short_term": {
-      "range": "2295-2345",
-      "bias": "sideways",
-      "reason": "Fed ชะลอ, Sentiment กลาง, โมเมนตัมอ่อน"
-    },
-    "mid_term": {
-      "range": "2270-2380",
-      "bias": "range-bound, slight downside",
-      "reason": "Risk-off + ความชัดเจนนโยบาย Fed ยังรอชัดเจน"
-    },
-    "long_term": {
-      "range": "2200-2450",
-      "bias": "upside limited, but holds",
-      "reason": "เงินเฟ้อลดช้า, Fed ไม่มีแรงลดดอกเบี้ยเร็ว"
-    }
+    "short": "Range-bound between $3,300 and $3,400 due to mixed economic data.",
+    "mid": "Potential upward trend if inflation concerns persist.",
+    "long": "Bullish outlook with targets above $3,500 amid ongoing geopolitical tensions."
   },
   "key_events_calendar": [
     {
-      "event": "US PCE Inflation",
-      "date": "2024-06-28"
+      "date": "2025-07-04",
+      "event": "U.S. Non-Farm Payrolls Report",
+      "impact": "High"
     },
     {
-      "event": "Fed Minutes",
-      "date": "2024-07-02"
-    },
-    {
-      "event": "US Non-farm Payrolls",
-      "date": "2024-07-05"
+      "date": "2025-07-09",
+      "event": "U.S. Tariff Implementation Deadline",
+      "impact": "High"
     }
   ],
   "risk_factors": [
-    "เฟดอาจลดดอกเบี้ยช้ากว่าคาด",
-    "แรงซื้อทองจีนแผ่วลง",
-    "ETF Outflow ต่อเนื่อง",
-    "ตลาดยังรอความชัดเจนนโยบายการเงิน"
+    "Potential escalation in U.S.-China trade tensions.",
+    "Unexpected changes in Federal Reserve monetary policy.",
+    "Geopolitical instability in key regions."
   ],
   "finalDecision": {
     "action": "HOLD",
-    "confidence": 59,
-    "reasoning": "Technical = 0.4x60, AI = 0.3x65, Risk = 0.3x50; ส่วนใหญ่เห็นพ้องให้ถือ",
+    "confidence": 70,
+    "reasoning": "Current market conditions suggest maintaining positions due to mixed signals.",
     "consensus": "MAJORITY",
     "decisions": [
       {
         "source": "TECHNICAL",
         "action": "HOLD",
         "weight": 0.4,
-        "confidence": 60,
-        "reasoning": "แนวต้านแน่น, โมเมนตัมต่ำ, ยังไม่หลุดแนวรับ"
+        "confidence": 65,
+        "reasoning": "Neutral momentum with key support and resistance levels."
       },
       {
         "source": "AI",
         "action": "HOLD",
         "weight": 0.3,
-        "confidence": 65,
-        "reasoning": "ปัจจัยข่าว/แพทเทิร์นไม่แรง, รอ confirm"
+        "confidence": 70,
+        "reasoning": "Mixed economic indicators and market sentiment."
       },
       {
         "source": "RISK",
-        "action": "HOLD",
+        "action": "CAUTION",
         "weight": 0.3,
-        "confidence": 50,
-        "reasoning": "Fed กดดันขาขึ้น, ความเสี่ยงสมดุล"
+        "confidence": 75,
+        "reasoning": "Potential geopolitical and economic risks ahead."
       }
     ]
   },
-  "summary_thai": "ราคาทองคำ Spot ล่าสุด $2,326.60/oz (ข้อมูลล่าสุด 20 มิ.ย. 67 13:35 น.) ราคายังต่ำกว่า ATH ราว -5% โดยสัปดาห์นี้ขยับขึ้นเพียง +0.78% แนวโน้มโมเมนตัม-เทคนิคยังอ่อนตัว จุดสำคัญ EMA 50D อยู่เหนือราคาเล็กน้อย (2341), Fibo 38.2% 2301 ใกล้เป็นแนวรับ คาดการณ์สั้น-กลางยัง Sideways วางกรอบบน 2345/2380−กรอบล่าง 2295/2270 (หลุดเสี่ยงลงเร็ว) ปัจจัยข่าวเด่น: Fed ลดดอกเบี้ยช้า, ดอลลาร์ทรงๆ, ETF ไหลออก, ความเสี่ยงจีนและตะวันออกกลางซา กลยุทธ์: HOLD ทั้งระยะสั้น-กลาง เหตุผลเพราะศักยภาพ Upside/Loss ใกล้เคียง หัวข้อควรเฝ้าคือ US PCE (28 มิ.ย.), Fed Minutes (2 ก.ค.), Non-Farm (5 ก.ค.)",
-  "saved_at": "2025-07-01T05:47:01.916Z",
+  "summary_thai": "ณ วันที่ 1 กรกฎาคม 2025 ราคาทองคำอยู่ที่ $3,374.27 ต่อออนซ์ ลดลง 0.64% จากวันก่อนหน้า และลดลง 1.59% จากสัปดาห์ก่อนหน้า ห่างจากจุดสูงสุดตลอดกาลที่ $3,500.33 เมื่อวันที่ 27 มิถุนายน 2025 เพียง 3 วัน\n\n**ข่าวสำคัญ:**\n- ราคาทองคำเพิ่มขึ้นเนื่องจากดอลลาร์อ่อนค่าและความไม่แน่นอนเกี่ยวกับภาษีของสหรัฐฯ ก่อนกำหนดเส้นตายวันที่ 9 กรกฎาคม ([reuters.com](https://www.reuters.com/world/india/gold-rises-weaker-dollar-tariff-uncertainty-before-deadline-2025-07-01/?utm_source=openai))\n\n**แนวโน้มทางเทคนิค:**\n- แนวรับที่ $3,300 และ $3,250; แนวต้านที่ $3,400 และ $3,450\n- โมเมนตัมเป็นกลาง; สัญญาณระยะสั้นและกลาง: ถือ; ระยะยาว: ซื้อ\n\n**กลยุทธ์การลงทุน:**\n- **ระยะสั้น:** คาดว่าราคาจะเคลื่อนไหวในกรอบ $3,300-$3,400 เนื่องจากข้อมูลเศรษฐกิจที่ผสมผสาน\n- **ระยะกลาง:** มีแนวโน้มขาขึ้นหากความกังวลเรื่องเงินเฟ้อยังคงอยู่\n- **ระยะยาว:** แนวโน้มเป็นบวก โดยมีเป้าหมายเหนือ $3,500 จากความตึงเครียดทางภูมิรัฐศาสตร์ที่ต่อเนื่อง\n\n**ปฏิทินเหตุการณ์สำคัญ:**\n- 4 กรกฎาคม 2025: รายงานการจ้างงานนอกภาคเกษตรของสหรัฐฯ (ผลกระทบสูง)\n- 9 กรกฎาคม 2025: กำหนดเส้นตายการบังคับใช้ภาษีของสหรัฐฯ (ผลกระทบสูง)\n\n**การตัดสินใจลงทุน:**\n- **คำแนะนำ:** ถือ (HOLD)\n- **ความเชื่อมั่น:** 70%\n- **เหตุผล:** สภาวะตลาดปัจจุบันแนะนำให้คงสถานะการลงทุนเนื่องจากสัญญาณที่ผสมผสาน\n\n**ปัจจัยเสี่ยง:**\n- ความตึงเครียดทางการค้าระหว่างสหรัฐฯ และจีนที่อาจเพิ่มขึ้น\n- การเปลี่ยนแปลงนโยบายการเงินของธนาคารกลางสหรัฐฯ ที่ไม่คาดคิด\n- ความไม่แน่นอนทางภูมิรัฐศาสตร์ในภูมิภาคสำคัญ",
+  "saved_at": "2025-07-01T07:02:40.920Z",
   "bot_version": "openAI-bot2",
   "data_source": "OpenAI GPT-4.1",
   "file_format_version": "2.0"
