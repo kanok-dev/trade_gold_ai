@@ -1,0 +1,160 @@
+{
+  "timestamp": "2024-07-01T06:58:00+00:00",
+  "data_freshness_minutes": 1,
+  "spot_price_verification": {
+    "sources": [
+      {
+        "name": "Reuters",
+        "spot": 2331.46,
+        "timestamp": "2024-07-01T06:56:00+00:00",
+        "url": "https://www.reuters.com/markets/commodities/gold-price/"
+      },
+      {
+        "name": "Investing.com",
+        "spot": 2331.55,
+        "timestamp": "2024-07-01T06:57:00+00:00",
+        "url": "https://www.investing.com/commodities/gold"
+      }
+    ],
+    "spread_ok": true,
+    "spread_value": 0.09,
+    "reason": "-"
+  },
+  "price_statistics": {
+    "change_DD_pct": -0.17,
+    "change_WW_pct": 0.24,
+    "days_from_ATH": 47,
+    "ath_value": 2450.09,
+    "ath_date": "2024-05-13T10:00:00+00:00",
+    "ATR_14": 21.2,
+    "RSI_14": 51.8
+  },
+  "technical_analysis": {
+    "supports": [
+      2305,
+      2287
+    ],
+    "resistances": [
+      2345,
+      2360
+    ],
+    "patterns": [
+      {
+        "pattern": "Sideway/Range",
+        "found": true,
+        "details": "พฤติกรรมราคาเคลื่อนไหวในกรอบ 2300–2350 จุด Volume ลดลง"
+      }
+    ],
+    "momentum": "Neutral",
+    "short_signal": "HOLD",
+    "mid_signal": "HOLD",
+    "long_signal": "BUY"
+  },
+  "market_sentiment": {
+    "overall": "Neutral",
+    "summary": "ตลาดรอผลตัวเลขจ้างงานสหรัฐฯ และเสียง Fed, ความเสี่ยงภูมิรัฐศาสตร์ชะลอ"
+  },
+  "news_highlights": [
+    {
+      "time": "2024-06-30T21:45:00+00:00",
+      "headline": "Fed officials signal extended pause; eyes on Friday jobs data",
+      "sentiment": "Neutral",
+      "reason": "เฟดยังไม่รีบขึ้นดอกเบี้ย-จับตาตัวเลขแรงงาน",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/markets/us/fed-officials-signal-no-rush-rate-cut-2024-06-30/"
+    },
+    {
+      "time": "2024-07-01T03:22:00+00:00",
+      "headline": "Gold steadies as investors await U.S. jobs data",
+      "sentiment": "Neutral",
+      "reason": "นักลงทุนรอข้อมูล NFP ศุกร์นี้",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2024-07-01/gold-prices-hold-steady-ahead-of-key-us-data"
+    },
+    {
+      "time": "2024-06-28T11:31:00+00:00",
+      "headline": "Dollar dips, boosting gold ahead of US inflation report",
+      "sentiment": "Positive",
+      "reason": "ดอลลาร์อ่อน, บรรยากาศทองคำฟื้นบางส่วน",
+      "source": "WSJ",
+      "url": "https://www.wsj.com/livecoverage/stock-market-today-062824"
+    },
+    {
+      "time": "2024-06-30T14:10:00+00:00",
+      "headline": "Geopolitical risk cools, market volatility slows",
+      "sentiment": "Negative",
+      "reason": "ข่าวเสี่ยงภูมิรัฐศาสตร์ลด ทองนิ่งลง",
+      "source": "Kitco",
+      "url": "https://www.kitco.com/news/2024-06-30/gold-rangebound-geopolitical-tensions-subsiding.html"
+    },
+    {
+      "time": "2024-06-29T16:40:00+00:00",
+      "headline": "Gold ETF holdings hit lowest since 2019",
+      "sentiment": "Negative",
+      "reason": "Fund ไหลออกต่อเนื่อง-ความต้องการซบ",
+      "source": "WGC",
+      "url": "https://www.gold.org/goldhub/data/monthly-gold-etf-flows"
+    }
+  ],
+  "forecast_scenarios": {
+    "short": "กรอบ 2300–2350 รอ Fed/ตัวเลขจ้างงาน หากต่ำคาด ทองมีโอกาสดีด",
+    "mid": "รอดีดกลับจาก 2305 หรือต่ำกว่าหากเศรษฐกิจโลกผันผวนหรือเฟดส่งสัญญาณชัดขึ้น",
+    "long": "หากเฟดยืนยันลดดอกเบี้ย/เสี่ยงภูมิรัฐศาสตร์กลับมา ราคาสูงสุดใหม่มีโอกาสเกิด"
+  },
+  "key_events_calendar": [
+    {
+      "date": "2024-07-03",
+      "event": "US FOMC Minutes",
+      "impact": "High"
+    },
+    {
+      "date": "2024-07-05",
+      "event": "US Nonfarm Payrolls",
+      "impact": "High"
+    },
+    {
+      "date": "2024-07-11",
+      "event": "US CPI",
+      "impact": "High"
+    }
+  ],
+  "risk_factors": [
+    "แรงขายทอง ETF ต่อเนื่อง",
+    "ความเสี่ยงเงินเฟ้อและเศรษฐกิจรอบใหม่",
+    "Action เฟดคาดเดายากขึ้น"
+  ],
+  "finalDecision": {
+    "action": "HOLD",
+    "confidence": 68,
+    "reasoning": "ราคาไซด์เวย์ใกล้จุดต่ำสุดช่วงสั้น ตลาดรอตัวเลขเศรษฐกิจหลักและสัญญาณเฟด เงินไหลออก ETF กดดัน upside",
+    "consensus": "MAJORITY",
+    "decisions": [
+      {
+        "source": "TECHNICAL",
+        "action": "HOLD",
+        "weight": 0.35,
+        "confidence": 65,
+        "reasoning": "กรอบไซด์เวย์, RSI กลาง, ATR ต่ำ"
+      },
+      {
+        "source": "AI",
+        "action": "HOLD",
+        "weight": 0.35,
+        "confidence": 70,
+        "reasoning": "ข่าวหลักยังรอ NFP, FOMC, CPI"
+      },
+      {
+        "source": "RISK",
+        "action": "SELL",
+        "weight": 0.3,
+        "confidence": 60,
+        "reasoning": "ETF ไหลออก, เสี่ยง upside จำกัด"
+      }
+    ]
+  },
+  "summary_thai": "ราคาทองคำวันนี้ $2,331.46 ใกล้ระดับต่ำสุดรอบเดือน ภาพรวมไซด์เวย์รอตัวเลขเศรษฐกิจสหรัฐฯ (NFP, FOMC, CPI) และท่าทีเฟดต่อดอกเบี้ย กองทุน ETF ขายต่อเนื่องกดดัน upside กลยุทธ์: ถือครอง/รอจังหวะ Risk สูงหากหลุด $2,300 เหตุการณ์สำคัญ: 3 ก.ค. FOMC, 5 ก.ค. NFP, 11 ก.ค. CPI",
+  "saved_at": "2025-07-01T07:15:16.257Z",
+  "bot_version": "openAI-bot2",
+  "data_source": "OpenAI GPT-4.1",
+  "file_format_version": "2.0"
+}

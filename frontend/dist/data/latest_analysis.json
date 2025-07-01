@@ -1,0 +1,191 @@
+{
+  "timestamp": "2024-06-20T06:35:47Z",
+  "data_freshness_minutes": 2,
+  "spot_price_verification": {
+    "sources": [
+      {
+        "name": "Investing.com",
+        "spot": 2326.5,
+        "url": "https://www.investing.com/commodities/gold"
+      },
+      {
+        "name": "TradingView (XAUUSD)",
+        "spot": 2326.7,
+        "url": "https://www.tradingview.com/symbols/XAUUSD/"
+      }
+    ],
+    "match_result": true,
+    "spread_usd": 0.2
+  },
+  "price_statistics": {
+    "spot_usd": 2326.6,
+    "prev_close": 2332.1,
+    "d_d_pct": -0.24,
+    "w_w_pct": 0.78,
+    "ath_usd": 2450.07,
+    "ath_date": "2024-05-20",
+    "from_ath_pct": -5.04,
+    "atr_14d": 38.15,
+    "rsi_14": 51.2,
+    "sources": {
+      "tradingview_url": "https://www.tradingview.com/symbols/XAUUSD/"
+    }
+  },
+  "technical_analysis": {
+    "ema_50d": 2341.6,
+    "ema_100d": 2272.9,
+    "fibo_38_2_pct": 2301.8,
+    "pivot": 2335.45,
+    "pattern_detected": "Descending Triangle (breakdown not confirmed)",
+    "pattern_condition": "Confirm <2300 with volume>70% avg",
+    "momentum": "Neutral to mildly bearish",
+    "trend": "Sideways, weak bias down",
+    "signal": "HOLD"
+  },
+  "market_sentiment": {
+    "overall": "Neutral",
+    "recent_sentiment": [
+      {
+        "headline": "Fed Signals Only One Rate Cut Likely in 2024",
+        "sentiment": "-",
+        "reason": "ลดโอกาสทองพุ่งสูง"
+      },
+      {
+        "headline": "US CPI Remains Stable in May",
+        "sentiment": "+",
+        "reason": "เงินเฟ้อต่ำกระตุ้นคาดหวังดอกเบี้ยลด"
+      },
+      {
+        "headline": "Geopolitical Tensions Ease in Middle-East",
+        "sentiment": "-",
+        "reason": "ทองขาดแรงหนุนความเสี่ยง"
+      },
+      {
+        "headline": "China’s Gold Demand Slows Slightly",
+        "sentiment": "-",
+        "reason": "แรงซื้อลดลง"
+      }
+    ]
+  },
+  "news_highlights": [
+    {
+      "headline": "Fed holds rates, signals one cut for 2024",
+      "sentiment": "-",
+      "reason": "hawkish statement",
+      "url": "https://www.reuters.com/markets/rates-bonds/fed-leaves-interest-rates-unchanged-flags-one-cut-this-year-2024-06-12/"
+    },
+    {
+      "headline": "Gold Firms as Dollar Eases Slightly",
+      "sentiment": "+",
+      "reason": "ดอลลาร์อ่อนค่าระยะสั้น",
+      "url": "https://www.bloomberg.com/news/articles/2024-06-19/gold-steadies-as-dollar-eases-after-data"
+    },
+    {
+      "headline": "China gold reserve growth slows",
+      "sentiment": "-",
+      "reason": "ทุนสำรองจีนโตช้าลง",
+      "url": "https://www.kitco.com/news/article/2024-06-17/china-gold-reserves-growth-slows"
+    },
+    {
+      "headline": "US Jobless Claims Rise",
+      "sentiment": "+",
+      "reason": "ตลาดแรงงานเริ่มชะลอ-เอื้อลดดอกเบี้ย",
+      "url": "https://www.wsj.com/economy/jobs/economic-data-report-jobless-claims-0614-1001a669"
+    },
+    {
+      "headline": "Middle East Tensions Remain, but No Escalation",
+      "sentiment": "Neutral",
+      "reason": "ไร้ข่าวร้ายใหม่",
+      "url": "https://cmegroup.com/markets/metals/precious/gold.html"
+    },
+    {
+      "headline": "Gold ETF Flows Remain Outflow",
+      "sentiment": "-",
+      "reason": "fund flow ไม่สนับสนุน",
+      "url": "https://www.gold.org/data/gold-etf-flows"
+    },
+    {
+      "headline": "ECB holds as inflation outlook unclear",
+      "sentiment": "Neutral",
+      "reason": "ECB ไม่เปลี่ยนแปลงนโยบายล่าสุด",
+      "url": "https://www.reuters.com/world/europe/ecb-leaves-policy-unchanged-inflation-challenges-remain-2024-06-18/"
+    },
+    {
+      "headline": "US Retail Sales Below Estimates",
+      "sentiment": "+",
+      "reason": "เศรษฐกิจเริ่มชะลอ",
+      "url": "https://www.kitco.com/news/article/2024-06-18/retail-sales-below-estimate"
+    }
+  ],
+  "forecast_scenarios": {
+    "short_term": {
+      "range": "2295-2345",
+      "bias": "sideways",
+      "reason": "Fed ชะลอ, Sentiment กลาง, โมเมนตัมอ่อน"
+    },
+    "mid_term": {
+      "range": "2270-2380",
+      "bias": "range-bound, slight downside",
+      "reason": "Risk-off + ความชัดเจนนโยบาย Fed ยังรอชัดเจน"
+    },
+    "long_term": {
+      "range": "2200-2450",
+      "bias": "upside limited, but holds",
+      "reason": "เงินเฟ้อลดช้า, Fed ไม่มีแรงลดดอกเบี้ยเร็ว"
+    }
+  },
+  "key_events_calendar": [
+    {
+      "event": "US PCE Inflation",
+      "date": "2024-06-28"
+    },
+    {
+      "event": "Fed Minutes",
+      "date": "2024-07-02"
+    },
+    {
+      "event": "US Non-farm Payrolls",
+      "date": "2024-07-05"
+    }
+  ],
+  "risk_factors": [
+    "เฟดอาจลดดอกเบี้ยช้ากว่าคาด",
+    "แรงซื้อทองจีนแผ่วลง",
+    "ETF Outflow ต่อเนื่อง",
+    "ตลาดยังรอความชัดเจนนโยบายการเงิน"
+  ],
+  "finalDecision": {
+    "action": "HOLD",
+    "confidence": 59,
+    "reasoning": "Technical = 0.4x60, AI = 0.3x65, Risk = 0.3x50; ส่วนใหญ่เห็นพ้องให้ถือ",
+    "consensus": "MAJORITY",
+    "decisions": [
+      {
+        "source": "TECHNICAL",
+        "action": "HOLD",
+        "weight": 0.4,
+        "confidence": 60,
+        "reasoning": "แนวต้านแน่น, โมเมนตัมต่ำ, ยังไม่หลุดแนวรับ"
+      },
+      {
+        "source": "AI",
+        "action": "HOLD",
+        "weight": 0.3,
+        "confidence": 65,
+        "reasoning": "ปัจจัยข่าว/แพทเทิร์นไม่แรง, รอ confirm"
+      },
+      {
+        "source": "RISK",
+        "action": "HOLD",
+        "weight": 0.3,
+        "confidence": 50,
+        "reasoning": "Fed กดดันขาขึ้น, ความเสี่ยงสมดุล"
+      }
+    ]
+  },
+  "summary_thai": "ราคาทองคำ Spot ล่าสุด $2,326.60/oz (ข้อมูลล่าสุด 20 มิ.ย. 67 13:35 น.) ราคายังต่ำกว่า ATH ราว -5% โดยสัปดาห์นี้ขยับขึ้นเพียง +0.78% แนวโน้มโมเมนตัม-เทคนิคยังอ่อนตัว จุดสำคัญ EMA 50D อยู่เหนือราคาเล็กน้อย (2341), Fibo 38.2% 2301 ใกล้เป็นแนวรับ คาดการณ์สั้น-กลางยัง Sideways วางกรอบบน 2345/2380−กรอบล่าง 2295/2270 (หลุดเสี่ยงลงเร็ว) ปัจจัยข่าวเด่น: Fed ลดดอกเบี้ยช้า, ดอลลาร์ทรงๆ, ETF ไหลออก, ความเสี่ยงจีนและตะวันออกกลางซา กลยุทธ์: HOLD ทั้งระยะสั้น-กลาง เหตุผลเพราะศักยภาพ Upside/Loss ใกล้เคียง หัวข้อควรเฝ้าคือ US PCE (28 มิ.ย.), Fed Minutes (2 ก.ค.), Non-Farm (5 ก.ค.)",
+  "saved_at": "2025-07-01T05:47:01.916Z",
+  "bot_version": "openAI-bot2",
+  "data_source": "OpenAI GPT-4.1",
+  "file_format_version": "2.0"
+}

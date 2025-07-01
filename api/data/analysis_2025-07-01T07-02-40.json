@@ -1,0 +1,123 @@
+{
+  "timestamp": "2025-07-01T07:02:25Z",
+  "data_freshness_minutes": 0,
+  "spot_price_verification": {
+    "sources": [
+      {
+        "name": "XAU Today",
+        "spot": 3374.27,
+        "timestamp": "2025-07-01T04:30:00Z",
+        "url": "https://xau.today/"
+      },
+      {
+        "name": "Investing.com",
+        "spot": 3274.25,
+        "timestamp": "2025-06-27T00:00:00Z",
+        "url": "https://www.investing.com/currencies/xau-usd"
+      }
+    ],
+    "spread_ok": false,
+    "spread_value": 100.02,
+    "reason": "Significant discrepancy between sources; possible data staleness."
+  },
+  "price_statistics": {
+    "change_DD_pct": -0.64,
+    "change_WW_pct": -1.59,
+    "days_from_ATH": 0,
+    "ath_value": 3500.33,
+    "ath_date": "2025-06-27T00:00:00Z",
+    "ATR_14": "N/A",
+    "RSI_14": "N/A"
+  },
+  "technical_analysis": {
+    "supports": [
+      3300,
+      3250
+    ],
+    "resistances": [
+      3400,
+      3450
+    ],
+    "patterns": [
+      {
+        "pattern": "Descending Triangle",
+        "found": false,
+        "details": "N/A"
+      }
+    ],
+    "momentum": "Neutral",
+    "short_signal": "Hold",
+    "mid_signal": "Hold",
+    "long_signal": "Buy"
+  },
+  "market_sentiment": {
+    "overall": "Neutral",
+    "summary": "Mixed signals from economic indicators and geopolitical events."
+  },
+  "news_highlights": [
+    {
+      "time": "2025-07-01T04:40:23Z",
+      "headline": "Gold rises on weaker dollar, tariff uncertainty before deadline",
+      "sentiment": "Positive",
+      "reason": "Weaker dollar and tariff concerns boost gold demand.",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/india/gold-rises-weaker-dollar-tariff-uncertainty-before-deadline-2025-07-01/"
+    }
+  ],
+  "forecast_scenarios": {
+    "short": "Range-bound between $3,300 and $3,400 due to mixed economic data.",
+    "mid": "Potential upward trend if inflation concerns persist.",
+    "long": "Bullish outlook with targets above $3,500 amid ongoing geopolitical tensions."
+  },
+  "key_events_calendar": [
+    {
+      "date": "2025-07-04",
+      "event": "U.S. Non-Farm Payrolls Report",
+      "impact": "High"
+    },
+    {
+      "date": "2025-07-09",
+      "event": "U.S. Tariff Implementation Deadline",
+      "impact": "High"
+    }
+  ],
+  "risk_factors": [
+    "Potential escalation in U.S.-China trade tensions.",
+    "Unexpected changes in Federal Reserve monetary policy.",
+    "Geopolitical instability in key regions."
+  ],
+  "finalDecision": {
+    "action": "HOLD",
+    "confidence": 70,
+    "reasoning": "Current market conditions suggest maintaining positions due to mixed signals.",
+    "consensus": "MAJORITY",
+    "decisions": [
+      {
+        "source": "TECHNICAL",
+        "action": "HOLD",
+        "weight": 0.4,
+        "confidence": 65,
+        "reasoning": "Neutral momentum with key support and resistance levels."
+      },
+      {
+        "source": "AI",
+        "action": "HOLD",
+        "weight": 0.3,
+        "confidence": 70,
+        "reasoning": "Mixed economic indicators and market sentiment."
+      },
+      {
+        "source": "RISK",
+        "action": "CAUTION",
+        "weight": 0.3,
+        "confidence": 75,
+        "reasoning": "Potential geopolitical and economic risks ahead."
+      }
+    ]
+  },
+  "summary_thai": "ณ วันที่ 1 กรกฎาคม 2025 ราคาทองคำอยู่ที่ $3,374.27 ต่อออนซ์ ลดลง 0.64% จากวันก่อนหน้า และลดลง 1.59% จากสัปดาห์ก่อนหน้า ห่างจากจุดสูงสุดตลอดกาลที่ $3,500.33 เมื่อวันที่ 27 มิถุนายน 2025 เพียง 3 วัน\n\n**ข่าวสำคัญ:**\n- ราคาทองคำเพิ่มขึ้นเนื่องจากดอลลาร์อ่อนค่าและความไม่แน่นอนเกี่ยวกับภาษีของสหรัฐฯ ก่อนกำหนดเส้นตายวันที่ 9 กรกฎาคม ([reuters.com](https://www.reuters.com/world/india/gold-rises-weaker-dollar-tariff-uncertainty-before-deadline-2025-07-01/?utm_source=openai))\n\n**แนวโน้มทางเทคนิค:**\n- แนวรับที่ $3,300 และ $3,250; แนวต้านที่ $3,400 และ $3,450\n- โมเมนตัมเป็นกลาง; สัญญาณระยะสั้นและกลาง: ถือ; ระยะยาว: ซื้อ\n\n**กลยุทธ์การลงทุน:**\n- **ระยะสั้น:** คาดว่าราคาจะเคลื่อนไหวในกรอบ $3,300-$3,400 เนื่องจากข้อมูลเศรษฐกิจที่ผสมผสาน\n- **ระยะกลาง:** มีแนวโน้มขาขึ้นหากความกังวลเรื่องเงินเฟ้อยังคงอยู่\n- **ระยะยาว:** แนวโน้มเป็นบวก โดยมีเป้าหมายเหนือ $3,500 จากความตึงเครียดทางภูมิรัฐศาสตร์ที่ต่อเนื่อง\n\n**ปฏิทินเหตุการณ์สำคัญ:**\n- 4 กรกฎาคม 2025: รายงานการจ้างงานนอกภาคเกษตรของสหรัฐฯ (ผลกระทบสูง)\n- 9 กรกฎาคม 2025: กำหนดเส้นตายการบังคับใช้ภาษีของสหรัฐฯ (ผลกระทบสูง)\n\n**การตัดสินใจลงทุน:**\n- **คำแนะนำ:** ถือ (HOLD)\n- **ความเชื่อมั่น:** 70%\n- **เหตุผล:** สภาวะตลาดปัจจุบันแนะนำให้คงสถานะการลงทุนเนื่องจากสัญญาณที่ผสมผสาน\n\n**ปัจจัยเสี่ยง:**\n- ความตึงเครียดทางการค้าระหว่างสหรัฐฯ และจีนที่อาจเพิ่มขึ้น\n- การเปลี่ยนแปลงนโยบายการเงินของธนาคารกลางสหรัฐฯ ที่ไม่คาดคิด\n- ความไม่แน่นอนทางภูมิรัฐศาสตร์ในภูมิภาคสำคัญ",
+  "saved_at": "2025-07-01T07:02:40.920Z",
+  "bot_version": "openAI-bot2",
+  "data_source": "OpenAI GPT-4.1",
+  "file_format_version": "2.0"
+}

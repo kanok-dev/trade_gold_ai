@@ -1,0 +1,43 @@
+{
+  "name": "trade_gold_ai",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node api-server.js",
+    "dev": "nodemon api-server.js",
+    "api": "node api-server.js",
+    "bot": "node utils/master-system.js",
+    "dashboard": "node server.js",
+    "analysis": "node enhanced-trading-bot.js",
+    "scraper": "node enhanced-web-scraping.js",
+    "integrated": "node utils/integrated-system.js",
+    "test-system": "node tests/system-tester.js",
+    "advanced": "node utils/advanced-features.js",
+    "gemini-bot": "node gemini-bot.js",
+    "test-tools": "node tests/test-gemini-tools.js",
+    "test-working": "node tests/test-working.js",
+    "test-openai-bot2": "node tests/test-openai-bot2.js",
+    "demo": "node demo-cli.js",
+    "demo-openai-bot2": "node demo-openai-bot2.js",
+    "setup": "./setup.sh",
+    "openai-bot": "node openAI-bot.js",
+    "openai-bot2": "node backup/legacy-bots/openAI-bot2.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.55.1",
+    "axios": "^1.10.0",
+    "cheerio": "^1.1.0",
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.0",
+    "express": "^4.21.2",
+    "openai": "^5.8.2",
+    "puppeteer": "^24.11.1",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

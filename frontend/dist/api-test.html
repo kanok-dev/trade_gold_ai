@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Service Test</h1>
+    <div id="result"></div>
+    
+    <script>
+        console.log('🧪 Testing API service...')
+        
+        // Test static file loading
+        fetch('/data/latest_analysis.json')
+            .then(response => {
+                console.log('Response status:', response.status)
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`)
+                }
+                return response.json()
+            })
+            .then(data => {
+                console.log('✅ Data loaded successfully!')
+                console.log('Data:', data)
+                document.getElementById('result').innerHTML = `
+                    <h2>✅ Success!</h2>
+                    <p><strong>Price:</strong> $${data.price_statistics?.spot_usd}</p>
+                    <p><strong>Daily Change:</strong> ${data.price_statistics?.d_d_pct}%</p>
+                    <p><strong>Decision:</strong> ${data.finalDecision?.action}</p>
+                    <p><strong>Pattern:</strong> ${data.technical_analysis?.pattern_detected}</p>
+                `
+            })
+            .catch(error => {
+                console.error('❌ Error:', error)
+                document.getElementById('result').innerHTML = `<h2>❌ Error</h2><p>${error.message}</p>`
+            })
+    </script>
+</body>
+</html>

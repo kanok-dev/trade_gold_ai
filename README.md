@@ -43,9 +43,17 @@ Choose ONE authentication method:
 # Clone and setup
 git clone <your-repo>
 cd trade_gold_ai
+
+# Install API server dependencies
+cd api
 npm install
 
-# Copy and configure environment
+# Install frontend dependencies
+cd ../frontend
+npm install
+
+# Copy and configure environment (in api folder)
+cd ../api
 cp .env.example .env
 # Edit .env with your actual keys
 
@@ -60,11 +68,22 @@ npm start
 
 ### Basic Bot Execution
 ```bash
+# From api folder
+cd api
 npm start
+```
+
+### Frontend Development
+```bash
+# From frontend folder
+cd frontend
+npm run dev
 ```
 
 ### Test Individual Tools
 ```bash
+# From api folder
+cd api
 # Test all Gemini CLI tools
 npm run test-tools
 
@@ -75,7 +94,7 @@ npm run test-debug
 ### Scheduled Execution
 ```bash
 # Run every hour (using cron or similar)
-0 */1 * * * cd /path/to/trade_gold_ai && npm start
+0 */1 * * * cd /path/to/trade_gold_ai/api && npm start
 ```
 
 ## How It Works 🔧
@@ -91,10 +110,73 @@ npm run test-debug
 
 ## Files Overview 📁
 
-- `gemini-bot.js` - Main bot application with enhanced 2025 features
+### API Server (`/api`)
+- `server.js` - Main API server with Express.js
+- `gemini-bot.js` - Core trading bot logic with Gemini CLI integration
 - `test-gemini-tools.js` - Test script for Gemini CLI tools
 - `openAI-bot.js` - Alternative OpenAI implementation
+- `routes/` - API route handlers
+- `controllers/` - Business logic controllers
+- `services/` - External service integrations
+- `data/` - Analysis data and logs
 - `.env.example` - Environment variables template
+
+### Frontend (`/frontend`)
+- `index.html` - Main dashboard interface
+- `src/` - Source code (React/Vue/Vanilla JS)
+- `components/` - Reusable UI components
+- `styles/` - CSS/SCSS files
+- `assets/` - Static assets (images, fonts)
+- `public/` - Public static files
+
+## Project Structure
+
+```
+/Volumes/Data/Programming/trade_gold_ai
+├── api/                          # Backend API Server
+│   ├── server.js                 # Express.js server
+│   ├── gemini-bot.js            # Main bot logic
+│   ├── test-gemini-tools.js     # Testing utilities
+│   ├── openAI-bot.js            # Alternative AI implementation
+│   ├── package.json             # API dependencies
+│   ├── .env.example             # Environment template
+│   ├── routes/                  # API route handlers
+│   │   ├── analysis.js          # Analysis endpoints
+│   │   ├── trading.js           # Trading endpoints
+│   │   └── auth.js              # Authentication endpoints
+│   ├── controllers/             # Business logic
+│   │   ├── analysisController.js
+│   │   ├── tradingController.js
+│   │   └── portfolioController.js
+│   ├── services/                # External services
+│   │   ├── geminiService.js     # Gemini AI integration
+│   │   ├── newsService.js       # News fetching service
+│   │   └── notificationService.js # Line Notify service
+│   └── data/                    # Data storage
+│       ├── analysis_2025-06-30.json
+│       └── logs/
+├── frontend/                    # Frontend Application
+│   ├── index.html               # Main dashboard
+│   ├── package.json             # Frontend dependencies
+│   ├── src/                     # Source code
+│   │   ├── main.js              # Application entry point
+│   │   ├── components/          # UI components
+│   │   │   ├── Dashboard.js     # Main dashboard component
+│   │   │   ├── PriceChart.js    # Price visualization
+│   │   │   ├── NewsPanel.js     # News display
+│   │   │   └── PortfolioView.js # Portfolio management
+│   │   ├── services/            # Frontend services
+│   │   │   ├── api.js           # API client
+│   │   │   └── websocket.js     # Real-time updates
+│   │   └── styles/              # Styling
+│   │       ├── main.css
+│   │       └── components.css
+│   ├── public/                  # Static assets
+│   │   ├── favicon.ico
+│   │   └── assets/
+│   └── dist/                    # Build output
+└── README.md                    # Project documentation
+```
 
 ## API Limitations ⚠️
 
@@ -115,7 +197,8 @@ gemini -y -p "test prompt"
 
 ### Tool Issues
 ```bash
-# Run diagnostic tests
+# Run diagnostic tests (from api folder)
+cd api
 npm run test-tools
 
 # Check available tools
