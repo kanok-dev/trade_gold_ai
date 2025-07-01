@@ -2,7 +2,13 @@ import OpenAI from 'openai'
 import dotenv from 'dotenv'
 import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+// Load .env from the api directory (two levels up from current location)
+dotenv.config({ path: path.join(__dirname, '../../.env') })
 dotenv.config()
 
 const openai = new OpenAI({
@@ -107,7 +113,7 @@ async function analyzeGoldMarket() {
         data_source: 'OpenAI GPT-4.1 (Error)'
       }
 
-      const errorPath = path.join(process.cwd(), 'data', `error_${new Date().toISOString().split('T')[0]}.json`)
+      const errorPath = path.join(__dirname, '../../data', `error_${new Date().toISOString().split('T')[0]}.json`)
       fs.writeFileSync(errorPath, JSON.stringify(errorData, null, 2))
       console.log(`⚠️ Error response saved to: ${errorPath}`)
 
@@ -125,7 +131,7 @@ async function analyzeGoldMarket() {
       data_source: 'OpenAI GPT-4.1 (API Error)'
     }
 
-    const errorPath = path.join(process.cwd(), 'data', `api_error_${new Date().toISOString().split('T')[0]}.json`)
+    const errorPath = path.join(__dirname, '../../data', `api_error_${new Date().toISOString().split('T')[0]}.json`)
     fs.writeFileSync(errorPath, JSON.stringify(errorData, null, 2))
     console.log(`⚠️ API error saved to: ${errorPath}`)
   }
@@ -135,7 +141,7 @@ async function analyzeGoldMarket() {
 async function saveAnalysisData(data) {
   try {
     // Ensure the data directory exists
-    const dataDir = path.join(process.cwd(), 'data')
+    const dataDir = path.join(__dirname, '../../data')
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir, { recursive: true })
     }
@@ -202,7 +208,7 @@ async function saveAnalysisData(data) {
 // Function to load previous analysis for comparison
 async function loadPreviousAnalysis() {
   try {
-    const latestPath = path.join(process.cwd(), 'data', 'latest_analysis.json')
+    const latestPath = path.join(__dirname, '../../data', 'latest_analysis.json')
     if (fs.existsSync(latestPath)) {
       const data = JSON.parse(fs.readFileSync(latestPath, 'utf8'))
       console.log(`📂 Previous analysis loaded from: ${data.saved_at}`)

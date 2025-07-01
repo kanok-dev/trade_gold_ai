@@ -2,7 +2,13 @@ import Anthropic from '@anthropic-ai/sdk'
 import dotenv from 'dotenv'
 import fs from 'fs'
 import path from 'path'
-dotenv.config()
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+// Load .env from the api directory (two levels up from current location)
+dotenv.config({ path: path.join(__dirname, '../../.env') })
 
 // Configuration
 const CONFIG = {
@@ -163,7 +169,7 @@ async function saveResults(results) {
   try {
     const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-')
     const filename = `claude-analysis-${timestamp}.json`
-    const outputPath = path.join(process.cwd(), 'data', filename)
+    const outputPath = path.join(__dirname, '../../data', filename)
 
     // Ensure data directory exists
     const dataDir = path.dirname(outputPath)

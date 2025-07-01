@@ -1,6 +1,6 @@
 {
   "timestamp": "2025-07-01T07:55:18.028Z",
-  "data_freshness_minutes": 45,
+  "data_freshness_minutes": 138,
   "source": "claude_primary",
   "unified_analysis": {
     "spot_price": {

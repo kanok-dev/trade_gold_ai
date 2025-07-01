@@ -2,7 +2,13 @@ import Anthropic from '@anthropic-ai/sdk'
 import dotenv from 'dotenv'
 import fs from 'fs'
 import path from 'path'
-dotenv.config()
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+// Load .env from the api directory (two levels up from current location)
+dotenv.config({ path: path.join(__dirname, '../../.env') })
 
 const anthropic = new Anthropic({
   // defaults to process.env["ANTHROPIC_API_KEY"]
@@ -97,7 +103,7 @@ try {
     status: 'success'
   }
 
-  const outputPath = path.join(process.cwd(), 'data', `claude-analysis-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}.json`)
+  const outputPath = path.join(__dirname, '../../data', `claude-analysis-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}.json`)
 
   // Ensure data directory exists
   const dataDir = path.dirname(outputPath)
