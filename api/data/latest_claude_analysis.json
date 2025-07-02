@@ -1,123 +1,123 @@
 {
-  "timestamp": "2025-07-01T00:00:00Z",
+  "timestamp": "2025-07-02T12:00:00Z",
   "priceData": {
-    "spotPrice": 3345.65,
-    "change24h": 42.27,
-    "changePercent24h": 1.28,
-    "changeWeekly": -1.07,
-    "lastUpdated": "16:00 UTC",
+    "spotPrice": 3336.11,
+    "change24h": -2.36,
+    "changePercent24h": -0.07,
+    "changeWeekly": -17.48,
+    "lastUpdated": "10:00 UTC",
     "sources": [
       {
         "name": "TradingEconomics",
-        "price": 3345.65,
-        "time": "16:00"
+        "price": 3336.11,
+        "time": "10:00"
       },
       {
         "name": "FXStreet",
         "price": 3340,
-        "time": "14:00"
+        "time": "11:00"
       },
       {
-        "name": "USAGold",
+        "name": "USAGOLD",
         "price": 3283.97,
-        "time": "09:00"
+        "time": "16:00"
       },
       {
         "name": "FXLeaders",
-        "price": 3360.12,
+        "price": 3278.37,
         "time": "12:00"
       }
     ]
   },
   "news24h": [
     {
-      "headline": "Gold rose to 3,345.65 USD/t.oz on July 1, 2025, up 1.28% from the previous day",
-      "source": "TradingEconomics",
-      "originalUrl": "https://tradingeconomics.com/commodity/gold",
-      "timePublished": "07/01/2025 16:00",
+      "headline": "Gold price builds on recovery from $3,248 trough, gains positive traction for second successive day",
+      "source": "FXStreet",
+      "originalUrl": "https://www.fxstreet.com/markets/commodities/metals/gold",
+      "timePublished": "07/02/2025 11:00",
       "sentiment": "bullish",
-      "impact": "high",
+      "impact": "medium",
       "category": "technical"
     },
     {
-      "headline": "Gold price builds on recovery from $3,248-3,247 region gaining positive traction for second successive day",
-      "source": "FXStreet",
-      "originalUrl": "https://www.fxstreet.com/markets/commodities/metals/gold",
-      "timePublished": "07/01/2025 08:00",
-      "sentiment": "bullish",
-      "impact": "high",
+      "headline": "Gold fell to 3,336.11 USD/t.oz on July 2, 2025, down 0.07% from the previous day",
+      "source": "TradingEconomics",
+      "originalUrl": "https://tradingeconomics.com/commodity/gold",
+      "timePublished": "07/02/2025 10:00",
+      "sentiment": "neutral",
+      "impact": "low",
       "category": "technical"
     },
     {
       "headline": "Concerns about worsening US fiscal conditions drag USD to lowest level since February 2022",
       "source": "FXStreet",
       "originalUrl": "https://www.fxstreet.com/markets/commodities/metals/gold",
-      "timePublished": "07/01/2025 08:00",
+      "timePublished": "07/02/2025 11:00",
       "sentiment": "bullish",
       "impact": "high",
       "category": "fed"
-    },
-    {
-      "headline": "Heightened uncertainty over Trump's tariff policies ahead of July 9 deadline benefits gold's safe-haven status",
-      "source": "FXStreet",
-      "originalUrl": "https://www.fxstreet.com/markets/commodities/metals/gold",
-      "timePublished": "07/01/2025 08:00",
-      "sentiment": "bullish",
-      "impact": "medium",
-      "category": "geopolitical"
     },
     {
       "headline": "Trump steps up pressure campaign on Federal Reserve Chair Jerome Powell to lower borrowing costs",
       "source": "FXStreet",
       "originalUrl": "https://www.fxstreet.com/markets/commodities/metals/gold",
-      "timePublished": "06/30/2025 21:00",
+      "timePublished": "07/01/2025 18:00",
       "sentiment": "bullish",
-      "impact": "medium",
+      "impact": "high",
       "category": "fed"
     },
     {
-      "headline": "Markets pricing in 74% probability of Fed rate cut as soon as September",
+      "headline": "Heightened uncertainty over US President Donald Trump's tariff policies ahead of July 9 deadline",
       "source": "FXStreet",
       "originalUrl": "https://www.fxstreet.com/markets/commodities/metals/gold",
-      "timePublished": "07/01/2025 08:00",
+      "timePublished": "07/02/2025 11:00",
+      "sentiment": "bullish",
+      "impact": "high",
+      "category": "geopolitical"
+    },
+    {
+      "headline": "Markets pricing in roughly 74% probability of Fed rate cut as soon as September",
+      "source": "FXStreet",
+      "originalUrl": "https://www.fxstreet.com/markets/commodities/metals/gold",
+      "timePublished": "07/02/2025 11:00",
       "sentiment": "bullish",
       "impact": "high",
       "category": "fed"
     },
     {
-      "headline": "Gold price takes a beating on ceasefire news falling more than $50 an ounce",
+      "headline": "Gold price takes a beating on ceasefire news - falls more than $50 an ounce",
       "source": "Mining.com",
       "originalUrl": "https://www.mining.com/gold-price-takes-a-beating-on-ceasefire-news/",
-      "timePublished": "06/24/2025 10:00",
+      "timePublished": "06/25/2025 14:00",
       "sentiment": "bearish",
       "impact": "high",
       "category": "geopolitical"
     },
     {
-      "headline": "Gold Slips to $3,298 as Ceasefire & Dollar Strength Trigger selling pressure",
+      "headline": "Gold climbs to over 3-week high as dollar weakens, geopolitical and trade tensions mount",
+      "source": "Reuters",
+      "originalUrl": "https://www.reuters.com/world/india/gold-prices-climb-tariff-jitters-lift-safe-haven-demand-2025-06-02/",
+      "timePublished": "06/02/2025 12:00",
+      "sentiment": "bullish",
+      "impact": "medium",
+      "category": "geopolitical"
+    },
+    {
+      "headline": "RSI at 26.03 indicating oversold conditions with strong ADX at 60.55",
       "source": "FXLeaders",
       "originalUrl": "https://www.fxleaders.com/live-rates/gold/",
-      "timePublished": "06/30/2025 14:00",
-      "sentiment": "bearish",
+      "timePublished": "07/02/2025 12:00",
+      "sentiment": "bullish",
       "impact": "medium",
-      "category": "geopolitical"
+      "category": "technical"
     },
     {
-      "headline": "Global gold ETF flows remained positive in 2025 at US$30bn despite May outflows",
-      "source": "World Gold Council",
-      "originalUrl": "https://www.gold.org/goldhub/data/global-gold-backed-etf-holdings-and-flows",
-      "timePublished": "06/15/2025 10:00",
-      "sentiment": "neutral",
-      "impact": "medium",
-      "category": "institutional"
-    },
-    {
-      "headline": "Central banks doubled annual gold purchases from 500 to over 1,000 metric tonnes since Russia-Ukraine war",
+      "headline": "Gold exchange-traded fund holdings increased by about 3.88 million ounces this year",
       "source": "MarketPulse",
       "originalUrl": "https://www.marketpulse.com/news/gold-price-outlook-etf-flows-central-bank-buying-and-xauusd-price-targets/",
-      "timePublished": "03/17/2025 12:00",
+      "timePublished": "03/17/2025 10:00",
       "sentiment": "bullish",
-      "impact": "high",
+      "impact": "medium",
       "category": "institutional"
     }
   ],
@@ -125,34 +125,37 @@
   "confidence": "medium",
   "signal": "buy",
   "keyFactors": [
-    "USD weakness",
-    "Fed rate cut expectations",
-    "Trump tariff uncertainty"
+    "USD weakness to February 2022 lows",
+    "Trump pressure on Fed for rate cuts",
+    "Tariff deadline uncertainty July 9",
+    "Oversold technical conditions"
   ],
-  "fedImpact": "Markets are pricing in 74% probability of Fed rate cut in September as Trump pressures Powell to lower rates amid concerns about US fiscal conditions",
+  "fedImpact": "Markets are pricing in 74% probability of Fed rate cut by September as Trump pressures Powell to lower rates amid concerns about US fiscal conditions and persistent inflation risks",
   "technicalView": {
     "trend": "bullish",
     "supportLevels": [
-      3300,
-      3277
+      3275.17,
+      3273.31,
+      3246
     ],
     "resistanceLevels": [
       3350,
-      3370
+      3368,
+      3400
     ],
-    "rsi": 35.57,
-    "keyLevels": "Support at $3,300 round figure and $3,277-3,276 horizontal support, resistance at $3,350 and $3,368-3,370"
+    "rsi": 26.03,
+    "keyLevels": "Support at $3,300 round figure, resistance at $3,324-3,325 immediate hurdle with stronger resistance at $3,350"
   },
   "riskLevel": "medium",
   "timeHorizon": "short-term",
-  "priceTarget": "Upside potential to $3,400 mark if sustained strength beyond $3,370",
-  "entryPoint": 3325,
+  "priceTarget": "$3,350-3,400 upside target if momentum sustains above $3,324",
+  "entryPoint": 3320,
   "stopLoss": 3275,
   "takeProfit": [
-    3375,
+    3350,
     3400
   ],
   "institutionalFlow": "buying",
-  "currencyImpact": "USD weakness to lowest level since February 2022 providing strong tailwind for gold prices",
-  "summary": "Gold shows bullish momentum with 1.28% daily gain, supported by USD weakness, Fed easing expectations, and geopolitical uncertainty. Technical outlook favors further upside with immediate resistance at $3,350-3,370 range."
+  "currencyImpact": "USD weakness to February 2022 lows providing strong tailwind for gold with inverse correlation maintaining at elevated levels",
+  "summary": "Gold showing bullish recovery from oversold conditions with USD at multi-year lows and Fed rate cut expectations rising. Technical setup favors upside with RSI oversold and key resistance at $3,350. Risk-on from tariff uncertainties and Fed policy dovish pivot support higher prices."
 }

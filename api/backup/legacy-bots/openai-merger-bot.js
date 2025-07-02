@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 // Load .env from the api directory
-dotenv.config({ path: path.join(__dirname, '.env') })
+dotenv.config({ path: path.join(__dirname, '../../.env') })
 
 let openai = null
 try {
@@ -27,7 +27,7 @@ try {
  */
 class OpenAIAnalysisMerger {
   constructor() {
-    this.dataDir = path.join(__dirname, 'data')
+    this.dataDir = path.join(__dirname, '../../data')
     this.outputFile = path.join(this.dataDir, 'unified_analysis.json')
     this.claudeFile = path.join(this.dataDir, 'latest_claude_analysis.json')
     this.openaiFile = path.join(this.dataDir, 'latest_openai_analysis.json')
@@ -143,7 +143,13 @@ OUTPUT FORMAT (copy this exact structure and fill with merged data):
       "action": "buy|sell|hold|null",
       "confidence": NUMBER_0_TO_100_OR_NULL,
       "reasoning": "STRING_IN_THAI_OR_NULL",
-      "consensus": "strong|moderate|weak|split|null"
+      "consensus": "strong|moderate|weak|split|null",
+      "entryPoint": NUMBER_OR_NULL,
+      "stopLoss": NUMBER_OR_NULL,
+      "takeProfit": [
+        NUMBER_OR_NULL,
+        NUMBER_OR_NULL
+      ],
     }
   },
   "metadata": {
@@ -367,6 +373,9 @@ CRITICAL INSTRUCTIONS:
         console.log(`📡 Signal / สัญญาณ: ${analysis.signals.short_term || 'N/A'}`)
         console.log(`😊 Sentiment / ความรู้สึกตลาด: ${analysis.market_sentiment.overall || 'N/A'}`)
         console.log(`🎯 Action / การดำเนินการ: ${analysis.final_decision.action || 'N/A'}`)
+        console.log(`🎯 Entry Point / จุดเข้า: ${analysis.final_decision.entryPoint ?? 'N/A'}`)
+        console.log(`🛑 Stop Loss / จุดตัดขาดทุน: ${analysis.final_decision.stopLoss ?? 'N/A'}`)
+        console.log(`🏁 Take Profit / จุดทำกำไร: ${Array.isArray(analysis.final_decision.takeProfit) ? analysis.final_decision.takeProfit.filter((x) => x != null).join(', ') : analysis.final_decision.takeProfit ?? 'N/A'}`)
         console.log(`📰 News Items / ข่าวสาร: ${analysis.news_highlights.length}`)
         console.log(`⚠️  Risk Factors / ปัจจัยเสี่ยง: ${analysis.risk_factors.length}`)
 

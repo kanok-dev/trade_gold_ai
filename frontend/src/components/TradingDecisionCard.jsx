@@ -98,6 +98,30 @@ const TradingDecisionCard = ({ decisionData, loading }) => {
         </div>
       )}
 
+      {/* Entry/Exit Points */}
+      {(decisionData.entryPoint || decisionData.stopLoss || (decisionData.takeProfit && decisionData.takeProfit.length > 0)) && (
+        <div className='bg-gray-900/60 border border-gray-700/40 p-3 rounded-lg mb-4'>
+          <div className='text-xs text-gray-400 mb-2'>Entry & Exit Points</div>
+          <div className='flex flex-wrap gap-4 text-sm text-gray-200'>
+            {decisionData.entryPoint && (
+              <div>
+                <span className='font-semibold text-green-400'>Entry:</span> {decisionData.entryPoint}
+              </div>
+            )}
+            {decisionData.stopLoss && (
+              <div>
+                <span className='font-semibold text-red-400'>Stop Loss:</span> {decisionData.stopLoss}
+              </div>
+            )}
+            {decisionData.takeProfit && decisionData.takeProfit.length > 0 && (
+              <div>
+                <span className='font-semibold text-yellow-400'>Take Profit:</span> {Array.isArray(decisionData.takeProfit) ? decisionData.takeProfit.join(', ') : decisionData.takeProfit}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Reasoning */}
       {decisionData.reasoning && (
         <div className='bg-blue-500/10 border border-blue-500/20 p-3 rounded-lg mb-4'>
