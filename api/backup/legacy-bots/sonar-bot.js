@@ -29,18 +29,6 @@ async function analyzeGoldMarket() {
     console.log('🚀 Starting Enhanced Gold Market Analysis with Perplexity Sonar...')
     console.log('📊 Searching for real-time data from multiple sources...')
 
-    // Get current date for dynamic searching
-    const currentDate = new Date()
-    const todayDate = currentDate.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
-    const currentMonth = currentDate.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long'
-    })
-
     const messages = [
       {
         role: 'system',
@@ -48,147 +36,72 @@ async function analyzeGoldMarket() {
       },
       {
         role: 'user',
-        content: `Search for comprehensive gold market data today ${todayDate}:
+        content: `Find recent news about gold price fluctuations from the last 24 hours. Summarize key headlines and any major price movements mentioned. 
+Also, analyze the current gold market conditions, including spot price, 24h change, weekly change, and any significant technical indicators.
 
-REQUIRED SEARCHES:
-1. "gold spot price XAU USD current TradingView MarketWatch Bloomberg Reuters real time"
-2. "gold futures COMEX price change 24h weekly volume latest"
-3. "Federal Reserve rate cuts gold impact latest Bloomberg Reuters CNBC"
-4. "gold ETF flows GLD IAU institutional buying MarketWatch Reuters"
-5. "central bank gold purchases China India reserves Reuters Financial Times"
-6. "USD dollar index DXY gold correlation current Bloomberg"
-7. "gold technical analysis RSI MACD support resistance TradingView"
-8. "geopolitical tensions safe haven gold demand WSJ Reuters"
-
-RESPONSE FORMAT: Provide analysis followed by COMPLETE JSON structure.
-
-MANDATORY JSON OUTPUT with ALL fields completed (no undefined/null values):
-
+Use the following format for your response:
+Please provide a JSON-structured analysis with:
 {
-  "timestamp": "2025-07-02T${new Date().getUTCHours().toString().padStart(2, '0')}:${new Date().getUTCMinutes().toString().padStart(2, '0')}:00Z",
+  "timestamp": "2025-07-01T00:00:00Z",
   "priceData": {
-    "spotPrice": <exact_number>,
-    "change24h": <exact_dollar_amount>,
-    "changePercent24h": <exact_percentage>,
-    "changeWeekly": <exact_percentage>,
-    "volume24h": <number_or_estimate>,
+    "spotPrice": <number>,
+    "change24h": <number>,
+    "changePercent24h": <number>,
+    "changeWeekly": <number>,
+    "lastUpdated": "HH:MM UTC",
     "sources": [
-      {"name": "TradingView", "price": <number>, "time": "HH:MM UTC"},
-      {"name": "MarketWatch", "price": <number>, "time": "HH:MM UTC"}, 
-      {"name": "Bloomberg", "price": <number>, "time": "HH:MM UTC"},
-      {"name": "Reuters", "price": <number>, "time": "HH:MM UTC"},
-      {"name": "Yahoo Finance", "price": <number>, "time": "HH:MM UTC"}
+      {"name": "TradingView", "price": <number>, "time": "HH:MM"},
+      {"name": "Investing.com", "price": <number>, "time": "HH:MM"},
+      {"name": "MarketWatch", "price": <number>, "time": "HH:MM"},
+      {"name": "Yahoo Finance", "price": <number>, "time": "HH:MM"}
     ]
   },
   "news24h": [
     {
-      "headline": "exact headline from verified source",
-      "source": "Bloomberg|Reuters|MarketWatch|CNBC|Financial Times|WSJ|TradingView",
-      "originalUrl": "https://complete-verified-url.com",
-      "timePublished": "07/02/2025 HH:MM",
-      "sentiment": "bullish|bearish|neutral",
-      "impact": "high|medium|low"
-    }
-  ],
-  "technicalView": {
-    "trend": "bullish|bearish|neutral",
-    "supportLevels": [<number>, <number>, <number>],
-    "resistanceLevels": [<number>, <number>, <number>],
-    "rsi": <number_between_0_100>,
-    "macd": <number>,
-    "stochastic": <number_between_0_100>,
-    "ma20": <number>,
-    "ma50": <number>,
-    "ma200": <number>
-  },
-  "fedData": {
-    "currentRate": <number>,
-    "nextMeeting": "MM/DD/YYYY",
-    "rateCutProbability": <percentage_number>,
-    "impact": "detailed explanation of Fed impact on gold"
-  },
-  "usdData": {
-    "dxyLevel": <number>,
-    "dxyChange24h": <percentage>,
-    "correlation": <number_between_-1_and_1>
-  },
-  "sentiment": "bullish|bearish|neutral",
-  "confidence": "high|medium|low",
-  "signal": "strong_buy|buy|hold|sell|strong_sell",
-  "riskLevel": "high|medium|low", 
-  "timeHorizon": "short-term|medium-term|long-term",
-  "entryPoint": <exact_number>,
-  "stopLoss": <exact_number>,
-  "takeProfit": [<number>, <number>],
-  "summary": "detailed trading recommendation with specific reasoning"
-}
-
-CRITICAL REQUIREMENTS:
-- ALL JSON fields must have actual values (no undefined, null, or placeholder text)
-- All news must be from trusted financial sources with valid URLs
-- All prices must be current real-time data
-- Technical indicators must be actual current values
-- Include minimum 3 news items from last 24 hours
-- Every news item must have complete URL and timestamp
-
-{
-  "timestamp": "2025-07-02T00:00:00Z",
-  "priceData": {
-    "spotPrice": <exact_number>,
-    "change24h": <exact_number>,
-    "changePercent24h": <exact_percentage>,
-    "changeWeekly": <exact_percentage>,
-    "volume24h": <number>,
-    "sources": [
-      {"name": "TradingView", "price": <number>, "time": "HH:MM UTC"},
-      {"name": "MarketWatch", "price": <number>, "time": "HH:MM UTC"},
-      {"name": "Bloomberg", "price": <number>, "time": "HH:MM UTC"},
-      {"name": "Reuters", "price": <number>, "time": "HH:MM UTC"},
-      {"name": "Yahoo Finance", "price": <number>, "time": "HH:MM UTC"}
-    ]
-  },
-  "news24h": [
-    {
-      "headline": "exact headline from Bloomberg/Reuters/MarketWatch only",
-      "source": "Bloomberg|Reuters|MarketWatch|CNBC|Financial Times|WSJ",
-      "originalUrl": "https://full-verified-url.com",
+      "headline": "exact headline",
+      "source": "news source",
+      "originalUrl": "https://full-url-to-original-article.com",
       "timePublished": "MM/DD/YYYY HH:MM",
       "sentiment": "bullish|bearish|neutral",
-      "impact": "high|medium|low"
+      "impact": "high|medium|low",
+      "category": "fed|geopolitical|technical|institutional|supply"
+    },
+    {
+      "headline": "second news headline",
+      "source": "news source",
+      "originalUrl": "https://second-article-url.com",
+      "timePublished": "MM/DD/YYYY HH:MM",
+      "sentiment": "bullish|bearish|neutral",
+      "impact": "high|medium|low",
+      "category": "fed|geopolitical|technical|institutional|supply"
     }
+    // ... include minimum 10 news items total
   ],
+  "sentiment": "bullish|bearish|neutral",
+  "confidence": "high|medium|low", 
+  "signal": "strong_buy|buy|hold|sell|strong_sell",
+  "keyFactors": ["factor1", "factor2", "factor3"],
+  "fedImpact": "description of Federal Reserve policy impact",
   "technicalView": {
     "trend": "bullish|bearish|neutral",
-    "supportLevels": [<number>, <number>, <number>],
-    "resistanceLevels": [<number>, <number>, <number>],
-    "rsi": <exact_number>,
-    "macd": <number>,
-    "stochastic": <number>,
-    "ma20": <number>,
-    "ma50": <number>,
-    "ma200": <number>
+    "supportLevels": [<number>, <number>],
+    "resistanceLevels": [<number>, <number>],
+    "rsi": <number>,
+    "keyLevels": "specific price levels with numbers"
   },
-  "fedData": {
-    "currentRate": <number>,
-    "nextMeeting": "MM/DD/YYYY",
-    "rateCutProbability": <percentage>,
-    "impact": "detailed explanation"
-  },
-  "usdData": {
-    "dxyLevel": <number>,
-    "dxyChange24h": <percentage>,
-    "correlation": <number>
-  },
-  "sentiment": "bullish|bearish|neutral",
-  "confidence": "high|medium|low",
-  "signal": "strong_buy|buy|hold|sell|strong_sell",
   "riskLevel": "high|medium|low",
   "timeHorizon": "short-term|medium-term|long-term",
-  "entryPoint": <exact_number>,
-  "stopLoss": <exact_number>,
+  "priceTarget": "estimated price movement with specific levels",
+  "entryPoint": <number>,
+  "stopLoss": <number>,
   "takeProfit": [<number>, <number>],
-  "summary": "detailed trading recommendation with reasoning"
-}`
+  "institutionalFlow": "buying|selling|neutral",
+  "currencyImpact": "USD/DXY correlation analysis",
+  "summary": "concise trading recommendation with reasoning"
+}
+
+Make sure the JSON is valid and properly formatted at the end of your response.
+`
       }
     ]
 
@@ -199,7 +112,7 @@ CRITICAL REQUIREMENTS:
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'sonar',
+        model: 'sonar-pro',
         messages: messages,
         temperature: 0.1, // Keep default for web search models
         max_tokens: 6000, // Increased for more comprehensive data
