@@ -34,10 +34,17 @@ class AnalysisSequenceRunner {
         delay: 15000 // 15 seconds delay after this bot
       },
       {
+        name: 'Sonar Bot',
+        file: 'sonar-bot.js',
+        path: path.join(this.scriptDir, 'sonar-bot.js'),
+        step: 3,
+        delay: 15000 // 15 seconds delay after this bot
+      },
+      {
         name: 'OpenAI Merger Bot',
         file: 'openai-merger-bot.js',
         path: path.join(this.scriptDir, 'openai-merger-bot.js'),
-        step: 3,
+        step: 4,
         delay: 0 // No delay after final bot
       }
     ]
