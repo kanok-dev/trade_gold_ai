@@ -24,7 +24,7 @@
     "setup": "./setup.sh",
     "openai-bot": "node openAI-bot.js",
     "openai-bot2": "node backup/legacy-bots/openAI-bot2.js",
-    "merge-analysis": "node openai-merger-bot.js",
+    "merge-analysis": "node backup/legacy-bots/openai-merger-bot.js",
     "test-merger": "node test-merger-bot.js"
   },
   "dependencies": {

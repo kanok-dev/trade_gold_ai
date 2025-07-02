@@ -4,7 +4,7 @@
  * Test script for OpenAI Analysis Merger Bot
  */
 
-import OpenAIAnalysisMerger from './openai-merger-bot.js'
+import OpenAIAnalysisMerger from './backup/legacy-bots/openai-merger-bot.js'
 
 async function testMergerBot() {
   console.log('🧪 Testing OpenAI Analysis Merger Bot')

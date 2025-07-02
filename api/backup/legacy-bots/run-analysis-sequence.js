@@ -36,7 +36,7 @@ class AnalysisSequenceRunner {
       {
         name: 'OpenAI Merger Bot',
         file: 'openai-merger-bot.js',
-        path: path.join(this.apiDir, 'openai-merger-bot.js'),
+        path: path.join(this.scriptDir, 'openai-merger-bot.js'),
         step: 3,
         delay: 0 // No delay after final bot
       }
