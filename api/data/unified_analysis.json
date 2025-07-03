@@ -1,144 +1,161 @@
 {
-  "timestamp": "2025-07-03T12:03:00Z",
+  "timestamp": "2025-07-03T16:12:44.615Z",
   "data_freshness_minutes": 0,
-  "source": "claude_openai_sonar",
+  "source": "merged_ai",
   "unified_analysis": {
-    "spot_price": 2387.4,
+    "spot_price": 3352.59,
     "price_change": {
-      "daily_pct": 0.6,
-      "weekly_pct": 1.39,
+      "daily_pct": -0.1,
+      "weekly_pct": 2,
       "monthly_pct": null
     },
     "technical_indicators": {
-      "rsi_14": 64,
+      "rsi_14": 38,
       "atr_14": null,
       "supports": [
-        2370,
-        2350
+        3300,
+        3250,
+        3246
       ],
       "resistances": [
-        2400,
-        2425
+        3360,
+        3400,
+        3450,
+        3358
       ],
-      "trend": "bullish",
-      "momentum": "positive"
+      "trend": "neutral",
+      "momentum": "neutral"
     },
     "signals": {
-      "short_term": "buy",
+      "short_term": "hold",
       "medium_term": "hold",
-      "long_term": "hold"
+      "long_term": "buy"
     },
     "market_sentiment": {
-      "overall": "bullish",
-      "summary": "ราคาทองคำยังคงอยู่ในแนวโน้มขาขึ้นระยะสั้น ได้แรงหนุนจากค่าเงินดอลลาร์สหรัฐที่อ่อนค่า ความต้องการซื้อจากสถาบันและธนาคารกลาง รวมถึงความตึงเครียดทางภูมิรัฐศาสตร์ ขณะที่นักลงทุนจับตาข้อมูลเศรษฐกิจสหรัฐฯ และท่าทีของเฟดอย่างใกล้ชิด",
-      "confidence": "high"
+      "overall": "neutral",
+      "summary": "ราคาทองคำเคลื่อนไหวในกรอบแคบ นักลงทุนรอปัจจัยใหม่จากข้อมูลเศรษฐกิจสหรัฐฯ โดยเฉพาะตัวเลขจ้างงานนอกภาคเกษตร ขณะที่แรงซื้อจากธนาคารกลางยังคงหนุนตลาด แต่ความไม่แน่นอนของนโยบายเฟดและค่าเงินดอลลาร์ยังสร้างแรงกดดันต่อทิศทางราคา",
+      "confidence": "medium"
     },
     "news_highlights": [
       {
-        "headline": "ราคาทองคำขยับขึ้นต่อเนื่อง ขณะตลาดรอรายงานประชุมเฟด",
+        "headline": "ราคาทองคำทรงตัวในกรอบแคบ นักลงทุนจับตาข้อมูลจ้างงานสหรัฐฯ เพื่อประเมินทิศทางนโยบายเฟด",
+        "source": "Reuters",
+        "sentiment": "neutral",
+        "impact": "high",
+        "category": "นโยบายเฟด"
+      },
+      {
+        "headline": "ทองคำและหุ้นเหมืองทองอาจได้รับการยกระดับเป็นสินแร่สำคัญ",
         "source": "Reuters",
         "sentiment": "bullish",
         "impact": "medium",
-        "category": "ธนาคารกลางสหรัฐ"
-      },
-      {
-        "headline": "ทองคำทรงตัวใกล้จุดสูงสุดรอบ 2 สัปดาห์ จากแรงกดดันดอลลาร์อ่อนค่า",
-        "source": "Bloomberg",
-        "sentiment": "bullish",
-        "impact": "medium",
-        "category": "ค่าเงิน"
-      },
-      {
-        "headline": "นักลงทุนจับตาข้อมูลการจ้างงานสหรัฐฯ ทองคำเคลื่อนไหวในกรอบ",
-        "source": "CNBC",
-        "sentiment": "neutral",
-        "impact": "medium",
-        "category": "ธนาคารกลางสหรัฐ"
-      },
-      {
-        "headline": "ธนาคารกลางทั่วโลกยังคงเดินหน้าซื้อทองคำต่อเนื่องในเดือนมิถุนายน",
-        "source": "Kitco News",
-        "sentiment": "bullish",
-        "impact": "high",
         "category": "สถาบัน"
       },
       {
-        "headline": "แนวโน้มราคาทองคำ: ปัจจัยทางเทคนิคยังสนับสนุนการปรับขึ้นต่อ",
+        "headline": "HSBC ปรับเพิ่มคาดการณ์ราคาทองคำเฉลี่ยปี 2025 และ 2026",
+        "source": "Reuters",
+        "sentiment": "bullish",
+        "impact": "medium",
+        "category": "สถาบัน"
+      },
+      {
+        "headline": "ราคาทองฟื้นตัวจากจุดต่ำสุดรอบกว่า 1 เดือน หลังดอลลาร์อ่อนค่า",
+        "source": "Reuters",
+        "sentiment": "bullish",
+        "impact": "medium",
+        "category": "เทคนิค"
+      },
+      {
+        "headline": "Citi คาดราคาทองต่ำกว่า 3,000 ดอลลาร์หลังไตรมาส 3/2025 จากดีมานด์อ่อนและเศรษฐกิจโลกฟื้นตัว",
+        "source": "Reuters",
+        "sentiment": "bearish",
+        "impact": "medium",
+        "category": "สถาบัน"
+      },
+      {
+        "headline": "ราคาทองคำขยับขึ้นหลังสภาคองเกรสสหรัฐฯ ผ่านร่างกฎหมาย OBBB",
+        "source": "BullionVault",
+        "sentiment": "bullish",
+        "impact": "high",
+        "category": "นโยบายเฟด"
+      },
+      {
+        "headline": "ราคาทองวันนี้: ปรับขึ้นเล็กน้อยใกล้เส้นต้านสำคัญ ขณะใกล้เส้นตายภาษีสหรัฐฯ",
+        "source": "Yahoo Finance",
+        "sentiment": "bullish",
+        "impact": "high",
+        "category": "ภูมิรัฐศาสตร์"
+      },
+      {
+        "headline": "ราคาทองฟื้นตัวต่อเนื่องในสัปดาห์นี้",
         "source": "FXStreet",
         "sentiment": "bullish",
         "impact": "medium",
         "category": "เทคนิค"
       },
       {
-        "headline": "ทองคำปรับขึ้นจากความตึงเครียดในตะวันออกกลาง",
-        "source": "Financial Times",
-        "sentiment": "bullish",
-        "impact": "high",
-        "category": "ภูมิรัฐศาสตร์"
-      },
-      {
-        "headline": "ดอลลาร์สหรัฐอ่อนค่าหนุนราคาทองคำปรับตัวขึ้น",
-        "source": "Investing.com",
-        "sentiment": "bullish",
-        "impact": "medium",
-        "category": "ค่าเงิน"
-      },
-      {
-        "headline": "กองทุน ETF ทองคำเพิ่มการถือครองต่อเนื่องเป็นวันที่สาม",
-        "source": "Yahoo Finance",
-        "sentiment": "bullish",
-        "impact": "medium",
-        "category": "สถาบัน"
-      },
-      {
-        "headline": "ทองคำเผชิญแนวต้านที่ 2,400 ดอลลาร์ ขณะที่แรงซื้อเริ่มชะลอ",
-        "source": "MarketWatch",
+        "headline": "แนวโน้มราคาทอง: ทองยังแกว่งตัวในกรอบ",
+        "source": "FXEmpire",
         "sentiment": "neutral",
         "impact": "medium",
         "category": "เทคนิค"
       },
       {
-        "headline": "อุปสงค์ทองคำจริงในเอเชียยังคงแข็งแกร่ง",
+        "headline": "กระแสเงินทุนและการเข้าซื้อทองคำโดยธนาคารกลางเป็นปัจจัยหนุนราคาทอง",
+        "source": "ETF Trends",
+        "sentiment": "bullish",
+        "impact": "high",
+        "category": "สถาบัน"
+      },
+      {
+        "headline": "ราคาทองขยับขึ้นหลังข้อมูล CPI สหรัฐฯ อ่อนตัว หนุนความหวังเฟดลดดอกเบี้ย",
         "source": "Reuters",
         "sentiment": "bullish",
+        "impact": "high",
+        "category": "นโยบายเฟด"
+      },
+      {
+        "headline": "สัญญาณเทคนิคทองฟิวเจอร์สยังคงเป็นซื้อ",
+        "source": "Investing.com",
+        "sentiment": "bullish",
         "impact": "medium",
-        "category": "อุปทาน"
+        "category": "เทคนิค"
       }
     ],
     "forecast_scenarios": {
-      "short": "ราคาทองคำมีแนวโน้มปรับขึ้นต่อ โดยมีเป้าหมายระยะสั้นที่ 2,425 ดอลลาร์ หากผ่านแนวต้าน 2,400 ดอลลาร์ได้สำเร็จ",
-      "medium": "แนวโน้มราคาทองคำยังคงเป็นบวก หากเฟดส่งสัญญาณผ่อนคลายนโยบายการเงินและความต้องการซื้อจากสถาบันยังแข็งแกร่ง",
-      "long": "หากปัจจัยเศรษฐกิจและภูมิรัฐศาสตร์ยังคงสนับสนุน ราคาทองคำมีโอกาสสร้างจุดสูงสุดใหม่ในระยะยาว"
+      "short": "ราคาทองคำมีแนวโน้มเคลื่อนไหวในกรอบ 3,320-3,360 ดอลลาร์ต่อออนซ์ รอปัจจัยใหม่จากข้อมูลเศรษฐกิจสหรัฐฯ หากตัวเลขจ้างงานต่ำกว่าคาดอาจหนุนราคาขึ้นทดสอบแนวต้าน 3,400 ดอลลาร์",
+      "medium": "แรงซื้อจากธนาคารกลางและความไม่แน่นอนทางภูมิรัฐศาสตร์ยังคงเป็นปัจจัยบวกต่อราคาทองคำ แต่หากเฟดยังไม่ส่งสัญญาณลดดอกเบี้ยชัดเจน ราคามีโอกาสแกว่งตัวในกรอบ 3,250-3,450 ดอลลาร์",
+      "long": "หากเศรษฐกิจโลกฟื้นตัวและดีมานด์ทองคำอ่อนตัว ราคาทองคำอาจเผชิญแรงกดดันในระยะยาว โดยมีโอกาสปรับฐานลงต่ำกว่า 3,000 ดอลลาร์ตามมุมมองของบางสถาบัน"
     },
     "key_events": [
       {
-        "date": "2025-07-03",
-        "event": "การเปิดเผยรายงานประชุม FOMC และข้อมูลการจ้างงานนอกภาคเกษตรสหรัฐฯ",
+        "date": "2025-07-05",
+        "event": "การประกาศตัวเลขจ้างงานนอกภาคเกษตรสหรัฐฯ (Non-farm Payrolls)",
         "impact": "high"
       },
       {
-        "date": "2025-07-09",
-        "event": "เส้นตายมาตรการภาษีของสหรัฐฯ ที่อาจส่งผลต่อตลาดทองคำ",
+        "date": "2025-07-10",
+        "event": "การประชุมคณะกรรมการนโยบายการเงินธนาคารกลางสหรัฐฯ (FOMC)",
         "impact": "high"
       }
     ],
     "risk_factors": [
-      "ข้อมูลเศรษฐกิจสหรัฐฯ ที่แข็งแกร่งกว่าคาดอาจกดดันราคาทองคำ",
-      "ความผันผวนของค่าเงินดอลลาร์สหรัฐ",
-      "การเปลี่ยนแปลงนโยบายการเงินของเฟด",
-      "แรงขายทำกำไรระยะสั้นหลังราคาปรับขึ้นแรง",
-      "สถานการณ์ภูมิรัฐศาสตร์ที่เปลี่ยนแปลงอย่างรวดเร็ว"
+      "ความไม่แน่นอนของนโยบายดอกเบี้ยเฟด",
+      "ความผันผวนของค่าเงินดอลลาร์สหรัฐฯ",
+      "แรงขายจากกองทุน ETF หากเศรษฐกิจโลกฟื้นตัว",
+      "ความตึงเครียดทางภูมิรัฐศาสตร์",
+      "แรงกดดันจากข้อมูลเศรษฐกิจสำคัญของสหรัฐฯ"
     ],
     "final_decision": {
-      "action": "buy",
-      "confidence": 85,
-      "reasoning": "ราคาทองคำได้รับแรงหนุนจากค่าเงินดอลลาร์ที่อ่อนค่า การเข้าซื้อของสถาบันและธนาคารกลาง รวมถึงความตึงเครียดทางภูมิรัฐศาสตร์ ขณะที่ปัจจัยทางเทคนิคยังสนับสนุนแนวโน้มขาขึ้นในระยะสั้น แนะนำเข้าซื้อใกล้ระดับ 2,385 ดอลลาร์ โดยตั้งจุดตัดขาดทุนที่ 2,368 ดอลลาร์ และเป้าหมายทำกำไรที่ 2,400 และ 2,425 ดอลลาร์",
-      "consensus": "strong",
-      "entryPoint": 2385,
-      "stopLoss": 2368,
+      "action": "hold",
+      "confidence": 65,
+      "reasoning": "ราคาทองคำยังเคลื่อนไหวในกรอบแคบ นักลงทุนรอข้อมูลเศรษฐกิจสำคัญและท่าทีของเฟด แม้มีแรงซื้อจากธนาคารกลางและปัจจัยบวกจากค่าเงินดอลลาร์อ่อน แต่ยังขาดปัจจัยใหม่ที่ชัดเจน จึงควรรอจังหวะและติดตามข้อมูลเศรษฐกิจอย่างใกล้ชิด",
+      "consensus": "moderate",
+      "entryPoint": 3330,
+      "stopLoss": 3280,
       "takeProfit": [
-        2400,
-        2425
+        3400,
+        3450
       ]
     }
   },
@@ -146,128 +163,33 @@
     "bot_version": "openai_merger_v2.0_with_sonar",
     "data_source": "claude_openai_sonar_merged",
     "format_version": "3.0",
-    "processing_time": "2025-07-03T12:03:00Z",
+    "processing_time": "2025-07-03T16:12:44.615Z",
     "token_usage": null,
     "news_validation": {
-      "timestamp": "2025-07-03T12:03:37.120Z",
-      "totalItems": 10,
+      "timestamp": "2025-07-03T16:13:20.182Z",
+      "totalItems": 1,
       "validatedItems": [
         {
           "index": 0,
-          "headline": "Gold Prices Edge Higher as Fed Minutes Awaited",
+          "headline": "Gold holds in narrow range as spotlight shifts to US jobs data",
           "source": "Reuters",
-          "url": "https://www.reuters.com/markets/commodities/gold-prices-edge-higher-fed-minutes-awaited-2025-07-03/",
-          "isTrustedSource": true,
-          "hasValidUrl": true,
-          "isRecent": true,
-          "credibilityIssues": []
-        },
-        {
-          "index": 1,
-          "headline": "Gold Holds Near Two-Week High on Weaker Dollar",
-          "source": "Bloomberg",
-          "url": "https://www.bloomberg.com/news/articles/2025-07-03/gold-holds-near-two-week-high-on-weaker-dollar",
-          "isTrustedSource": true,
-          "hasValidUrl": true,
-          "isRecent": true,
-          "credibilityIssues": []
-        },
-        {
-          "index": 2,
-          "headline": "Gold Steady as Investors Eye US Jobs Data",
-          "source": "CNBC",
-          "url": "https://www.cnbc.com/2025/07/03/gold-steady-as-investors-eye-us-jobs-data.html",
-          "isTrustedSource": true,
-          "hasValidUrl": true,
-          "isRecent": true,
-          "credibilityIssues": []
-        },
-        {
-          "index": 3,
-          "headline": "Central Banks Continue Gold Buying Spree in June",
-          "source": "Kitco News",
-          "url": "https://www.kitco.com/news/2025-07-03/central-banks-continue-gold-buying-spree-in-june.html",
-          "isTrustedSource": false,
-          "hasValidUrl": true,
-          "isRecent": true,
-          "credibilityIssues": [
-            "❌ Untrusted source: Kitco News"
-          ]
-        },
-        {
-          "index": 4,
-          "headline": "Gold Price Forecast: Technicals Point to Further Upside",
-          "source": "FXStreet",
-          "url": "https://www.fxstreet.com/analysis/gold-price-forecast-technicals-point-to-further-upside-20250703",
-          "isTrustedSource": false,
-          "hasValidUrl": true,
-          "isRecent": true,
-          "credibilityIssues": [
-            "❌ Untrusted source: FXStreet"
-          ]
-        },
-        {
-          "index": 5,
-          "headline": "Gold Rises as Geopolitical Tensions Flare in Middle East",
-          "source": "Financial Times",
-          "url": "https://www.ft.com/content/gold-rises-geopolitical-tensions-middle-east-20250703",
-          "isTrustedSource": true,
-          "hasValidUrl": true,
-          "isRecent": true,
-          "credibilityIssues": []
-        },
-        {
-          "index": 6,
-          "headline": "US Dollar Weakness Supports Gold Rally",
-          "source": "Investing.com",
-          "url": "https://www.investing.com/news/commodities-news/us-dollar-weakness-supports-gold-rally-20250703",
-          "isTrustedSource": true,
-          "hasValidUrl": true,
-          "isRecent": true,
-          "credibilityIssues": []
-        },
-        {
-          "index": 7,
-          "headline": "Gold ETF Holdings Rise for Third Consecutive Day",
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/news/gold-etf-holdings-rise-third-day-20250703",
-          "isTrustedSource": true,
-          "hasValidUrl": true,
-          "isRecent": true,
-          "credibilityIssues": []
-        },
-        {
-          "index": 8,
-          "headline": "Gold Faces Resistance at $2,400 as Bulls Pause",
-          "source": "MarketWatch",
-          "url": "https://www.marketwatch.com/story/gold-faces-resistance-at-2400-as-bulls-pause-20250703",
-          "isTrustedSource": true,
-          "hasValidUrl": true,
-          "isRecent": true,
-          "credibilityIssues": []
-        },
-        {
-          "index": 9,
-          "headline": "Physical Gold Demand Remains Robust in Asia",
-          "source": "Reuters",
-          "url": "https://www.reuters.com/markets/commodities/physical-gold-demand-asia-2025-07-03/",
+          "url": "https://www.tradingview.com/news/reuters.com,2025:newsml_L1N3T0078:0-gold-holds-in-narrow-range-as-spotlight-shifts-to-us-jobs-data/",
           "isTrustedSource": true,
           "hasValidUrl": true,
           "isRecent": true,
           "credibilityIssues": []
         }
       ],
-      "trustedSources": 8,
-      "untrustedSources": 2,
+      "trustedSources": 1,
+      "untrustedSources": 0,
       "missingUrls": 0,
-      "recentNews": 10,
+      "recentNews": 1,
       "outdatedNews": 0,
-      "credibilityScore": 92,
+      "credibilityScore": 100,
       "recommendations": [
-        "⚠️  2 news items from untrusted sources",
         "✅ High credibility - news sources are reliable and recent"
       ]
     },
-    "credibility_score": 92
+    "credibility_score": 100
   }
 }
