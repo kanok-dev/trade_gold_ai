@@ -1,0 +1,107 @@
+{
+  "timestamp": "2025-07-03T08:38:35.717Z",
+  "currentPrice": {
+    "price": 3356.03,
+    "source": "Gold API",
+    "lastUpdated": "2025-07-03T08:37:20Z"
+  },
+  "news": {
+    "updates": [
+      {
+        "spot_price": 3357.96,
+        "price_change_last24hrs": 0,
+        "price_change_last24hrs_percentage": 0,
+        "price_change_direction": "unchanged",
+        "price_change_time": "2025-07-03T06:01:00Z",
+        "price_change_source": "Reuters",
+        "sentiment": "neutral",
+        "confidence": "medium",
+        "signal": "hold",
+        "summary": "Gold prices remained steady at $3,357.96 per ounce as investors awaited key U.S. economic data to gain insights into the Federal Reserve's policy direction.",
+        "source": "Reuters, July 3, 2025"
+      },
+      {
+        "spot_price": 3357.96,
+        "price_change_last24hrs": 0,
+        "price_change_last24hrs_percentage": 0,
+        "price_change_direction": "unchanged",
+        "price_change_time": "2025-07-03T06:01:00Z",
+        "price_change_source": "Reuters",
+        "sentiment": "neutral",
+        "confidence": "medium",
+        "signal": "hold",
+        "summary": "Gold prices held steady at $3,357.96 per ounce as investors awaited key U.S. economic data to gain insights into the Federal Reserve's policy direction.",
+        "source": "Reuters, July 3, 2025"
+      },
+      {
+        "spot_price": 3357.96,
+        "price_change_last24hrs": 0,
+        "price_change_last24hrs_percentage": 0,
+        "price_change_direction": "unchanged",
+        "price_change_time": "2025-07-03T06:01:00Z",
+        "price_change_source": "Reuters",
+        "sentiment": "neutral",
+        "confidence": "medium",
+        "signal": "hold",
+        "summary": "Gold prices remained steady at $3,357.96 per ounce as investors awaited key U.S. economic data to gain insights into the Federal Reserve's policy direction.",
+        "source": "Reuters, July 3, 2025"
+      }
+    ],
+    "forecast": "Given the current market consolidation and anticipation of upcoming U.S. economic data, gold prices are expected to remain within the $3,320 to $3,360 range in the short term. A breakout above this range could signal a bullish trend, while a drop below may indicate bearish momentum. Investors should monitor the forthcoming U.S. non-farm payroll and ISM Services PMI data for clearer direction.",
+    "count": 3
+  },
+  "analysis": {
+    "sentiment": {
+      "overall": "neutral",
+      "confidence": 6,
+      "reasoning": "The market sentiment is neutral due to the unchanged price of gold over the last 24 hours. Investors are awaiting key U.S. economic data to gain insights into the Federal Reserve's policy direction."
+    },
+    "signal": {
+      "action": "HOLD",
+      "strength": 6,
+      "reasoning": "Given the current market consolidation and anticipation of upcoming U.S. economic data, it is advisable to hold any trading decisions until the data is released."
+    },
+    "tradingDecision": {
+      "entryPoint": 3357.96,
+      "takeProfit": 3400,
+      "stopLoss": 3300,
+      "riskReward": 1.08,
+      "reasoning": "The entry point remains at the current price level of $3357.96. The take profit level is set at $3400, anticipating a potential bullish breakout. The stop loss level is set at $3300 to limit potential losses in case of a bearish turn."
+    },
+    "riskAssessment": {
+      "riskLevel": "MODERATE",
+      "factors": [
+        "Upcoming U.S. economic data",
+        "Federal Reserve's policy direction"
+      ],
+      "recommendation": "Monitor the forthcoming U.S. non-farm payroll and ISM Services PMI data for clearer direction. Adjust trading decisions accordingly."
+    },
+    "summary": "The gold market is currently in a state of consolidation, with prices remaining steady. Investors are holding their positions, awaiting key U.S. economic data. The current trading signal is to hold, with a moderate risk level due to the upcoming data releases.",
+    "keyFactors": [
+      "Current market consolidation",
+      "Anticipation of U.S. economic data",
+      "Federal Reserve's policy direction"
+    ],
+    "timestamp": "2025-07-03T08:38:35.716Z",
+    "usage": {
+      "prompt_tokens": 960,
+      "completion_tokens": 389,
+      "total_tokens": 1349,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    }
+  },
+  "performance": {
+    "processingTime": "2025-07-03T08:38:35.717Z",
+    "dataFreshness": "real-time",
+    "confidence": 6
+  }
+}

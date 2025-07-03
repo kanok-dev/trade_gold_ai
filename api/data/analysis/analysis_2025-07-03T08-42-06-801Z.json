@@ -1,0 +1,107 @@
+{
+  "timestamp": "2025-07-03T08:42:06.800Z",
+  "currentPrice": {
+    "price": 3355.52,
+    "source": "Gold API",
+    "lastUpdated": "2025-07-03T08:41:23Z"
+  },
+  "news": {
+    "updates": [
+      {
+        "spot_price": 3357.96,
+        "price_change_last24hrs": 0,
+        "price_change_last24hrs_percentage": 0,
+        "price_change_direction": "unchanged",
+        "price_change_time": "2025-07-03T08:23:38Z",
+        "price_change_source": "Reuters",
+        "sentiment": "neutral",
+        "confidence": "high",
+        "signal": "hold",
+        "summary": "Gold prices remained steady at $3,357.96 per ounce as of July 3, 2025, as investors awaited key U.S. economic data to gain insights into the Federal Reserve's policy direction.",
+        "source": "Reuters, July 3, 2025"
+      },
+      {
+        "spot_price": 3357.96,
+        "price_change_last24hrs": 0,
+        "price_change_last24hrs_percentage": 0,
+        "price_change_direction": "unchanged",
+        "price_change_time": "2025-07-03T08:23:38Z",
+        "price_change_source": "Reuters",
+        "sentiment": "neutral",
+        "confidence": "high",
+        "signal": "hold",
+        "summary": "Gold prices remained steady at $3,357.96 per ounce as of July 3, 2025, as investors awaited key U.S. economic data to gain insights into the Federal Reserve's policy direction.",
+        "source": "Reuters, July 3, 2025"
+      },
+      {
+        "spot_price": 3357.96,
+        "price_change_last24hrs": 0,
+        "price_change_last24hrs_percentage": 0,
+        "price_change_direction": "unchanged",
+        "price_change_time": "2025-07-03T08:23:38Z",
+        "price_change_source": "Reuters",
+        "sentiment": "neutral",
+        "confidence": "high",
+        "signal": "hold",
+        "summary": "Gold prices remained steady at $3,357.96 per ounce as of July 3, 2025, as investors awaited key U.S. economic data to gain insights into the Federal Reserve's policy direction.",
+        "source": "Reuters, July 3, 2025"
+      }
+    ],
+    "forecast": "Gold prices are expected to remain steady in the short term, with potential for slight increases if upcoming U.S. economic data indicates a dovish Federal Reserve stance. Conversely, if the data suggests a hawkish approach, gold prices may experience downward pressure.",
+    "count": 3
+  },
+  "analysis": {
+    "sentiment": {
+      "overall": "neutral",
+      "confidence": 8,
+      "reasoning": "Gold prices have shown no significant movement in the past 24 hours, holding steady around $3,357.96. News sentiment is neutral with high confidence, and the market is in a wait-and-see mode ahead of key U.S. economic data. There is no clear directional bias until new information emerges, particularly regarding the Federal Reserve's policy stance."
+    },
+    "signal": {
+      "action": "HOLD",
+      "strength": 8,
+      "reasoning": "With prices consolidating and no new catalysts, the market is lacking momentum. Both technical and fundamental indicators suggest waiting for the outcome of upcoming U.S. economic releases before taking a directional position. The previous trading range remains valid, and risk of whipsaw is elevated in the absence of volatility."
+    },
+    "tradingDecision": {
+      "entryPoint": 3355,
+      "takeProfit": 3400,
+      "stopLoss": 3300,
+      "riskReward": 0.98,
+      "reasoning": "Maintain a neutral-to-slightly-bullish bias with a tight range. Entry at $3,355 (current price) offers a risk of $55 (to $3,300) and a reward of $45 (to $3,400), resulting in a risk-reward ratio just under 1:1. This reflects the lack of clear momentum and the need for tight risk controls until a breakout occurs."
+    },
+    "riskAssessment": {
+      "riskLevel": "MODERATE",
+      "factors": [
+        "Awaiting U.S. economic data",
+        "Potential for sudden volatility"
+      ],
+      "recommendation": "Avoid aggressive positions. Use tight stops and be prepared to reassess immediately after economic data is released. Consider reducing position size or hedging until a clearer trend emerges."
+    },
+    "summary": "Gold is consolidating near $3,355 as traders await key U.S. economic data that will clarify the Federal Reserve's next move. With no significant price change or news-driven momentum, the market remains neutral. Maintain existing positions with tight stops, and avoid new entries until after the data release. Upside potential exists if the Fed signals a dovish stance, but downside risk remains if the data is hawkish.",
+    "keyFactors": [
+      "Lack of price movement and neutral news sentiment",
+      "Upcoming U.S. economic data and Fed policy uncertainty",
+      "Tight trading range and elevated risk of volatility post-data"
+    ],
+    "timestamp": "2025-07-03T08:42:06.799Z",
+    "usage": {
+      "prompt_tokens": 957,
+      "completion_tokens": 538,
+      "total_tokens": 1495,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    }
+  },
+  "performance": {
+    "processingTime": "2025-07-03T08:42:06.800Z",
+    "dataFreshness": "real-time",
+    "confidence": 8
+  }
+}

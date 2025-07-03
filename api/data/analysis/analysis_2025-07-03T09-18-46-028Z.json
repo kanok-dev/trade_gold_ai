@@ -1,0 +1,107 @@
+{
+  "timestamp": "2025-07-03T09:18:46.026Z",
+  "currentPrice": {
+    "price": 3353.92,
+    "source": "Gold API",
+    "lastUpdated": "2025-07-03T09:18:21Z"
+  },
+  "news": {
+    "updates": [
+      {
+        "spot_price": 3357.96,
+        "price_change_last24hrs": 0,
+        "price_change_last24hrs_percentage": 0,
+        "price_change_direction": "unchanged",
+        "price_change_time": "2025-07-03T08:53:17Z",
+        "price_change_source": "Reuters",
+        "sentiment": "neutral",
+        "confidence": "high",
+        "signal": "hold",
+        "summary": "Gold prices remained steady at $3,357.96 per ounce as of July 3, 2025, as investors awaited key U.S. economic data to gain insights into the Federal Reserve's policy direction.",
+        "source": "Reuters, July 3, 2025"
+      },
+      {
+        "spot_price": 3357.96,
+        "price_change_last24hrs": 0,
+        "price_change_last24hrs_percentage": 0,
+        "price_change_direction": "unchanged",
+        "price_change_time": "2025-07-03T08:53:17Z",
+        "price_change_source": "Reuters",
+        "sentiment": "neutral",
+        "confidence": "high",
+        "signal": "hold",
+        "summary": "Gold prices remained steady at $3,357.96 per ounce as of July 3, 2025, as investors awaited key U.S. economic data to gain insights into the Federal Reserve's policy direction.",
+        "source": "Reuters, July 3, 2025"
+      },
+      {
+        "spot_price": 3357.96,
+        "price_change_last24hrs": 0,
+        "price_change_last24hrs_percentage": 0,
+        "price_change_direction": "unchanged",
+        "price_change_time": "2025-07-03T08:53:17Z",
+        "price_change_source": "Reuters",
+        "sentiment": "neutral",
+        "confidence": "high",
+        "signal": "hold",
+        "summary": "Gold prices remained steady at $3,357.96 per ounce as of July 3, 2025, as investors awaited key U.S. economic data to gain insights into the Federal Reserve's policy direction.",
+        "source": "Reuters, July 3, 2025"
+      }
+    ],
+    "forecast": "Given the current market conditions and the Federal Reserve's cautious approach to interest rate cuts, gold prices are expected to remain steady in the short term. However, any unexpected economic data or policy changes could lead to increased volatility.",
+    "count": 3
+  },
+  "analysis": {
+    "sentiment": {
+      "overall": "neutral",
+      "confidence": 8,
+      "reasoning": "ราคาทองคำเคลื่อนไหวในกรอบแคบและไม่มีการเปลี่ยนแปลงในช่วง 24 ชั่วโมงที่ผ่านมา โดยนักลงทุนรอข้อมูลเศรษฐกิจสหรัฐฯ และท่าทีของเฟดเกี่ยวกับนโยบายดอกเบี้ย ข่าวสารล่าสุดและข้อมูลราคายืนยันถึงภาวะนิ่งและขาดปัจจัยใหม่ที่ชัดเจนในการขับเคลื่อนราคา"
+    },
+    "signal": {
+      "action": "HOLD",
+      "strength": 9,
+      "reasoning": "สัญญาณจากตลาดและข่าวสารล่าสุดชี้ให้เห็นถึงความไม่แน่นอนและการรอคอยข้อมูลใหม่ นักลงทุนควรชะลอการเปิดสถานะใหม่จนกว่าจะมีความชัดเจนมากขึ้นจากข้อมูลเศรษฐกิจหรือการเปลี่ยนแปลงนโยบายของเฟด"
+    },
+    "tradingDecision": {
+      "entryPoint": 3353,
+      "takeProfit": 3400,
+      "stopLoss": 3325,
+      "riskReward": 1.88,
+      "reasoning": "เนื่องจากราคาทองคำยังคงเคลื่อนไหวในกรอบแคบ การตั้งจุดเข้าใกล้ระดับราคาปัจจุบัน (3353) พร้อมตั้งเป้าทำกำไรที่แนวต้านสำคัญ (3400) และจุดตัดขาดทุนที่แนวรับระยะสั้น (3325) จะช่วยจำกัดความเสี่ยงและให้โอกาสทำกำไรหากเกิดความผันผวนจากข้อมูลเศรษฐกิจ"
+    },
+    "riskAssessment": {
+      "riskLevel": "MODERATE",
+      "factors": [
+        "การรอข้อมูลเศรษฐกิจสหรัฐฯ",
+        "ความไม่แน่นอนของนโยบายเฟด"
+      ],
+      "recommendation": "ควรติดตามข่าวสารเศรษฐกิจและนโยบายการเงินอย่างใกล้ชิด พร้อมตั้งจุดตัดขาดทุนอย่างเคร่งครัด หากมีความผันผวนจากข้อมูลใหม่ควรปรับกลยุทธ์ทันที"
+    },
+    "summary": "ราคาทองคำยังคงนิ่งในกรอบแคบ นักลงทุนรอข้อมูลเศรษฐกิจสหรัฐฯ และท่าทีของเฟดเกี่ยวกับนโยบายดอกเบี้ย ทำให้ตลาดขาดปัจจัยใหม่ในการขับเคลื่อนราคา กลยุทธ์ที่เหมาะสมคือรอดูท่าทีและตั้งจุดเข้า-ออกที่ชัดเจนเพื่อบริหารความเสี่ยง",
+    "keyFactors": [
+      "การรอข้อมูลเศรษฐกิจสหรัฐฯ",
+      "ท่าทีของเฟดเกี่ยวกับดอกเบี้ย",
+      "ราคาทองคำเคลื่อนไหวในกรอบแคบ"
+    ],
+    "timestamp": "2025-07-03T09:18:46.026Z",
+    "usage": {
+      "prompt_tokens": 959,
+      "completion_tokens": 663,
+      "total_tokens": 1622,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    }
+  },
+  "performance": {
+    "processingTime": "2025-07-03T09:18:46.027Z",
+    "dataFreshness": "real-time",
+    "confidence": 8
+  }
+}

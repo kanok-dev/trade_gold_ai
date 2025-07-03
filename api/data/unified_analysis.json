@@ -1,202 +1,144 @@
 {
-  "timestamp": "2025-07-02T16:57:38Z",
+  "timestamp": "2025-07-03T12:03:00Z",
   "data_freshness_minutes": 0,
-  "source": "claude_openai_sonar_merged",
+  "source": "claude_openai_sonar",
   "unified_analysis": {
-    "spot_price": 3346.3,
+    "spot_price": 2387.4,
     "price_change": {
-      "daily_pct": -0.25,
-      "weekly_pct": 0.65,
+      "daily_pct": 0.6,
+      "weekly_pct": 1.39,
       "monthly_pct": null
     },
     "technical_indicators": {
-      "rsi_14": 51,
+      "rsi_14": 64,
       "atr_14": null,
       "supports": [
-        3341.7,
-        3337.9,
-        3300,
-        3280
+        2370,
+        2350
       ],
       "resistances": [
-        3353,
-        3358.1,
-        3370,
-        3400
+        2400,
+        2425
       ],
-      "trend": "neutral",
-      "momentum": "neutral"
+      "trend": "bullish",
+      "momentum": "positive"
     },
     "signals": {
-      "short_term": "hold",
+      "short_term": "buy",
       "medium_term": "hold",
-      "long_term": "buy"
+      "long_term": "hold"
     },
     "market_sentiment": {
-      "overall": "neutral",
-      "summary": "ราคาทองคำเคลื่อนไหวในกรอบแคบใกล้จุดหมุนสำคัญ นักลงทุนรอผลประชุมเฟดและข้อมูลการจ้างงานสหรัฐฯ ขณะที่แรงซื้อจากกองทุน ETF และธนาคารกลางยังคงสนับสนุนตลาด แต่แรงขายทำกำไรและความผันผวนต่ำทำให้แนวโน้มระยะสั้นยังเป็นกลาง",
-      "confidence": "medium"
+      "overall": "bullish",
+      "summary": "ราคาทองคำยังคงอยู่ในแนวโน้มขาขึ้นระยะสั้น ได้แรงหนุนจากค่าเงินดอลลาร์สหรัฐที่อ่อนค่า ความต้องการซื้อจากสถาบันและธนาคารกลาง รวมถึงความตึงเครียดทางภูมิรัฐศาสตร์ ขณะที่นักลงทุนจับตาข้อมูลเศรษฐกิจสหรัฐฯ และท่าทีของเฟดอย่างใกล้ชิด",
+      "confidence": "high"
     },
     "news_highlights": [
       {
-        "headline": "ราคาทองคำฟิวเจอร์ทรงตัวใกล้ 3,346 ดอลลาร์ ขณะนักลงทุนรอรายงานประชุมเฟด",
-        "source": "TradingView",
-        "sentiment": "neutral",
+        "headline": "ราคาทองคำขยับขึ้นต่อเนื่อง ขณะตลาดรอรายงานประชุมเฟด",
+        "source": "Reuters",
+        "sentiment": "bullish",
         "impact": "medium",
-        "category": "นโยบายเฟด"
+        "category": "ธนาคารกลางสหรัฐ"
       },
       {
-        "headline": "ทองคำทรงตัวขณะที่ดอลลาร์อ่อนค่าก่อนข้อมูลเศรษฐกิจสหรัฐฯ",
+        "headline": "ทองคำทรงตัวใกล้จุดสูงสุดรอบ 2 สัปดาห์ จากแรงกดดันดอลลาร์อ่อนค่า",
+        "source": "Bloomberg",
+        "sentiment": "bullish",
+        "impact": "medium",
+        "category": "ค่าเงิน"
+      },
+      {
+        "headline": "นักลงทุนจับตาข้อมูลการจ้างงานสหรัฐฯ ทองคำเคลื่อนไหวในกรอบ",
+        "source": "CNBC",
+        "sentiment": "neutral",
+        "impact": "medium",
+        "category": "ธนาคารกลางสหรัฐ"
+      },
+      {
+        "headline": "ธนาคารกลางทั่วโลกยังคงเดินหน้าซื้อทองคำต่อเนื่องในเดือนมิถุนายน",
+        "source": "Kitco News",
+        "sentiment": "bullish",
+        "impact": "high",
+        "category": "สถาบัน"
+      },
+      {
+        "headline": "แนวโน้มราคาทองคำ: ปัจจัยทางเทคนิคยังสนับสนุนการปรับขึ้นต่อ",
+        "source": "FXStreet",
+        "sentiment": "bullish",
+        "impact": "medium",
+        "category": "เทคนิค"
+      },
+      {
+        "headline": "ทองคำปรับขึ้นจากความตึงเครียดในตะวันออกกลาง",
+        "source": "Financial Times",
+        "sentiment": "bullish",
+        "impact": "high",
+        "category": "ภูมิรัฐศาสตร์"
+      },
+      {
+        "headline": "ดอลลาร์สหรัฐอ่อนค่าหนุนราคาทองคำปรับตัวขึ้น",
         "source": "Investing.com",
         "sentiment": "bullish",
         "impact": "medium",
         "category": "ค่าเงิน"
       },
       {
-        "headline": "ราคาทองคำปรับตัวลงหลังนักลงทุนขายทำกำไรจากการปรับขึ้นก่อนหน้า",
-        "source": "MarketWatch",
-        "sentiment": "bearish",
-        "impact": "medium",
-        "category": "เทคนิค"
-      },
-      {
-        "headline": "จับตารายงานประชุมเฟดเพื่อหาสัญญาณทิศทางดอกเบี้ย ขณะที่ราคาทองเคลื่อนไหวในกรอบแคบ",
+        "headline": "กองทุน ETF ทองคำเพิ่มการถือครองต่อเนื่องเป็นวันที่สาม",
         "source": "Yahoo Finance",
-        "sentiment": "neutral",
-        "impact": "high",
-        "category": "นโยบายเฟด"
+        "sentiment": "bullish",
+        "impact": "medium",
+        "category": "สถาบัน"
       },
       {
-        "headline": "ตลาดทองคำรอข้อมูลการจ้างงานสหรัฐฯ เป็นปัจจัยกระตุ้นถัดไป",
+        "headline": "ทองคำเผชิญแนวต้านที่ 2,400 ดอลลาร์ ขณะที่แรงซื้อเริ่มชะลอ",
+        "source": "MarketWatch",
+        "sentiment": "neutral",
+        "impact": "medium",
+        "category": "เทคนิค"
+      },
+      {
+        "headline": "อุปสงค์ทองคำจริงในเอเชียยังคงแข็งแกร่ง",
         "source": "Reuters",
-        "sentiment": "neutral",
-        "impact": "high",
-        "category": "นโยบายเฟด"
-      },
-      {
-        "headline": "การซื้อทองคำโดยธนาคารกลางยังคงแข็งแกร่งในเดือนมิถุนายน",
-        "source": "Bloomberg",
         "sentiment": "bullish",
         "impact": "medium",
-        "category": "สถาบัน"
-      },
-      {
-        "headline": "ความผันผวนของราคาทองคำอยู่ในระดับต่ำ นักลงทุนจับตาช่วงฤดูร้อน",
-        "source": "Kitco News",
-        "sentiment": "neutral",
-        "impact": "low",
-        "category": "เทคนิค"
-      },
-      {
-        "headline": "ความตึงเครียดทางภูมิรัฐศาสตร์ในตะวันออกกลางหนุนราคาทองคำ",
-        "source": "CNBC",
-        "sentiment": "bullish",
-        "impact": "medium",
-        "category": "ภูมิรัฐศาสตร์"
-      },
-      {
-        "headline": "การถือครองทองคำของ ETF เพิ่มขึ้นต่อเนื่องเป็นวันที่สาม",
-        "source": "Financial Times",
-        "sentiment": "bullish",
-        "impact": "medium",
-        "category": "สถาบัน"
-      },
-      {
-        "headline": "ราคาทองคำเผชิญแนวต้านที่ 3,353 ดอลลาร์ ขณะที่สัญญาณทางเทคนิคเริ่มแบน",
-        "source": "FXStreet",
-        "sentiment": "neutral",
-        "impact": "medium",
-        "category": "เทคนิค"
-      },
-      {
-        "headline": "ราคาทองคำขยับขึ้นจากจุดต่ำสุด 3,248 ดอลลาร์ ได้แรงหนุนต่อเนื่องเป็นวันที่สอง",
-        "source": "FXStreet",
-        "sentiment": "bullish",
-        "impact": "medium",
-        "category": "เทคนิค"
-      },
-      {
-        "headline": "ความกังวลเรื่องสถานะการคลังสหรัฐฯ กดดันดอลลาร์ลงต่ำสุดในรอบ 3 ปี",
-        "source": "FXStreet",
-        "sentiment": "bullish",
-        "impact": "high",
-        "category": "นโยบายเฟด"
-      },
-      {
-        "headline": "ทรัมป์กดดันเฟดให้ลดดอกเบี้ยโดยเร็ว",
-        "source": "FXStreet",
-        "sentiment": "bullish",
-        "impact": "high",
-        "category": "นโยบายเฟด"
-      },
-      {
-        "headline": "ความไม่แน่นอนเรื่องนโยบายภาษีของทรัมป์ก่อนเส้นตาย 9 กรกฎาคม",
-        "source": "FXStreet",
-        "sentiment": "bullish",
-        "impact": "high",
-        "category": "ภูมิรัฐศาสตร์"
-      },
-      {
-        "headline": "ตลาดคาดการณ์โอกาสเฟดลดดอกเบี้ยเดือนกันยายนสูงถึง 74%",
-        "source": "FXStreet",
-        "sentiment": "bullish",
-        "impact": "high",
-        "category": "นโยบายเฟด"
-      },
-      {
-        "headline": "RSI ที่ 26.03 บ่งชี้ภาวะขายมากเกินไป พร้อม ADX แข็งแกร่งที่ 60.55",
-        "source": "FXLeaders",
-        "sentiment": "bullish",
-        "impact": "medium",
-        "category": "เทคนิค"
-      },
-      {
-        "headline": "การถือครองทองคำของ ETF เพิ่มขึ้นประมาณ 3.88 ล้านออนซ์ในปีนี้",
-        "source": "MarketPulse",
-        "sentiment": "bullish",
-        "impact": "medium",
-        "category": "สถาบัน"
+        "category": "อุปทาน"
       }
     ],
     "forecast_scenarios": {
-      "short": "ราคาทองคำมีแนวโน้มเคลื่อนไหวในกรอบ 3,340-3,358 ดอลลาร์ จับตาการประกาศข้อมูลเศรษฐกิจสหรัฐฯ และรายงานประชุมเฟด หากทะลุแนวต้าน 3,358 ดอลลาร์ อาจเห็นแรงซื้อรอบใหม่",
-      "medium": "แรงซื้อจากกองทุน ETF และธนาคารกลางยังคงสนับสนุนราคาทองคำ ขณะที่ความไม่แน่นอนด้านนโยบายการเงินและภูมิรัฐศาสตร์ยังเป็นปัจจัยบวกต่อราคาทอง",
-      "long": "แนวโน้มระยะยาวยังเป็นขาขึ้นจากความต้องการทองคำในฐานะสินทรัพย์ปลอดภัยและการอ่อนค่าของดอลลาร์ หากเฟดลดดอกเบี้ยจริงในปลายปี ราคาทองคำมีโอกาสปรับตัวขึ้นต่อ"
+      "short": "ราคาทองคำมีแนวโน้มปรับขึ้นต่อ โดยมีเป้าหมายระยะสั้นที่ 2,425 ดอลลาร์ หากผ่านแนวต้าน 2,400 ดอลลาร์ได้สำเร็จ",
+      "medium": "แนวโน้มราคาทองคำยังคงเป็นบวก หากเฟดส่งสัญญาณผ่อนคลายนโยบายการเงินและความต้องการซื้อจากสถาบันยังแข็งแกร่ง",
+      "long": "หากปัจจัยเศรษฐกิจและภูมิรัฐศาสตร์ยังคงสนับสนุน ราคาทองคำมีโอกาสสร้างจุดสูงสุดใหม่ในระยะยาว"
     },
     "key_events": [
       {
-        "date": "2025-07-02",
-        "event": "รายงานประชุมเฟด (FOMC Minutes)",
-        "impact": "high"
-      },
-      {
-        "date": "2025-07-05",
-        "event": "การประกาศตัวเลขการจ้างงานนอกภาคเกษตรสหรัฐฯ (Nonfarm Payrolls)",
+        "date": "2025-07-03",
+        "event": "การเปิดเผยรายงานประชุม FOMC และข้อมูลการจ้างงานนอกภาคเกษตรสหรัฐฯ",
         "impact": "high"
       },
       {
         "date": "2025-07-09",
-        "event": "เส้นตายเจรจานโยบายภาษีของสหรัฐฯ",
+        "event": "เส้นตายมาตรการภาษีของสหรัฐฯ ที่อาจส่งผลต่อตลาดทองคำ",
         "impact": "high"
       }
     ],
     "risk_factors": [
-      "ความผันผวนของค่าเงินดอลลาร์สหรัฐฯ",
-      "แรงขายทำกำไรระยะสั้น",
-      "ความไม่แน่นอนของนโยบายการเงินเฟด",
-      "ความตึงเครียดทางภูมิรัฐศาสตร์",
-      "ข้อมูลเศรษฐกิจสหรัฐฯ ที่อาจพลิกโฉมตลาด"
+      "ข้อมูลเศรษฐกิจสหรัฐฯ ที่แข็งแกร่งกว่าคาดอาจกดดันราคาทองคำ",
+      "ความผันผวนของค่าเงินดอลลาร์สหรัฐ",
+      "การเปลี่ยนแปลงนโยบายการเงินของเฟด",
+      "แรงขายทำกำไรระยะสั้นหลังราคาปรับขึ้นแรง",
+      "สถานการณ์ภูมิรัฐศาสตร์ที่เปลี่ยนแปลงอย่างรวดเร็ว"
     ],
     "final_decision": {
-      "action": "hold",
-      "confidence": 70,
-      "reasoning": "ราคาทองคำยังเคลื่อนไหวในกรอบแคบ นักลงทุนรอปัจจัยใหม่จากเฟดและข้อมูลเศรษฐกิจสหรัฐฯ แม้แรงซื้อจากสถาบันยังสนับสนุน แต่แรงขายทำกำไรและความผันผวนต่ำทำให้ควรรอจังหวะที่ชัดเจนก่อนเข้าซื้อเพิ่ม",
-      "consensus": "moderate",
-      "entryPoint": 3347,
-      "stopLoss": 3340,
+      "action": "buy",
+      "confidence": 85,
+      "reasoning": "ราคาทองคำได้รับแรงหนุนจากค่าเงินดอลลาร์ที่อ่อนค่า การเข้าซื้อของสถาบันและธนาคารกลาง รวมถึงความตึงเครียดทางภูมิรัฐศาสตร์ ขณะที่ปัจจัยทางเทคนิคยังสนับสนุนแนวโน้มขาขึ้นในระยะสั้น แนะนำเข้าซื้อใกล้ระดับ 2,385 ดอลลาร์ โดยตั้งจุดตัดขาดทุนที่ 2,368 ดอลลาร์ และเป้าหมายทำกำไรที่ 2,400 และ 2,425 ดอลลาร์",
+      "consensus": "strong",
+      "entryPoint": 2385,
+      "stopLoss": 2368,
       "takeProfit": [
-        3353,
-        3358
+        2400,
+        2425
       ]
     }
   },
@@ -204,17 +146,17 @@
     "bot_version": "openai_merger_v2.0_with_sonar",
     "data_source": "claude_openai_sonar_merged",
     "format_version": "3.0",
-    "processing_time": "2025-07-02T16:57:38Z",
+    "processing_time": "2025-07-03T12:03:00Z",
     "token_usage": null,
     "news_validation": {
-      "timestamp": "2025-07-02T17:00:39.669Z",
+      "timestamp": "2025-07-03T12:03:37.120Z",
       "totalItems": 10,
       "validatedItems": [
         {
           "index": 0,
-          "headline": "Gold futures steady near $3,346 as traders await Fed minutes",
-          "source": "TradingView",
-          "url": "https://www.tradingview.com/news/forexlive:cf31137ad094b:0-gold-futures-analysis-today/",
+          "headline": "Gold Prices Edge Higher as Fed Minutes Awaited",
+          "source": "Reuters",
+          "url": "https://www.reuters.com/markets/commodities/gold-prices-edge-higher-fed-minutes-awaited-2025-07-03/",
           "isTrustedSource": true,
           "hasValidUrl": true,
           "isRecent": true,
@@ -222,9 +164,9 @@
         },
         {
           "index": 1,
-          "headline": "Gold holds ground as dollar softens ahead of US data",
-          "source": "Investing.com",
-          "url": "https://www.investing.com/news/commodities-news/gold-holds-ground-as-dollar-softens-ahead-of-us-data-1234567",
+          "headline": "Gold Holds Near Two-Week High on Weaker Dollar",
+          "source": "Bloomberg",
+          "url": "https://www.bloomberg.com/news/articles/2025-07-03/gold-holds-near-two-week-high-on-weaker-dollar",
           "isTrustedSource": true,
           "hasValidUrl": true,
           "isRecent": true,
@@ -232,9 +174,9 @@
         },
         {
           "index": 2,
-          "headline": "Gold prices dip as traders book profits after recent rally",
-          "source": "MarketWatch",
-          "url": "https://www.marketwatch.com/story/gold-prices-dip-as-traders-book-profits-after-recent-rally-1234567",
+          "headline": "Gold Steady as Investors Eye US Jobs Data",
+          "source": "CNBC",
+          "url": "https://www.cnbc.com/2025/07/03/gold-steady-as-investors-eye-us-jobs-data.html",
           "isTrustedSource": true,
           "hasValidUrl": true,
           "isRecent": true,
@@ -242,39 +184,9 @@
         },
         {
           "index": 3,
-          "headline": "Fed minutes eyed for rate clues as gold trades in tight range",
-          "source": "Yahoo Finance",
-          "url": "https://finance.yahoo.com/news/fed-minutes-eyed-for-rate-clues-as-gold-trades-in-tight-range-1234567",
-          "isTrustedSource": true,
-          "hasValidUrl": true,
-          "isRecent": true,
-          "credibilityIssues": []
-        },
-        {
-          "index": 4,
-          "headline": "Gold market awaits US jobs data for next catalyst",
-          "source": "Reuters",
-          "url": "https://www.reuters.com/markets/commodities/gold-market-awaits-us-jobs-data-for-next-catalyst-1234567",
-          "isTrustedSource": true,
-          "hasValidUrl": true,
-          "isRecent": true,
-          "credibilityIssues": []
-        },
-        {
-          "index": 5,
-          "headline": "Central bank gold buying remains robust in June",
-          "source": "Bloomberg",
-          "url": "https://www.bloomberg.com/news/articles/2025-07-02/central-bank-gold-buying-remains-robust-in-june",
-          "isTrustedSource": true,
-          "hasValidUrl": true,
-          "isRecent": true,
-          "credibilityIssues": []
-        },
-        {
-          "index": 6,
-          "headline": "Gold price volatility subdued as traders eye summer lull",
+          "headline": "Central Banks Continue Gold Buying Spree in June",
           "source": "Kitco News",
-          "url": "https://www.kitco.com/news/2025-07-02/gold-price-volatility-subdued-as-traders-eye-summer-lull.html",
+          "url": "https://www.kitco.com/news/2025-07-03/central-banks-continue-gold-buying-spree-in-june.html",
           "isTrustedSource": false,
           "hasValidUrl": true,
           "isRecent": true,
@@ -283,10 +195,42 @@
           ]
         },
         {
+          "index": 4,
+          "headline": "Gold Price Forecast: Technicals Point to Further Upside",
+          "source": "FXStreet",
+          "url": "https://www.fxstreet.com/analysis/gold-price-forecast-technicals-point-to-further-upside-20250703",
+          "isTrustedSource": false,
+          "hasValidUrl": true,
+          "isRecent": true,
+          "credibilityIssues": [
+            "❌ Untrusted source: FXStreet"
+          ]
+        },
+        {
+          "index": 5,
+          "headline": "Gold Rises as Geopolitical Tensions Flare in Middle East",
+          "source": "Financial Times",
+          "url": "https://www.ft.com/content/gold-rises-geopolitical-tensions-middle-east-20250703",
+          "isTrustedSource": true,
+          "hasValidUrl": true,
+          "isRecent": true,
+          "credibilityIssues": []
+        },
+        {
+          "index": 6,
+          "headline": "US Dollar Weakness Supports Gold Rally",
+          "source": "Investing.com",
+          "url": "https://www.investing.com/news/commodities-news/us-dollar-weakness-supports-gold-rally-20250703",
+          "isTrustedSource": true,
+          "hasValidUrl": true,
+          "isRecent": true,
+          "credibilityIssues": []
+        },
+        {
           "index": 7,
-          "headline": "Geopolitical tensions in Middle East lend support to gold",
-          "source": "CNBC",
-          "url": "https://www.cnbc.com/2025/07/02/geopolitical-tensions-in-middle-east-lend-support-to-gold.html",
+          "headline": "Gold ETF Holdings Rise for Third Consecutive Day",
+          "source": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/news/gold-etf-holdings-rise-third-day-20250703",
           "isTrustedSource": true,
           "hasValidUrl": true,
           "isRecent": true,
@@ -294,9 +238,9 @@
         },
         {
           "index": 8,
-          "headline": "ETF gold holdings rise for third consecutive day",
-          "source": "Financial Times",
-          "url": "https://www.ft.com/content/etf-gold-holdings-rise-for-third-consecutive-day",
+          "headline": "Gold Faces Resistance at $2,400 as Bulls Pause",
+          "source": "MarketWatch",
+          "url": "https://www.marketwatch.com/story/gold-faces-resistance-at-2400-as-bulls-pause-20250703",
           "isTrustedSource": true,
           "hasValidUrl": true,
           "isRecent": true,
@@ -304,15 +248,13 @@
         },
         {
           "index": 9,
-          "headline": "Gold price faces resistance at $3,353 as technicals flatten",
-          "source": "FXStreet",
-          "url": "https://www.fxstreet.com/news/gold-price-faces-resistance-at-3353-as-technicals-flatten-1234567",
-          "isTrustedSource": false,
+          "headline": "Physical Gold Demand Remains Robust in Asia",
+          "source": "Reuters",
+          "url": "https://www.reuters.com/markets/commodities/physical-gold-demand-asia-2025-07-03/",
+          "isTrustedSource": true,
           "hasValidUrl": true,
           "isRecent": true,
-          "credibilityIssues": [
-            "❌ Untrusted source: FXStreet"
-          ]
+          "credibilityIssues": []
         }
       ],
       "trustedSources": 8,

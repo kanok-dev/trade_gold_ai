@@ -1,0 +1,61 @@
+{
+  "NewsUpdates": [
+    {
+      "spot_price": 3357.96,
+      "price_change_last24hrs": 0,
+      "price_change_last24hrs_percentage": 0,
+      "price_change_direction": "unchanged",
+      "price_change_time": "2025-07-03T08:53:17Z",
+      "price_change_source": "Reuters",
+      "sentiment": "neutral",
+      "confidence": "high",
+      "signal": "hold",
+      "summary": "Gold prices remained steady at $3,357.96 per ounce as of July 3, 2025, as investors awaited key U.S. economic data to gain insights into the Federal Reserve's policy direction.",
+      "source": "Reuters, July 3, 2025"
+    },
+    {
+      "spot_price": 3357.96,
+      "price_change_last24hrs": 0,
+      "price_change_last24hrs_percentage": 0,
+      "price_change_direction": "unchanged",
+      "price_change_time": "2025-07-03T08:53:17Z",
+      "price_change_source": "Reuters",
+      "sentiment": "neutral",
+      "confidence": "high",
+      "signal": "hold",
+      "summary": "Gold prices remained steady at $3,357.96 per ounce as of July 3, 2025, as investors awaited key U.S. economic data to gain insights into the Federal Reserve's policy direction.",
+      "source": "Reuters, July 3, 2025"
+    },
+    {
+      "spot_price": 3357.96,
+      "price_change_last24hrs": 0,
+      "price_change_last24hrs_percentage": 0,
+      "price_change_direction": "unchanged",
+      "price_change_time": "2025-07-03T08:53:17Z",
+      "price_change_source": "Reuters",
+      "sentiment": "neutral",
+      "confidence": "high",
+      "signal": "hold",
+      "summary": "Gold prices remained steady at $3,357.96 per ounce as of July 3, 2025, as investors awaited key U.S. economic data to gain insights into the Federal Reserve's policy direction.",
+      "source": "Reuters, July 3, 2025"
+    }
+  ],
+  "Analysis Forecast Scenarios": "Given the current market conditions and the Federal Reserve's cautious stance, gold prices are expected to remain steady in the short term. However, any unexpected economic data or policy changes could lead to increased volatility.",
+  "Trading Decision": {
+    "entryPoint": 3357.96,
+    "takeProfit": 3400,
+    "stopLoss": 3300
+  },
+  "usage": {
+    "input_tokens": 862,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 478,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1340
+  },
+  "timestamp": "2025-07-03T09:18:31.874Z"
+}

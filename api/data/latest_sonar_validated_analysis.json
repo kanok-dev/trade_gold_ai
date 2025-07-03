@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-07-03T12:02:55.000Z",
+  "timestamp": "2025-07-03T12:02:54.998Z",
   "response": {
     "id": "eee9f17e-6a81-446d-9ceb-1325c4aff9c9",
     "model": "sonar-pro",
@@ -28,8 +28,140 @@
       }
     ]
   },
+  "validation": {
+    "timestamp": "2025-07-03T12:02:54.995Z",
+    "totalItems": 10,
+    "validatedItems": [
+      {
+        "index": 1,
+        "headline": "Gold Prices Edge Higher as Fed Minutes Awaited",
+        "source": "Reuters",
+        "originalUrl": "https://www.reuters.com/markets/commodities/gold-prices-edge-higher-fed-minutes-awaited-2025-07-03/",
+        "timePublished": "07/03/2025 08:15",
+        "isTrustedSource": true,
+        "hasValidUrl": true,
+        "isRecent": true,
+        "credibilityIssues": []
+      },
+      {
+        "index": 2,
+        "headline": "Gold Holds Near Two-Week High on Weaker Dollar",
+        "source": "Bloomberg",
+        "originalUrl": "https://www.bloomberg.com/news/articles/2025-07-03/gold-holds-near-two-week-high-on-weaker-dollar",
+        "timePublished": "07/03/2025 07:50",
+        "isTrustedSource": true,
+        "hasValidUrl": true,
+        "isRecent": true,
+        "credibilityIssues": []
+      },
+      {
+        "index": 3,
+        "headline": "Gold Steady as Investors Eye US Jobs Data",
+        "source": "CNBC",
+        "originalUrl": "https://www.cnbc.com/2025/07/03/gold-steady-as-investors-eye-us-jobs-data.html",
+        "timePublished": "07/03/2025 06:30",
+        "isTrustedSource": true,
+        "hasValidUrl": true,
+        "isRecent": true,
+        "credibilityIssues": []
+      },
+      {
+        "index": 4,
+        "headline": "Central Banks Continue Gold Buying Spree in June",
+        "source": "Kitco News",
+        "originalUrl": "https://www.kitco.com/news/2025-07-03/central-banks-continue-gold-buying-spree-in-june.html",
+        "timePublished": "07/03/2025 09:10",
+        "isTrustedSource": false,
+        "hasValidUrl": true,
+        "isRecent": true,
+        "credibilityIssues": [
+          "Source not in trusted list"
+        ]
+      },
+      {
+        "index": 5,
+        "headline": "Gold Price Forecast: Technicals Point to Further Upside",
+        "source": "FXStreet",
+        "originalUrl": "https://www.fxstreet.com/analysis/gold-price-forecast-technicals-point-to-further-upside-20250703",
+        "timePublished": "07/03/2025 10:00",
+        "isTrustedSource": false,
+        "hasValidUrl": true,
+        "isRecent": true,
+        "credibilityIssues": [
+          "Source not in trusted list"
+        ]
+      },
+      {
+        "index": 6,
+        "headline": "Gold Rises as Geopolitical Tensions Flare in Middle East",
+        "source": "Financial Times",
+        "originalUrl": "https://www.ft.com/content/gold-rises-geopolitical-tensions-middle-east-20250703",
+        "timePublished": "07/03/2025 05:45",
+        "isTrustedSource": true,
+        "hasValidUrl": true,
+        "isRecent": true,
+        "credibilityIssues": []
+      },
+      {
+        "index": 7,
+        "headline": "US Dollar Weakness Supports Gold Rally",
+        "source": "Investing.com",
+        "originalUrl": "https://www.investing.com/news/commodities-news/us-dollar-weakness-supports-gold-rally-20250703",
+        "timePublished": "07/03/2025 11:20",
+        "isTrustedSource": true,
+        "hasValidUrl": true,
+        "isRecent": true,
+        "credibilityIssues": []
+      },
+      {
+        "index": 8,
+        "headline": "Gold ETF Holdings Rise for Third Consecutive Day",
+        "source": "Yahoo Finance",
+        "originalUrl": "https://finance.yahoo.com/news/gold-etf-holdings-rise-third-day-20250703",
+        "timePublished": "07/03/2025 09:45",
+        "isTrustedSource": true,
+        "hasValidUrl": true,
+        "isRecent": true,
+        "credibilityIssues": []
+      },
+      {
+        "index": 9,
+        "headline": "Gold Faces Resistance at $2,400 as Bulls Pause",
+        "source": "MarketWatch",
+        "originalUrl": "https://www.marketwatch.com/story/gold-faces-resistance-at-2400-as-bulls-pause-20250703",
+        "timePublished": "07/03/2025 10:30",
+        "isTrustedSource": true,
+        "hasValidUrl": true,
+        "isRecent": true,
+        "credibilityIssues": []
+      },
+      {
+        "index": 10,
+        "headline": "Physical Gold Demand Remains Robust in Asia",
+        "source": "Reuters",
+        "originalUrl": "https://www.reuters.com/markets/commodities/physical-gold-demand-asia-2025-07-03/",
+        "timePublished": "07/03/2025 07:00",
+        "isTrustedSource": true,
+        "hasValidUrl": true,
+        "isRecent": true,
+        "credibilityIssues": []
+      }
+    ],
+    "trustedSources": 8,
+    "untrustedSources": 2,
+    "missingUrls": 0,
+    "recentNews": 10,
+    "outdatedNews": 0,
+    "credibilityScore": 92,
+    "recommendations": [
+      "⚠️  2 news items from untrusted sources - verify independently",
+      "✅ High credibility - analysis can be trusted"
+    ]
+  },
   "status": "success",
   "model": "sonar",
   "provider": "perplexity",
-  "analysis_type": "enhanced_gold_market"
+  "analysis_type": "enhanced_gold_market_with_validation",
+  "credibilityScore": 92,
+  "recommendedAction": "proceed"
 }

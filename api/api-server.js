@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url'
 import path from 'path'
 import dotenv from 'dotenv'
 import fs from 'fs/promises'
+import crypto from 'crypto'
 
 // Import route modules
 import analysisRoutes from './routes/analysis.js'
@@ -12,6 +13,11 @@ import portfolioRoutes from './routes/portfolio.js'
 
 // Import crontab manager
 import crontabManager, { initializeCrontab } from './analysis-crontab.js'
+
+// Import notification service
+import notificationService from './services/notificationService.js'
+import newsService from './services/newsService.js'
+import analysisService from './services/analysisService.js'
 
 dotenv.config()
 
@@ -295,6 +301,9 @@ class GoldTradingAPIServer {
       portfolioRoutes
     )
 
+    // Line webhook routes
+    this.setupLineWebhook()
+
     // Legacy API endpoints for backward compatibility
     this.setupLegacyRoutes()
 
@@ -304,9 +313,226 @@ class GoldTradingAPIServer {
         success: false,
         error: 'Endpoint not found',
         path: req.originalUrl,
-        availableEndpoints: ['/health', '/api/status', '/api/analysis/*', '/api/trading/*', '/api/portfolio/*']
+        availableEndpoints: ['/health', '/api/status', '/api/analysis/*', '/api/trading/*', '/api/portfolio/*', '/webhook/line', '/api/line/config', '/api/line/command']
       })
     })
+  }
+
+  setupLineWebhook() {
+    // Line webhook verification middleware
+    const verifyLineSignature = (req, res, next) => {
+      const channelSecret = process.env.LINE_OA_CHANNEL_SECRET
+      if (!channelSecret) {
+        console.log('⚠️ Line channel secret not configured, skipping verification')
+        return next()
+      }
+
+      const signature = req.get('X-Line-Signature')
+      if (!signature) {
+        return res.status(400).json({ error: 'Missing Line signature' })
+      }
+
+      const body = JSON.stringify(req.body)
+      const hash = crypto.createHmac('sha256', channelSecret).update(body).digest('base64')
+
+      if (signature !== hash) {
+        return res.status(400).json({ error: 'Invalid Line signature' })
+      }
+
+      next()
+    }
+
+    // Line webhook endpoint
+    this.app.post('/webhook/line', verifyLineSignature, async (req, res) => {
+      try {
+        const events = req.body.events || []
+
+        for (const event of events) {
+          await this.handleLineEvent(event)
+        }
+
+        res.status(200).json({ status: 'ok' })
+      } catch (error) {
+        console.error('❌ Line webhook error:', error)
+        res.status(500).json({ error: 'Internal server error' })
+      }
+    })
+
+    // Manual command endpoint for testing
+    this.app.post('/api/line/command', async (req, res) => {
+      try {
+        const { userId, command } = req.body
+
+        if (!userId || !command) {
+          return res.status(400).json({
+            success: false,
+            error: 'userId and command are required'
+          })
+        }
+
+        const result = await this.handleLineCommand(userId, command)
+
+        res.json({
+          success: true,
+          data: result
+        })
+      } catch (error) {
+        res.status(500).json({
+          success: false,
+          error: error.message
+        })
+      }
+    })
+
+    // Line configuration check endpoint
+    this.app.get('/api/line/config', (req, res) => {
+      const hasOAToken = !!process.env.LINE_OA_TOKEN
+      const hasChannelSecret = !!process.env.LINE_OA_CHANNEL_SECRET
+      const hasLineToken = !!process.env.LINE_TOKEN
+
+      res.json({
+        success: true,
+        data: {
+          lineOA: {
+            configured: hasOAToken && hasChannelSecret,
+            hasToken: hasOAToken,
+            hasChannelSecret: hasChannelSecret
+          },
+          lineNotify: {
+            configured: hasLineToken,
+            hasToken: hasLineToken
+          },
+          webhookUrl: `/webhook/line`,
+          status: hasOAToken && hasChannelSecret ? 'ready' : 'not_configured'
+        }
+      })
+    })
+  }
+
+  async handleLineEvent(event) {
+    try {
+      console.log('📱 Line event received:', event.type)
+
+      if (event.type === 'message' && event.message.type === 'text') {
+        const userId = event.source.userId
+        const messageText = event.message.text.trim()
+
+        console.log(`👤 User ${userId} sent: ${messageText}`)
+
+        await this.handleLineCommand(userId, messageText)
+      }
+    } catch (error) {
+      console.error('❌ Error handling Line event:', error)
+    }
+  }
+
+  async handleLineCommand(userId, command) {
+    try {
+      const lowerCommand = command.toLowerCase()
+
+      switch (lowerCommand) {
+        case '/start':
+        case 'start':
+          await notificationService.sendLineOAMessage(
+            userId,
+            `🤖 Welcome to Gold Trading Bot!\n\nAvailable commands:\n` +
+              `📰 /news - Get latest market news\n` +
+              `💰 /price - Get current gold price\n` +
+              `📊 /analysis - Get market analysis\n` +
+              `🆔 /myid - Get your user ID\n` +
+              `❓ /help - Show this help message`
+          )
+          return { command: 'start', response: 'Welcome message sent' }
+
+        case '/news':
+        case 'news':
+          const newsResult = await notificationService.sendNewsUpdate(userId)
+          if (newsResult) {
+            return { command: 'news', response: 'News update sent' }
+          } else {
+            await notificationService.sendLineOAMessage(userId, '⚠️ News service is not available at the moment. Please try again later.')
+            return { command: 'news', response: 'News update failed - Line OA not configured' }
+          }
+
+        case '/myid':
+        case 'myid':
+          await notificationService.sendLineOAMessage(userId, `🆔 Your User ID: ${userId}\n\nYou can use this ID to receive automated notifications.`)
+          return { command: 'myid', response: 'User ID sent', userId }
+
+        case '/price':
+        case 'price':
+          try {
+            console.log('💰 Fetching real-time gold price from Gold API...')
+            const priceData = await newsService.getTradeviewXAUUSDPriceRealtime()
+
+            if (priceData.price !== null) {
+              await notificationService.sendLineOAMessage(userId, `💰 Current Gold Price (XAUUSD): $${priceData.price}\n` + `📊 Source: ${priceData.source}\n` + `⏰ Updated: ${new Date(priceData.timestamp).toLocaleString()}`)
+              return { command: 'price', response: 'Real-time price sent', price: priceData.price }
+            } else {
+              // Send error message instead of mock data
+              await notificationService.sendLineOAMessage(userId, `❌ Unable to fetch gold price at this time\n` + `🔧 Error: ${priceData.error || 'Price data unavailable'}\n` + `🔄 Please try again later`)
+              return { command: 'price', response: 'Price fetch failed - error message sent' }
+            }
+          } catch (error) {
+            console.error('❌ Error fetching price:', error)
+            // Send error message instead of mock data
+            await notificationService.sendLineOAMessage(userId, `❌ Gold price service temporarily unavailable\n` + `🔧 Technical issue: ${error.message}\n` + `🔄 Please try again in a few minutes`)
+            return { command: 'price', response: 'Service error - error message sent' }
+          }
+
+        case '/analysis':
+        case 'analysis':
+          try {
+            console.log('📊 Starting comprehensive market analysis...')
+
+            // Execute the 4-step analysis process
+            const analysisResult = await analysisService.executeCompleteAnalysis()
+
+            // Store the result in dataStore for other endpoints
+            this.dataStore.lastAnalysis = analysisResult
+
+            // Format and send the analysis via Line
+            const formattedMessage = analysisService.formatForLineMessage(analysisResult)
+            await notificationService.sendLineOAMessage(userId, formattedMessage)
+
+            return {
+              command: 'analysis',
+              response: 'Enhanced analysis completed and sent',
+              data: analysisResult
+            }
+          } catch (error) {
+            console.error('❌ Error in enhanced analysis:', error)
+
+            // Send error message instead of fallback analysis
+            await notificationService.sendLineOAMessage(
+              userId,
+              `❌ Market Analysis Unavailable\n\n` + `🔧 Service Error: ${error.message}\n` + `🔄 Please try again later\n\n` + `⚠️ The analysis system is temporarily experiencing issues. Our team is working to resolve this.`
+            )
+
+            return {
+              command: 'analysis',
+              response: 'Analysis failed - error message sent',
+              error: error.message
+            }
+          }
+
+        case '/help':
+        case 'help':
+          await notificationService.sendLineOAMessage(
+            userId,
+            `📋 Available Commands:\n\n` + `📰 /news - Latest market news\n` + `💰 /price - Current gold price\n` + `📊 /analysis - Market analysis\n` + `🆔 /myid - Your user ID\n` + `❓ /help - This help message`
+          )
+          return { command: 'help', response: 'Help message sent' }
+
+        default:
+          await notificationService.sendLineOAMessage(userId, `❓ Unknown command: "${command}"\n\nType /help to see available commands.`)
+          return { command: 'unknown', response: 'Unknown command message sent' }
+      }
+    } catch (error) {
+      console.error('❌ Error handling Line command:', error)
+      await notificationService.sendLineOAMessage(userId, `🚨 Sorry, there was an error processing your command. Please try again later.`)
+      throw error
+    }
   }
 
   setupLegacyRoutes() {
