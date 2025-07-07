@@ -22,7 +22,7 @@ class AnalysisCrontabManager {
     this.runCount = 0
 
     // Cron schedule: every 6 hours (0 */6 * * * = at minute 0 of every 6th hour)
-    this.schedule = '0 */6 * * *'
+    this.schedule = '0 */4 * * *'
 
     // Alternative schedules for testing
     this.schedules = {
