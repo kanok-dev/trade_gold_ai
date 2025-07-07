@@ -99,7 +99,7 @@ class AnalysisCrontabManager {
       const task = cron.schedule(this.schedule, () => {}, { scheduled: false })
       // This is a workaround to get next execution time
       const now = new Date()
-      const nextTick = new Date(now.getTime() + 6 * 60 * 60 * 1000) // Add 6 hours
+      const nextTick = new Date(now.getTime() + 4 * 60 * 60 * 1000) // Add 6 hours
       return nextTick
     } catch (error) {
       this.log('ERROR', 'Failed to calculate next run time', error.message)
