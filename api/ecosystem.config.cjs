@@ -2,7 +2,8 @@ module.exports = {
   apps: [
     {
       name: 'gold-trading-api',
-      script: 'api-server.js',
+      script: 'npm',
+      args: 'start',
       instances: 1,
       exec_mode: 'fork',
       env: {
