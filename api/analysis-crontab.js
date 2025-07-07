@@ -26,6 +26,7 @@ class AnalysisCrontabManager {
 
     // Alternative schedules for testing
     this.schedules = {
+      every4hours: '0 */4 * * *', // Every 4 hours at minute 0
       every6hours: '0 */6 * * *', // Every 6 hours at minute 0
       every2hours: '0 */2 * * *', // Every 2 hours (for testing)
       every30min: '*/30 * * * *', // Every 30 minutes (for testing)
@@ -229,6 +230,7 @@ class AnalysisCrontabManager {
    */
   describeSchedule(schedule) {
     const descriptions = {
+      '0 */4 * * *': 'Every 4 hours at minute 0',
       '0 */6 * * *': 'Every 6 hours at minute 0',
       '0 */2 * * *': 'Every 2 hours at minute 0',
       '*/30 * * * *': 'Every 30 minutes',
