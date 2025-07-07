@@ -13,6 +13,9 @@ export default defineConfig({
       }
     }
   },
+  preview: {
+    allowedHosts: 'all'
+  },
   build: {
     outDir: 'dist',
     assetsDir: 'assets'
