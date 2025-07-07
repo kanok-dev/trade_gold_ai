@@ -41,8 +41,70 @@ async function analyzeGoldMarket() {
     const messages = [
       {
         role: 'system',
-        content:
-          'You are a financial analyst specializing in precious metals market analysis. Provide responses in JSON format only. Focus on factual, current market data from trusted financial sources. Use professional, concise language appropriate for traders and investors. '
+        content: `You are a financial analyst specializing in precious metals market analysis. Provide responses in JSON format only. Focus on factual, current market data from trusted financial sources. Use professional, concise language appropriate for traders and investors. 
+          Use the following format for your response:
+Please provide a JSON-structured analysis with:
+{
+  "timestamp": "2025-07-01T00:00:00Z",
+  "priceData": {
+    "spotPrice": <number>,
+    "change24h": <number>,
+    "changePercent24h": <number>,
+    "changeWeekly": <number>,
+    "lastUpdated": "HH:MM UTC",
+    "sources": [
+      {"name": "TradingView", "price": <number>, "time": "HH:MM"},
+      {"name": "Investing.com", "price": <number>, "time": "HH:MM"},
+      {"name": "MarketWatch", "price": <number>, "time": "HH:MM"},
+      {"name": "Yahoo Finance", "price": <number>, "time": "HH:MM"}
+    ]
+  },
+  "news24h": [
+    {
+      "headline": "exact headline",
+      "source": "news source",
+      "originalUrl": "https://full-url-to-original-article.com",
+      "timePublished": "MM/DD/YYYY HH:MM",
+      "sentiment": "bullish|bearish|neutral",
+      "impact": "high|medium|low",
+      "category": "fed|geopolitical|technical|institutional|supply"
+    },
+    {
+      "headline": "second news headline",
+      "source": "news source",
+      "originalUrl": "https://second-article-url.com",
+      "timePublished": "MM/DD/YYYY HH:MM",
+      "sentiment": "bullish|bearish|neutral",
+      "impact": "high|medium|low",
+      "category": "fed|geopolitical|technical|institutional|supply"
+    }
+    // ... include minimum 10 news items total
+  ],
+  "sentiment": "bullish|bearish|neutral",
+  "confidence": "high|medium|low", 
+  "signal": "strong_buy|buy|hold|sell|strong_sell",
+  "keyFactors": ["factor1", "factor2", "factor3"],
+  "fedImpact": "description of Federal Reserve policy impact",
+  "technicalView": {
+    "trend": "bullish|bearish|neutral",
+    "supportLevels": [<number>, <number>],
+    "resistanceLevels": [<number>, <number>],
+    "rsi": <number>,
+    "keyLevels": "specific price levels with numbers"
+  },
+  "riskLevel": "high|medium|low",
+  "timeHorizon": "short-term|medium-term|long-term",
+  "priceTarget": "estimated price movement with specific levels",
+  "entryPoint": <number>,
+  "stopLoss": <number>,
+  "takeProfit": [<number>, <number>],
+  "institutionalFlow": "buying|selling|neutral",
+  "currencyImpact": "USD/DXY correlation analysis",
+  "summary": "concise trading recommendation with reasoning"
+}
+
+Make sure the JSON is valid and properly formatted at the end of your response.
+          `
       },
       {
         role: 'user',
@@ -63,76 +125,76 @@ async function analyzeGoldMarket() {
         search_after_date_filter: `${yesterdayDate}`,
         web_search_options: {
           search_context_size: 'high'
-        },
-        response_format: {
-          type: 'json_schema',
-          json_schema: {
-            schema: {
-              type: 'object',
-              properties: {
-                spot_price: {
-                  type: 'number',
-                  description: 'Current gold spot price in USD per ounce'
-                },
-                sentiment: {
-                  type: 'string',
-                  enum: ['bullish', 'bearish', 'neutral'],
-                  description: 'Overall market sentiment for gold'
-                },
-                confidence: {
-                  type: 'string',
-                  enum: ['high', 'medium', 'low'],
-                  description: 'Confidence level in the analysis'
-                },
-                signal: {
-                  type: 'string',
-                  enum: ['strong_buy', 'buy', 'hold', 'sell', 'strong_sell', 'wait_support', 'wait_resistance'],
-                  description: 'Trading signal recommendation'
-                },
-                summary: {
-                  type: 'string',
-                  maxLength: 300,
-                  description: 'Brief summary of key market developments'
-                },
-                key_drivers: {
-                  type: 'array',
-                  items: {
-                    type: 'string'
-                  },
-                  maxItems: 5,
-                  description: 'Main factors driving gold price movement'
-                },
-                nfp_impact: {
-                  type: 'string',
-                  enum: ['positive', 'negative', 'neutral'],
-                  description: 'Impact of NFP data on gold price'
-                },
-                fed_policy_impact: {
-                  type: 'string',
-                  enum: ['hawkish', 'dovish', 'neutral'],
-                  description: 'Federal Reserve policy stance impact'
-                },
-                dxy_impact: {
-                  type: 'string',
-                  enum: ['strengthening', 'weakening', 'neutral'],
-                  description: 'US Dollar Index impact on gold'
-                },
-                inflation_data: {
-                  type: 'string',
-                  enum: ['high', 'moderate', 'low'],
-                  description: 'Current inflation environment'
-                },
-                geopolitical_risk: {
-                  type: 'string',
-                  enum: ['high', 'medium', 'low'],
-                  description: 'Level of geopolitical risk affecting markets'
-                }
-              },
-              required: ['spot_price', 'sentiment', 'confidence', 'signal', 'summary', 'key_drivers', 'nfp_impact', 'fed_policy_impact', 'dxy_impact', 'inflation_data', 'geopolitical_risk'],
-              additionalProperties: false
-            }
-          }
         }
+        // response_format: {
+        //   type: 'json_schema',
+        //   json_schema: {
+        //     schema: {
+        //       type: 'object',
+        //       properties: {
+        //         spot_price: {
+        //           type: 'number',
+        //           description: 'Current gold spot price in USD per ounce'
+        //         },
+        //         sentiment: {
+        //           type: 'string',
+        //           enum: ['bullish', 'bearish', 'neutral'],
+        //           description: 'Overall market sentiment for gold'
+        //         },
+        //         confidence: {
+        //           type: 'string',
+        //           enum: ['high', 'medium', 'low'],
+        //           description: 'Confidence level in the analysis'
+        //         },
+        //         signal: {
+        //           type: 'string',
+        //           enum: ['strong_buy', 'buy', 'hold', 'sell', 'strong_sell', 'wait_support', 'wait_resistance'],
+        //           description: 'Trading signal recommendation'
+        //         },
+        //         summary: {
+        //           type: 'string',
+        //           maxLength: 300,
+        //           description: 'Brief summary of key market developments'
+        //         },
+        //         key_drivers: {
+        //           type: 'array',
+        //           items: {
+        //             type: 'string'
+        //           },
+        //           maxItems: 5,
+        //           description: 'Main factors driving gold price movement'
+        //         },
+        //         nfp_impact: {
+        //           type: 'string',
+        //           enum: ['positive', 'negative', 'neutral'],
+        //           description: 'Impact of NFP data on gold price'
+        //         },
+        //         fed_policy_impact: {
+        //           type: 'string',
+        //           enum: ['hawkish', 'dovish', 'neutral'],
+        //           description: 'Federal Reserve policy stance impact'
+        //         },
+        //         dxy_impact: {
+        //           type: 'string',
+        //           enum: ['strengthening', 'weakening', 'neutral'],
+        //           description: 'US Dollar Index impact on gold'
+        //         },
+        //         inflation_data: {
+        //           type: 'string',
+        //           enum: ['high', 'moderate', 'low'],
+        //           description: 'Current inflation environment'
+        //         },
+        //         geopolitical_risk: {
+        //           type: 'string',
+        //           enum: ['high', 'medium', 'low'],
+        //           description: 'Level of geopolitical risk affecting markets'
+        //         }
+        //       },
+        //       required: ['spot_price', 'sentiment', 'confidence', 'signal', 'summary', 'key_drivers', 'nfp_impact', 'fed_policy_impact', 'dxy_impact', 'inflation_data', 'geopolitical_risk'],
+        //       additionalProperties: false
+        //     }
+        //   }
+        // }
       })
     }
 
@@ -187,8 +249,8 @@ function extractAndValidateJSON(analysisText) {
     // The Perplexity response with JSON schema should come as direct JSON
     try {
       const directParse = JSON.parse(analysisText)
-      if (directParse && typeof directParse === 'object' && directParse.spot_price) {
-        console.log('✅ Successfully parsed response as direct JSON with structured schema')
+      if (directParse && typeof directParse === 'object' && (directParse.priceData || directParse.timestamp || directParse.unified_analysis)) {
+        console.log('✅ Successfully parsed response as direct JSON with new structured schema')
         return { success: true, analysis: directParse, rawJSON: analysisText }
       }
     } catch (directError) {
@@ -199,8 +261,11 @@ function extractAndValidateJSON(analysisText) {
     const jsonPatterns = [
       /```json\s*(\{[\s\S]*?\})\s*```/, // JSON in code blocks
       /^\s*(\{[\s\S]*\})\s*$/, // Entire response is JSON
-      /\{[\s\S]*"spot_price"[\s\S]*?\}/, // Look for JSON with spot_price field
-      /\{[\s\S]*"sentiment"[\s\S]*?\}/ // Look for JSON with sentiment field
+      /\{[\s\S]*"priceData"[\s\S]*?\}/, // Look for JSON with priceData field
+      /\{[\s\S]*"timestamp"[\s\S]*?\}/, // Look for JSON with timestamp field
+      /\{[\s\S]*"sentiment"[\s\S]*?\}/, // Look for JSON with sentiment field
+      /\{[\s\S]*"news24h"[\s\S]*?\}/, // Look for JSON with news24h field
+      /\{[\s\S]*"unified_analysis"[\s\S]*?\}/ // Look for JSON with unified_analysis field
     ]
 
     let analysis = null
@@ -268,8 +333,19 @@ async function validateNewsCredibility(analysisText) {
 
     const analysis = extractionResult.analysis
 
-    // Validate required fields are present
-    const requiredFields = ['spot_price', 'sentiment', 'confidence', 'signal', 'summary', 'key_drivers']
+    // Validate required fields are present - support both legacy and unified_analysis structures
+    let requiredFields = []
+    let isUnifiedAnalysis = false
+
+    // Check if this is a unified_analysis structure
+    if (analysis.unified_analysis && typeof analysis.unified_analysis === 'object') {
+      isUnifiedAnalysis = true
+      requiredFields = ['timestamp', 'source', 'unified_analysis']
+    } else {
+      // Legacy structure
+      requiredFields = ['timestamp', 'priceData', 'news24h', 'sentiment', 'confidence', 'signal', 'keyFactors', 'summary']
+    }
+
     const missingFields = requiredFields.filter((field) => !analysis[field])
 
     if (missingFields.length > 0) {
@@ -282,7 +358,7 @@ async function validateNewsCredibility(analysisText) {
       }
     }
 
-    console.log(`📊 Validating structured analysis...`)
+    console.log(`📊 Validating structured analysis... (${isUnifiedAnalysis ? 'unified_analysis' : 'legacy'} format)`)
 
     // Validate data quality
     const validationResults = {
@@ -291,64 +367,353 @@ async function validateNewsCredibility(analysisText) {
       validatedFields: [],
       dataQuality: 'high',
       credibilityScore: 0,
-      recommendations: []
+      recommendations: [],
+      isUnifiedAnalysis
     }
 
-    // Validate spot price
-    if (typeof analysis.spot_price === 'number' && analysis.spot_price > 0) {
-      validationResults.validatedFields.push('spot_price')
-      console.log(`✅ Valid spot price: $${analysis.spot_price}`)
+    // Validate timestamp
+    if (analysis.timestamp && typeof analysis.timestamp === 'string') {
+      validationResults.validatedFields.push('timestamp')
+      console.log(`✅ Valid timestamp: ${analysis.timestamp}`)
     } else {
-      console.log(`❌ Invalid spot price: ${analysis.spot_price}`)
-      validationResults.recommendations.push('❌ Invalid spot price data')
+      console.log(`❌ Invalid timestamp: ${analysis.timestamp}`)
+      validationResults.recommendations.push('❌ Invalid timestamp data')
     }
 
-    // Validate enum fields
-    const enumValidations = [
-      { field: 'sentiment', validValues: ['bullish', 'bearish', 'neutral'] },
-      { field: 'confidence', validValues: ['high', 'medium', 'low'] },
-      { field: 'signal', validValues: ['strong_buy', 'buy', 'hold', 'sell', 'strong_sell', 'wait_support', 'wait_resistance'] },
-      { field: 'nfp_impact', validValues: ['positive', 'negative', 'neutral'] },
-      { field: 'fed_policy_impact', validValues: ['hawkish', 'dovish', 'neutral'] },
-      { field: 'dxy_impact', validValues: ['strengthening', 'weakening', 'neutral'] },
-      { field: 'inflation_data', validValues: ['high', 'moderate', 'low'] },
-      { field: 'geopolitical_risk', validValues: ['high', 'medium', 'low'] }
-    ]
+    if (isUnifiedAnalysis) {
+      // Validate unified_analysis structure
+      const unified = analysis.unified_analysis
 
-    let validEnumFields = 0
-    enumValidations.forEach(({ field, validValues }) => {
-      if (validValues.includes(analysis[field])) {
-        validationResults.validatedFields.push(field)
-        validEnumFields++
-        console.log(`✅ Valid ${field}: ${analysis[field]}`)
+      // Validate spot price
+      if (typeof unified.spot_price === 'number' && unified.spot_price > 0) {
+        validationResults.validatedFields.push('unified_analysis.spot_price')
+        console.log(`✅ Valid spot price: $${unified.spot_price}`)
       } else {
-        console.log(`❌ Invalid ${field}: ${analysis[field]}`)
-        validationResults.recommendations.push(`❌ Invalid ${field} value`)
+        console.log(`❌ Invalid spot price: ${unified.spot_price}`)
+        validationResults.recommendations.push('❌ Invalid spot price data')
       }
-    })
 
-    // Validate key_drivers array
-    if (Array.isArray(analysis.key_drivers) && analysis.key_drivers.length > 0) {
-      validationResults.validatedFields.push('key_drivers')
-      console.log(`✅ Valid key drivers: ${analysis.key_drivers.length} items`)
+      // Validate price change data
+      if (unified.price_change && typeof unified.price_change === 'object') {
+        if (typeof unified.price_change.daily_pct === 'number') {
+          validationResults.validatedFields.push('unified_analysis.price_change.daily_pct')
+          console.log(`✅ Valid daily change: ${unified.price_change.daily_pct}%`)
+        }
+        if (typeof unified.price_change.weekly_pct === 'number') {
+          validationResults.validatedFields.push('unified_analysis.price_change.weekly_pct')
+          console.log(`✅ Valid weekly change: ${unified.price_change.weekly_pct}%`)
+        }
+      }
+
+      // Validate technical indicators
+      if (unified.technical_indicators && typeof unified.technical_indicators === 'object') {
+        const tech = unified.technical_indicators
+
+        if (typeof tech.rsi_14 === 'number') {
+          validationResults.validatedFields.push('unified_analysis.technical_indicators.rsi_14')
+          console.log(`✅ Valid RSI: ${tech.rsi_14}`)
+        }
+
+        if (Array.isArray(tech.supports) && tech.supports.length > 0) {
+          validationResults.validatedFields.push('unified_analysis.technical_indicators.supports')
+          console.log(`✅ Valid support levels: ${tech.supports.length} levels`)
+        }
+
+        if (Array.isArray(tech.resistances) && tech.resistances.length > 0) {
+          validationResults.validatedFields.push('unified_analysis.technical_indicators.resistances')
+          console.log(`✅ Valid resistance levels: ${tech.resistances.length} levels`)
+        }
+
+        if (tech.trend && ['bullish', 'bearish', 'neutral'].includes(tech.trend)) {
+          validationResults.validatedFields.push('unified_analysis.technical_indicators.trend')
+          console.log(`✅ Valid trend: ${tech.trend}`)
+        }
+      }
+
+      // Validate signals
+      if (unified.signals && typeof unified.signals === 'object') {
+        const signals = unified.signals
+        const validSignalValues = ['strong_buy', 'buy', 'hold', 'sell', 'strong_sell']
+
+        if (validSignalValues.includes(signals.short_term)) {
+          validationResults.validatedFields.push('unified_analysis.signals.short_term')
+          console.log(`✅ Valid short-term signal: ${signals.short_term}`)
+        }
+
+        if (validSignalValues.includes(signals.medium_term)) {
+          validationResults.validatedFields.push('unified_analysis.signals.medium_term')
+          console.log(`✅ Valid medium-term signal: ${signals.medium_term}`)
+        }
+
+        if (validSignalValues.includes(signals.long_term)) {
+          validationResults.validatedFields.push('unified_analysis.signals.long_term')
+          console.log(`✅ Valid long-term signal: ${signals.long_term}`)
+        }
+      }
+
+      // Validate market sentiment
+      if (unified.market_sentiment && typeof unified.market_sentiment === 'object') {
+        const sentiment = unified.market_sentiment
+
+        if (['bullish', 'bearish', 'neutral'].includes(sentiment.overall)) {
+          validationResults.validatedFields.push('unified_analysis.market_sentiment.overall')
+          console.log(`✅ Valid sentiment: ${sentiment.overall}`)
+        }
+
+        if (typeof sentiment.summary === 'string' && sentiment.summary.length > 0) {
+          validationResults.validatedFields.push('unified_analysis.market_sentiment.summary')
+          console.log(`✅ Valid sentiment summary: ${sentiment.summary.substring(0, 50)}...`)
+        }
+
+        if (['high', 'medium', 'low'].includes(sentiment.confidence)) {
+          validationResults.validatedFields.push('unified_analysis.market_sentiment.confidence')
+          console.log(`✅ Valid confidence: ${sentiment.confidence}`)
+        }
+      }
+
+      // Validate news highlights
+      if (Array.isArray(unified.news_highlights) && unified.news_highlights.length > 0) {
+        validationResults.validatedFields.push('unified_analysis.news_highlights')
+        console.log(`✅ Valid news highlights: ${unified.news_highlights.length} articles`)
+
+        // Check first few articles for structure
+        const newsValidationCount = Math.min(3, unified.news_highlights.length)
+        let validNewsItems = 0
+
+        for (let i = 0; i < newsValidationCount; i++) {
+          const article = unified.news_highlights[i]
+          if (article.headline && article.source && article.sentiment && article.impact) {
+            validNewsItems++
+          }
+        }
+
+        if (validNewsItems === newsValidationCount) {
+          validationResults.validatedFields.push('unified_analysis.news_highlights.structure')
+          console.log(`✅ Valid news structure: ${validNewsItems}/${newsValidationCount} articles properly formatted`)
+        } else {
+          console.log(`❌ Invalid news structure: ${validNewsItems}/${newsValidationCount} articles properly formatted`)
+          validationResults.recommendations.push('❌ News articles missing required fields')
+        }
+      }
     } else {
-      console.log(`❌ Invalid key drivers: ${analysis.key_drivers}`)
-      validationResults.recommendations.push('❌ Invalid key drivers data')
+      // Legacy validation logic
+      // Validate price data structure
+      if (analysis.priceData && typeof analysis.priceData === 'object') {
+        const priceData = analysis.priceData
+
+        // Check spot price
+        if (typeof priceData.spotPrice === 'number' && priceData.spotPrice > 0) {
+          validationResults.validatedFields.push('priceData.spotPrice')
+          console.log(`✅ Valid spot price: $${priceData.spotPrice}`)
+        } else {
+          console.log(`❌ Invalid spot price: ${priceData.spotPrice}`)
+          validationResults.recommendations.push('❌ Invalid spot price data')
+        }
+
+        // Check 24h change
+        if (typeof priceData.change24h === 'number') {
+          validationResults.validatedFields.push('priceData.change24h')
+          console.log(`✅ Valid 24h change: $${priceData.change24h}`)
+        } else {
+          console.log(`❌ Invalid 24h change: ${priceData.change24h}`)
+          validationResults.recommendations.push('❌ Invalid 24h change data')
+        }
+
+        // Check percentage change
+        if (typeof priceData.changePercent24h === 'number') {
+          validationResults.validatedFields.push('priceData.changePercent24h')
+          console.log(`✅ Valid 24h change %: ${priceData.changePercent24h}%`)
+        } else {
+          console.log(`❌ Invalid 24h change %: ${priceData.changePercent24h}`)
+          validationResults.recommendations.push('❌ Invalid percentage change data')
+        }
+
+        // Check sources array
+        if (Array.isArray(priceData.sources) && priceData.sources.length > 0) {
+          validationResults.validatedFields.push('priceData.sources')
+          console.log(`✅ Valid price sources: ${priceData.sources.length} sources`)
+        } else {
+          console.log(`❌ Invalid price sources: ${priceData.sources}`)
+          validationResults.recommendations.push('❌ Invalid price sources data')
+        }
+      } else {
+        console.log(`❌ Invalid price data structure`)
+        validationResults.recommendations.push('❌ Missing or invalid price data structure')
+      }
+
+      // Validate news data
+      if (Array.isArray(analysis.news24h) && analysis.news24h.length >= 5) {
+        validationResults.validatedFields.push('news24h')
+        console.log(`✅ Valid news data: ${analysis.news24h.length} articles`)
+
+        // Validate news article structure
+        const newsValidationCount = Math.min(3, analysis.news24h.length)
+        let validNewsItems = 0
+
+        for (let i = 0; i < newsValidationCount; i++) {
+          const article = analysis.news24h[i]
+          if (article.headline && article.source && article.sentiment && article.impact) {
+            validNewsItems++
+          }
+        }
+
+        if (validNewsItems === newsValidationCount) {
+          validationResults.validatedFields.push('news24h.structure')
+          console.log(`✅ Valid news structure: ${validNewsItems}/${newsValidationCount} articles properly formatted`)
+        } else {
+          console.log(`❌ Invalid news structure: ${validNewsItems}/${newsValidationCount} articles properly formatted`)
+          validationResults.recommendations.push('❌ News articles missing required fields')
+        }
+      } else {
+        console.log(`❌ Invalid news data: ${Array.isArray(analysis.news24h) ? analysis.news24h.length : 'not array'} articles`)
+        validationResults.recommendations.push('❌ Insufficient news data (minimum 5 articles required)')
+      }
+
+      // Validate enum fields for legacy format
+      const enumValidations = [
+        { field: 'sentiment', validValues: ['bullish', 'bearish', 'neutral'] },
+        { field: 'confidence', validValues: ['high', 'medium', 'low'] },
+        { field: 'signal', validValues: ['strong_buy', 'buy', 'hold', 'sell', 'strong_sell'] },
+        { field: 'riskLevel', validValues: ['high', 'medium', 'low'] },
+        { field: 'timeHorizon', validValues: ['short-term', 'medium-term', 'long-term'] },
+        { field: 'institutionalFlow', validValues: ['buying', 'selling', 'neutral'] }
+      ]
+
+      let validEnumFields = 0
+      enumValidations.forEach(({ field, validValues }) => {
+        if (validValues.includes(analysis[field])) {
+          validationResults.validatedFields.push(field)
+          validEnumFields++
+          console.log(`✅ Valid ${field}: ${analysis[field]}`)
+        } else {
+          console.log(`❌ Invalid ${field}: ${analysis[field]}`)
+          validationResults.recommendations.push(`❌ Invalid ${field} value`)
+        }
+      })
+
+      // Validate keyFactors array (renamed from key_drivers)
+      if (Array.isArray(analysis.keyFactors) && analysis.keyFactors.length > 0) {
+        validationResults.validatedFields.push('keyFactors')
+        console.log(`✅ Valid key factors: ${analysis.keyFactors.length} items`)
+      } else {
+        console.log(`❌ Invalid key factors: ${analysis.keyFactors}`)
+        validationResults.recommendations.push('❌ Invalid key factors data')
+      }
+
+      // Validate technical view structure
+      if (analysis.technicalView && typeof analysis.technicalView === 'object') {
+        const tech = analysis.technicalView
+
+        if (tech.trend && ['bullish', 'bearish', 'neutral'].includes(tech.trend)) {
+          validationResults.validatedFields.push('technicalView.trend')
+          console.log(`✅ Valid technical trend: ${tech.trend}`)
+        } else {
+          console.log(`❌ Invalid technical trend: ${tech.trend}`)
+          validationResults.recommendations.push('❌ Invalid technical trend data')
+        }
+
+        if (Array.isArray(tech.supportLevels) && tech.supportLevels.length > 0) {
+          validationResults.validatedFields.push('technicalView.supportLevels')
+          console.log(`✅ Valid support levels: ${tech.supportLevels.length} levels`)
+        } else {
+          console.log(`❌ Invalid support levels: ${tech.supportLevels}`)
+          validationResults.recommendations.push('❌ Invalid support levels data')
+        }
+
+        if (Array.isArray(tech.resistanceLevels) && tech.resistanceLevels.length > 0) {
+          validationResults.validatedFields.push('technicalView.resistanceLevels')
+          console.log(`✅ Valid resistance levels: ${tech.resistanceLevels.length} levels`)
+        } else {
+          console.log(`❌ Invalid resistance levels: ${tech.resistanceLevels}`)
+          validationResults.recommendations.push('❌ Invalid resistance levels data')
+        }
+      } else {
+        console.log(`❌ Invalid technical view structure`)
+        validationResults.recommendations.push('❌ Missing or invalid technical analysis data')
+      }
+
+      // Validate trading levels
+      if (typeof analysis.entryPoint === 'number' && analysis.entryPoint > 0) {
+        validationResults.validatedFields.push('entryPoint')
+        console.log(`✅ Valid entry point: $${analysis.entryPoint}`)
+      } else {
+        console.log(`❌ Invalid entry point: ${analysis.entryPoint}`)
+        validationResults.recommendations.push('❌ Invalid entry point data')
+      }
+
+      if (typeof analysis.stopLoss === 'number' && analysis.stopLoss > 0) {
+        validationResults.validatedFields.push('stopLoss')
+        console.log(`✅ Valid stop loss: $${analysis.stopLoss}`)
+      } else {
+        console.log(`❌ Invalid stop loss: ${analysis.stopLoss}`)
+        validationResults.recommendations.push('❌ Invalid stop loss data')
+      }
+
+      if (Array.isArray(analysis.takeProfit) && analysis.takeProfit.length >= 2) {
+        validationResults.validatedFields.push('takeProfit')
+        console.log(`✅ Valid take profit levels: ${analysis.takeProfit.length} levels`)
+      } else {
+        console.log(`❌ Invalid take profit levels: ${analysis.takeProfit}`)
+        validationResults.recommendations.push('❌ Invalid take profit data')
+      }
+
+      // Validate summary
+      if (typeof analysis.summary === 'string' && analysis.summary.length > 0) {
+        validationResults.validatedFields.push('summary')
+        console.log(`✅ Valid summary: ${analysis.summary.substring(0, 50)}...`)
+      } else {
+        console.log(`❌ Invalid summary`)
+        validationResults.recommendations.push('❌ Invalid summary data')
+      }
     }
 
-    // Validate summary
-    if (typeof analysis.summary === 'string' && analysis.summary.length > 0) {
-      validationResults.validatedFields.push('summary')
-      console.log(`✅ Valid summary: ${analysis.summary.substring(0, 50)}...`)
-    } else {
-      console.log(`❌ Invalid summary`)
-      validationResults.recommendations.push('❌ Invalid summary data')
-    }
+    // Calculate credibility score (0-100) - updated for both JSON structures
+    const expectedFields = isUnifiedAnalysis
+      ? [
+          'timestamp',
+          'unified_analysis.spot_price',
+          'unified_analysis.price_change.daily_pct',
+          'unified_analysis.price_change.weekly_pct',
+          'unified_analysis.technical_indicators.rsi_14',
+          'unified_analysis.technical_indicators.supports',
+          'unified_analysis.technical_indicators.resistances',
+          'unified_analysis.technical_indicators.trend',
+          'unified_analysis.signals.short_term',
+          'unified_analysis.signals.medium_term',
+          'unified_analysis.signals.long_term',
+          'unified_analysis.market_sentiment.overall',
+          'unified_analysis.market_sentiment.summary',
+          'unified_analysis.market_sentiment.confidence',
+          'unified_analysis.news_highlights',
+          'unified_analysis.news_highlights.structure'
+        ]
+      : [
+          'timestamp',
+          'priceData.spotPrice',
+          'priceData.change24h',
+          'priceData.changePercent24h',
+          'priceData.sources',
+          'news24h',
+          'news24h.structure',
+          'sentiment',
+          'confidence',
+          'signal',
+          'riskLevel',
+          'timeHorizon',
+          'institutionalFlow',
+          'keyFactors',
+          'technicalView.trend',
+          'technicalView.supportLevels',
+          'technicalView.resistanceLevels',
+          'entryPoint',
+          'stopLoss',
+          'takeProfit',
+          'summary'
+        ]
 
-    // Calculate credibility score (0-100)
-    const totalValidations = enumValidations.length + 3 // +3 for spot_price, key_drivers, summary
     const validFields = validationResults.validatedFields.length
-    validationResults.credibilityScore = Math.round((validFields / totalValidations) * 100)
+    const totalExpected = expectedFields.length
+    validationResults.credibilityScore = Math.round((validFields / totalExpected) * 100)
 
     // Generate quality assessment
     if (validationResults.credibilityScore >= 90) {
@@ -368,8 +733,8 @@ async function validateNewsCredibility(analysisText) {
     // Display validation results
     console.log(`📊 CREDIBILITY VALIDATION RESULTS:`)
     console.log(`🏆 Credibility Score: ${validationResults.credibilityScore}/100`)
-    console.log(`✅ Valid Fields: ${validFields}/${totalValidations}`)
-    console.log(`� Data Quality: ${validationResults.dataQuality}`)
+    console.log(`✅ Valid Fields: ${validFields}/${totalExpected}`)
+    console.log(`📈 Data Quality: ${validationResults.dataQuality}`)
 
     console.log('\n💡 RECOMMENDATIONS:')
     validationResults.recommendations.forEach((rec) => console.log(rec))
@@ -517,6 +882,66 @@ function generateTradingAlerts(outputText) {
       console.log(`✅ LOW RISK ENVIRONMENT: ${riskFactors} negative factors - normal trading`)
     }
 
+    // News-based alerts
+    if (analysis.news24h && Array.isArray(analysis.news24h)) {
+      console.log(`📰 NEWS ANALYSIS: ${analysis.news24h.length} articles processed`)
+
+      const highImpactNews = analysis.news24h.filter((article) => article.impact === 'high')
+      if (highImpactNews.length > 0) {
+        console.log(`🔥 HIGH IMPACT NEWS: ${highImpactNews.length} critical developments`)
+        highImpactNews.slice(0, 2).forEach((article, index) => {
+          const sentimentEmoji = { bullish: '📈', bearish: '📉', neutral: '🤝' }
+          console.log(`   ${index + 1}. ${sentimentEmoji[article.sentiment] || '📊'} ${article.headline.substring(0, 60)}...`)
+        })
+      }
+    }
+
+    // Technical analysis alerts
+    if (analysis.technicalView) {
+      const tech = analysis.technicalView
+      console.log('\n📊 TECHNICAL ALERTS:')
+
+      if (tech.trend === 'bullish') {
+        console.log(`📈 BULLISH TREND: Technical momentum favoring upside`)
+      } else if (tech.trend === 'bearish') {
+        console.log(`📉 BEARISH TREND: Technical momentum favoring downside`)
+      }
+
+      if (tech.supportLevels && Array.isArray(tech.supportLevels) && spotPrice) {
+        const nearestSupport = tech.supportLevels.find((level) => level < spotPrice && (spotPrice - level) / spotPrice < 0.02)
+        if (nearestSupport) {
+          console.log(`🛡️ SUPPORT ALERT: Near key support at $${nearestSupport}`)
+        }
+      }
+
+      if (tech.resistanceLevels && Array.isArray(tech.resistanceLevels) && spotPrice) {
+        const nearestResistance = tech.resistanceLevels.find((level) => level > spotPrice && (level - spotPrice) / spotPrice < 0.02)
+        if (nearestResistance) {
+          console.log(`⛔ RESISTANCE ALERT: Near key resistance at $${nearestResistance}`)
+        }
+      }
+    }
+
+    // Trading level alerts
+    if (analysis.entryPoint && spotPrice) {
+      const entryDistance = (Math.abs(spotPrice - analysis.entryPoint) / spotPrice) * 100
+      if (entryDistance < 1) {
+        console.log(`🎯 ENTRY ALERT: Current price within 1% of entry point ($${analysis.entryPoint})`)
+      }
+    }
+
+    // Risk assessment alerts
+    if (analysis.riskLevel === 'high') {
+      console.log(`🚨 HIGH RISK ALERT: Elevated market risk - reduce position sizing`)
+    }
+
+    // Institutional flow alerts
+    if (analysis.institutionalFlow === 'buying') {
+      console.log(`💰 INSTITUTIONAL BUYING: Smart money accumulating gold`)
+    } else if (analysis.institutionalFlow === 'selling') {
+      console.log(`💸 INSTITUTIONAL SELLING: Smart money reducing gold exposure`)
+    }
+
     console.log('='.repeat(40))
   } catch (error) {
     console.log('⚠️  Alert generation failed - manual review recommended')
@@ -542,8 +967,122 @@ function displayKeyFindings(outputText, validationResults = null) {
       console.log(JSON.stringify(analysis, null, 2))
       console.log('='.repeat(30))
 
-      // Display key metrics
-      if (analysis.spot_price) {
+      // Display key metrics - updated for both JSON structures
+      if (analysis.unified_analysis) {
+        // Handle unified_analysis structure
+        const unified = analysis.unified_analysis
+
+        if (unified.spot_price) {
+          console.log(`💰 Current Gold Price: $${unified.spot_price}`)
+
+          if (unified.price_change) {
+            if (unified.price_change.daily_pct !== undefined && unified.price_change.daily_pct !== null) {
+              const changeSymbol = unified.price_change.daily_pct >= 0 ? '+' : ''
+              console.log(`📈 Daily Change: ${changeSymbol}${unified.price_change.daily_pct}%`)
+            }
+
+            if (unified.price_change.weekly_pct !== undefined && unified.price_change.weekly_pct !== null) {
+              const changeSymbol = unified.price_change.weekly_pct >= 0 ? '+' : ''
+              console.log(`📈 Weekly Change: ${changeSymbol}${unified.price_change.weekly_pct}%`)
+            }
+          }
+        }
+
+        // Display market sentiment from unified structure
+        if (unified.market_sentiment) {
+          const sentiment = unified.market_sentiment
+          const sentimentEmoji = {
+            bullish: '📈',
+            bearish: '📉',
+            neutral: '🤝'
+          }
+          console.log(`${sentimentEmoji[sentiment.overall] || '📊'} Market Sentiment: ${(sentiment.overall || 'neutral').toUpperCase()}`)
+
+          if (sentiment.confidence) {
+            const confidenceEmoji = {
+              high: '🔒',
+              medium: '⚖️',
+              low: '⚠️'
+            }
+            console.log(`${confidenceEmoji[sentiment.confidence] || '📊'} Confidence: ${sentiment.confidence.toUpperCase()}`)
+          }
+
+          if (sentiment.summary) {
+            console.log(`📝 Market Summary: ${sentiment.summary}`)
+          }
+        }
+
+        // Display trading signals from unified structure
+        if (unified.signals) {
+          const signals = unified.signals
+          const signalEmoji = {
+            strong_buy: '🚀',
+            buy: '📈',
+            hold: '🤝',
+            sell: '📉',
+            strong_sell: '🔻'
+          }
+
+          if (signals.short_term) {
+            console.log(`${signalEmoji[signals.short_term] || '🎯'} Short-term Signal: ${signals.short_term.toUpperCase()}`)
+          }
+          if (signals.medium_term) {
+            console.log(`${signalEmoji[signals.medium_term] || '🎯'} Medium-term Signal: ${signals.medium_term.toUpperCase()}`)
+          }
+          if (signals.long_term) {
+            console.log(`${signalEmoji[signals.long_term] || '🎯'} Long-term Signal: ${signals.long_term.toUpperCase()}`)
+          }
+        }
+
+        // Display technical analysis from unified structure
+        if (unified.technical_indicators) {
+          console.log('\n📊 TECHNICAL ANALYSIS:')
+          const tech = unified.technical_indicators
+
+          if (tech.trend) {
+            const trendEmoji = { bullish: '📈', bearish: '📉', neutral: '➡️' }
+            console.log(`📈 Trend: ${trendEmoji[tech.trend] || '📊'} ${tech.trend.toUpperCase()}`)
+          }
+
+          if (tech.rsi_14) {
+            console.log(`📊 RSI (14): ${tech.rsi_14}`)
+          }
+
+          if (Array.isArray(tech.supports) && tech.supports.length > 0) {
+            console.log(`🛡️ Support Levels: $${tech.supports.join(', $')}`)
+          }
+
+          if (Array.isArray(tech.resistances) && tech.resistances.length > 0) {
+            console.log(`⛔ Resistance Levels: $${tech.resistances.join(', $')}`)
+          }
+        }
+
+        // Display news highlights from unified structure
+        if (Array.isArray(unified.news_highlights) && unified.news_highlights.length > 0) {
+          console.log(`📰 News Coverage: ${unified.news_highlights.length} articles analyzed`)
+
+          // Show top 3 news headlines
+          const topNews = unified.news_highlights.slice(0, 3)
+          topNews.forEach((article, index) => {
+            const impactEmoji = { high: '🔥', medium: '⚡', low: '📄' }
+            const sentimentEmoji = { bullish: '📈', bearish: '📉', neutral: '🤝' }
+            if (article && article.headline) {
+              console.log(`   ${index + 1}. ${impactEmoji[article.impact] || '📄'} ${sentimentEmoji[article.sentiment] || '📊'} ${article.headline.substring(0, 80)}...`)
+            }
+          })
+        }
+      } else if (analysis.priceData && analysis.priceData.spotPrice) {
+        // Handle legacy structure
+        console.log(`💰 Current Gold Price: $${analysis.priceData.spotPrice}`)
+        if (analysis.priceData.change24h !== undefined) {
+          const changeSymbol = analysis.priceData.change24h >= 0 ? '+' : ''
+          console.log(`📈 24h Change: ${changeSymbol}$${analysis.priceData.change24h} (${analysis.priceData.changePercent24h}%)`)
+        }
+        if (analysis.priceData.sources && analysis.priceData.sources.length > 0) {
+          console.log(`📊 Price Sources: ${analysis.priceData.sources.length} confirmed sources`)
+        }
+      } else if (analysis.spot_price) {
+        // Legacy support
         console.log(`💰 Current Gold Price: $${analysis.spot_price}`)
       }
 
@@ -582,59 +1121,94 @@ function displayKeyFindings(outputText, validationResults = null) {
         console.log(`📝 Summary: ${analysis.summary}`)
       }
 
-      if (analysis.key_drivers && Array.isArray(analysis.key_drivers)) {
-        console.log(`� Key Drivers (${analysis.key_drivers.length}):`)
-        analysis.key_drivers.forEach((driver, index) => {
-          console.log(`   ${index + 1}. ${driver}`)
+      // Display key factors (updated field name)
+      if (analysis.keyFactors && Array.isArray(analysis.keyFactors)) {
+        console.log(`🔑 Key Factors (${analysis.keyFactors.length}):`)
+        analysis.keyFactors.forEach((factor, index) => {
+          console.log(`   ${index + 1}. ${factor}`)
         })
       }
 
-      // Display market factors
-      console.log('\n📊 MARKET FACTORS ANALYSIS:')
-      if (analysis.nfp_impact) {
-        const nfpEmoji = { positive: '✅', negative: '❌', neutral: '🤝' }
-        console.log(`� NFP Impact: ${nfpEmoji[analysis.nfp_impact] || '📊'} ${analysis.nfp_impact.toUpperCase()}`)
+      // Display news summary
+      if (analysis.news24h && Array.isArray(analysis.news24h)) {
+        console.log(`📰 News Coverage: ${analysis.news24h.length} articles analyzed`)
+
+        // Show top 3 news headlines
+        const topNews = analysis.news24h.slice(0, 3)
+        topNews.forEach((article, index) => {
+          const impactEmoji = { high: '🔥', medium: '⚡', low: '📄' }
+          const sentimentEmoji = { bullish: '📈', bearish: '📉', neutral: '🤝' }
+          if (article && article.headline) {
+            console.log(`   ${index + 1}. ${impactEmoji[article.impact] || '📄'} ${sentimentEmoji[article.sentiment] || '📊'} ${article.headline.substring(0, 80)}...`)
+          }
+        })
       }
 
-      if (analysis.fed_policy_impact) {
-        const fedEmoji = { hawkish: '🦅', dovish: '🕊️', neutral: '🤝' }
-        console.log(`🏛️ Fed Policy: ${fedEmoji[analysis.fed_policy_impact] || '📊'} ${analysis.fed_policy_impact.toUpperCase()}`)
+      // Display technical analysis
+      if (analysis.technicalView) {
+        console.log('\n📊 TECHNICAL ANALYSIS:')
+        const tech = analysis.technicalView
+
+        if (tech.trend) {
+          const trendEmoji = { bullish: '📈', bearish: '📉', neutral: '➡️' }
+          console.log(`📈 Trend: ${trendEmoji[tech.trend] || '📊'} ${tech.trend.toUpperCase()}`)
+        }
+
+        if (tech.supportLevels && Array.isArray(tech.supportLevels)) {
+          console.log(`🛡️ Support Levels: $${tech.supportLevels.join(', $')}`)
+        }
+
+        if (tech.resistanceLevels && Array.isArray(tech.resistanceLevels)) {
+          console.log(`⛔ Resistance Levels: $${tech.resistanceLevels.join(', $')}`)
+        }
+
+        if (tech.rsi) {
+          console.log(`📊 RSI: ${tech.rsi}`)
+        }
       }
 
-      if (analysis.dxy_impact) {
-        const dxyEmoji = { strengthening: '💪', weakening: '📉', neutral: '🤝' }
-        console.log(`💵 DXY Impact: ${dxyEmoji[analysis.dxy_impact] || '📊'} ${analysis.dxy_impact.toUpperCase()}`)
+      // Display trading levels
+      if (analysis.entryPoint || analysis.stopLoss || analysis.takeProfit) {
+        console.log('\n🎯 TRADING LEVELS:')
+
+        if (analysis.entryPoint) {
+          console.log(`🎯 Entry Point: $${analysis.entryPoint}`)
+        }
+
+        if (analysis.stopLoss) {
+          console.log(`🛑 Stop Loss: $${analysis.stopLoss}`)
+        }
+
+        if (analysis.takeProfit && Array.isArray(analysis.takeProfit)) {
+          console.log(`🎯 Take Profit: $${analysis.takeProfit.join(', $')}`)
+        }
       }
 
-      if (analysis.inflation_data) {
-        const inflationEmoji = { high: '🔥', moderate: '📊', low: '❄️' }
-        console.log(`� Inflation: ${inflationEmoji[analysis.inflation_data] || '📊'} ${analysis.inflation_data.toUpperCase()}`)
-      }
-
-      if (analysis.geopolitical_risk) {
+      // Display additional metrics
+      if (analysis.riskLevel) {
         const riskEmoji = { high: '🚨', medium: '⚠️', low: '✅' }
-        console.log(`🌍 Geopolitical Risk: ${riskEmoji[analysis.geopolitical_risk] || '📊'} ${analysis.geopolitical_risk.toUpperCase()}`)
+        console.log(`⚠️ Risk Level: ${riskEmoji[analysis.riskLevel] || '📊'} ${analysis.riskLevel.toUpperCase()}`)
       }
 
-      // Display validation results if available
-      if (validationResults && validationResults.credibilityScore !== undefined) {
-        console.log('\n🔍 DATA QUALITY VALIDATION:')
-        console.log(`🏆 Quality Score: ${validationResults.credibilityScore}/100`)
-        console.log(`📈 Data Quality: ${validationResults.dataQuality?.toUpperCase() || 'Unknown'}`)
+      if (analysis.timeHorizon) {
+        console.log(`⏰ Time Horizon: ${analysis.timeHorizon.toUpperCase()}`)
+      }
 
-        if (validationResults.credibilityScore >= 90) {
-          console.log(`✅ Excellent Quality - Analysis is highly reliable`)
-        } else if (validationResults.credibilityScore >= 75) {
-          console.log(`✅ Good Quality - Analysis is reliable`)
-        } else if (validationResults.credibilityScore >= 60) {
-          console.log(`⚠️  Moderate Quality - Use with caution`)
-        } else {
-          console.log(`❌ Poor Quality - Seek additional verification`)
-        }
+      if (analysis.institutionalFlow) {
+        const flowEmoji = { buying: '💰', selling: '💸', neutral: '🤝' }
+        console.log(`🏛️ Institutional Flow: ${flowEmoji[analysis.institutionalFlow] || '📊'} ${analysis.institutionalFlow.toUpperCase()}`)
+      }
 
-        if (validationResults.recommendations && validationResults.recommendations.length > 0) {
-          console.log(`💡 Key Recommendation: ${validationResults.recommendations[0]}`)
-        }
+      if (analysis.fedImpact) {
+        console.log(`🏛️ Fed Impact: ${analysis.fedImpact}`)
+      }
+
+      if (analysis.currencyImpact) {
+        console.log(`💵 Currency Impact: ${analysis.currencyImpact}`)
+      }
+
+      if (analysis.priceTarget) {
+        console.log(`🎯 Price Target: ${analysis.priceTarget}`)
       }
 
       // Generate automatic alerts and notifications

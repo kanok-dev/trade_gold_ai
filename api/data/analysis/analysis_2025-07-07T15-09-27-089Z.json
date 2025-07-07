@@ -1,0 +1,107 @@
+{
+  "timestamp": "2025-07-07T15:09:27.088Z",
+  "currentPrice": {
+    "price": 3319.49,
+    "source": "Gold API",
+    "lastUpdated": "2025-07-07T15:08:28Z"
+  },
+  "news": {
+    "updates": [
+      {
+        "spot_price": 3311.09,
+        "price_change_last24hrs": -23.29,
+        "price_change_last24hrs_percentage": -0.7,
+        "price_change_direction": "down",
+        "price_change_time": "2025-07-07T14:53:13Z",
+        "price_change_source": "Reuters",
+        "sentiment": "bearish",
+        "confidence": "high",
+        "signal": "sell",
+        "summary": "Gold prices declined by 0.7% to $3,311.09 per ounce on Monday following U.S. President Donald Trump's announcement of progress on several trade agreements and an extension of tariff reprieves for multiple countries, which reduced demand for the safe-haven asset.",
+        "source": "Reuters, July 7, 2025"
+      },
+      {
+        "spot_price": 3311.09,
+        "price_change_last24hrs": -23.29,
+        "price_change_last24hrs_percentage": -0.7,
+        "price_change_direction": "down",
+        "price_change_time": "2025-07-07T14:53:13Z",
+        "price_change_source": "Reuters",
+        "sentiment": "bearish",
+        "confidence": "high",
+        "signal": "sell",
+        "summary": "Gold prices declined by 0.7% to $3,311.09 per ounce on Monday following U.S. President Donald Trump's announcement of progress on several trade agreements and an extension of tariff reprieves for multiple countries, which reduced demand for the safe-haven asset.",
+        "source": "Reuters, July 7, 2025"
+      },
+      {
+        "spot_price": 3311.09,
+        "price_change_last24hrs": -23.29,
+        "price_change_last24hrs_percentage": -0.7,
+        "price_change_direction": "down",
+        "price_change_time": "2025-07-07T14:53:13Z",
+        "price_change_source": "Reuters",
+        "sentiment": "bearish",
+        "confidence": "high",
+        "signal": "sell",
+        "summary": "Gold prices declined by 0.7% to $3,311.09 per ounce on Monday following U.S. President Donald Trump's announcement of progress on several trade agreements and an extension of tariff reprieves for multiple countries, which reduced demand for the safe-haven asset.",
+        "source": "Reuters, July 7, 2025"
+      }
+    ],
+    "forecast": "Given the recent decline in gold prices due to positive trade developments and tariff extensions, the market sentiment is currently bearish. If trade tensions continue to ease and the U.S. dollar strengthens, gold prices may face further downward pressure. Conversely, if geopolitical tensions escalate or economic uncertainties increase, gold could see a rebound as investors seek safe-haven assets.",
+    "count": 3
+  },
+  "analysis": {
+    "sentiment": {
+      "overall": "bearish",
+      "confidence": 8,
+      "reasoning": "ราคาทองคำปรับตัวลดลง 0.7% ใน 24 ชั่วโมงที่ผ่านมา จากข่าวความคืบหน้าในข้อตกลงการค้าสหรัฐฯ และการขยายเวลายกเว้นภาษี ส่งผลให้ความต้องการสินทรัพย์ปลอดภัยลดลง ข้อมูลข่าวสารและทิศทางราคาล่าสุดยังคงชี้ไปในทางขาลงอย่างชัดเจน"
+    },
+    "signal": {
+      "action": "SELL",
+      "strength": 8,
+      "reasoning": "สัญญาณจากข่าวและข้อมูลราคา ณ ปัจจุบันยังคงเป็นขาลงอย่างต่อเนื่อง ไม่มีสัญญาณกลับตัวที่ชัดเจน และแรงขายยังคงมีน้ำหนักจากปัจจัยบวกด้านการค้าและค่าเงินดอลลาร์ที่แข็งค่า"
+    },
+    "tradingDecision": {
+      "entryPoint": 3319,
+      "takeProfit": 3270,
+      "stopLoss": 3345,
+      "riskReward": 1.96,
+      "reasoning": "แนะนำเปิดสถานะขาย (Short) ที่ระดับ 3319 โดยตั้งเป้าทำกำไรที่ 3270 ซึ่งเป็นแนวรับสำคัญถัดไป และตั้งจุดตัดขาดทุนที่ 3345 เหนือจุดสูงสุดระยะสั้นเพื่อจำกัดความเสี่ยง อัตราส่วนผลตอบแทนต่อความเสี่ยงอยู่ที่ประมาณ 1.96 ถือว่าเหมาะสมในสภาวะตลาดขาลง"
+    },
+    "riskAssessment": {
+      "riskLevel": "MODERATE",
+      "factors": [
+        "ข่าวบวกด้านการค้ากดดันราคาทองคำ",
+        "ความเสี่ยงจากเหตุการณ์ไม่คาดคิดทางภูมิรัฐศาสตร์"
+      ],
+      "recommendation": "ควรติดตามข่าวสารและปัจจัยพื้นฐานอย่างใกล้ชิด โดยเฉพาะหากมีการเปลี่ยนแปลงด้านเศรษฐกิจหรือความตึงเครียดทางการเมืองที่อาจพลิกกลับทิศทางราคาได้อย่างรวดเร็ว ควรใช้ stop loss อย่างเคร่งครัด"
+    },
+    "summary": "ราคาทองคำยังคงอยู่ในแนวโน้มขาลงจากแรงกดดันของข่าวบวกด้านการค้าและค่าเงินดอลลาร์ที่แข็งค่า สัญญาณเทคนิคและข่าวสารสนับสนุนการเปิดสถานะขาย โดยควรตั้ง stop loss เพื่อจำกัดความเสี่ยง หากมีปัจจัยใหม่ที่เปลี่ยนแปลงควรปรับกลยุทธ์ทันที",
+    "keyFactors": [
+      "ข่าวความคืบหน้าข้อตกลงการค้าสหรัฐฯ",
+      "การขยายเวลายกเว้นภาษี",
+      "ค่าเงินดอลลาร์แข็งค่า"
+    ],
+    "timestamp": "2025-07-07T15:09:27.088Z",
+    "usage": {
+      "prompt_tokens": 1032,
+      "completion_tokens": 665,
+      "total_tokens": 1697,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    }
+  },
+  "performance": {
+    "processingTime": "2025-07-07T15:09:27.088Z",
+    "dataFreshness": "real-time",
+    "confidence": 8
+  }
+}

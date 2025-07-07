@@ -1,0 +1,61 @@
+{
+  "NewsUpdates": [
+    {
+      "spot_price": 3311.09,
+      "price_change_last24hrs": -23.29,
+      "price_change_last24hrs_percentage": -0.7,
+      "price_change_direction": "down",
+      "price_change_time": "2025-07-07T14:53:13Z",
+      "price_change_source": "Reuters",
+      "sentiment": "bearish",
+      "confidence": "high",
+      "signal": "sell",
+      "summary": "Gold prices declined by 0.7% to $3,311.09 per ounce on Monday following U.S. President Donald Trump's announcement of progress on several trade agreements and an extension of tariff reprieves for multiple countries, which reduced demand for the safe-haven asset.",
+      "source": "Reuters, July 7, 2025"
+    },
+    {
+      "spot_price": 3311.09,
+      "price_change_last24hrs": -23.29,
+      "price_change_last24hrs_percentage": -0.7,
+      "price_change_direction": "down",
+      "price_change_time": "2025-07-07T14:53:13Z",
+      "price_change_source": "Reuters",
+      "sentiment": "bearish",
+      "confidence": "high",
+      "signal": "sell",
+      "summary": "Gold prices declined by 0.7% to $3,311.09 per ounce on Monday following U.S. President Donald Trump's announcement of progress on several trade agreements and an extension of tariff reprieves for multiple countries, which reduced demand for the safe-haven asset.",
+      "source": "Reuters, July 7, 2025"
+    },
+    {
+      "spot_price": 3311.09,
+      "price_change_last24hrs": -23.29,
+      "price_change_last24hrs_percentage": -0.7,
+      "price_change_direction": "down",
+      "price_change_time": "2025-07-07T14:53:13Z",
+      "price_change_source": "Reuters",
+      "sentiment": "bearish",
+      "confidence": "high",
+      "signal": "sell",
+      "summary": "Gold prices declined by 0.7% to $3,311.09 per ounce on Monday following U.S. President Donald Trump's announcement of progress on several trade agreements and an extension of tariff reprieves for multiple countries, which reduced demand for the safe-haven asset.",
+      "source": "Reuters, July 7, 2025"
+    }
+  ],
+  "Analysis Forecast Scenarios": "Given the recent decline in gold prices due to positive trade developments and reduced demand for safe-haven assets, it's anticipated that gold prices may continue to face downward pressure in the short term. However, if trade tensions escalate or economic uncertainties increase, gold could see a rebound as investors seek safe-haven assets.",
+  "Trading Decision": {
+    "entryPoint": 3311.09,
+    "takeProfit": 3400,
+    "stopLoss": 3200
+  },
+  "usage": {
+    "input_tokens": 862,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 553,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1415
+  },
+  "timestamp": "2025-07-07T15:08:28.605Z"
+}

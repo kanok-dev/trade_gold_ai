@@ -1,0 +1,35 @@
+{
+  "NewsUpdates": [
+    {
+      "spot_price": 305.76,
+      "price_change_last24hrs": -1.38,
+      "price_change_last24hrs_percentage": -0.449,
+      "price_change_direction": "down",
+      "price_change_time": "2025-07-07T14:45:50Z",
+      "price_change_source": "SPDR Gold Shares ETF (GLD)",
+      "sentiment": "neutral",
+      "confidence": "medium",
+      "signal": "hold",
+      "summary": "SPDR Gold Shares ETF (GLD) closed at $305.76, down $1.38 (-0.449%) from the previous close.",
+      "source": "SPDR Gold Shares ETF (GLD)"
+    }
+  ],
+  "Analysis Forecast Scenarios": "Analysts have raised their gold price forecasts due to ongoing economic uncertainties and geopolitical tensions. For instance, HSBC has revised its average gold price forecast for 2025 to $3,215 per ounce, up from $3,015, citing persistent economic risks and high government debt. ([reuters.com](https://www.reuters.com/business/hsbc-raises-average-gold-price-forecasts-2025-2026-2025-07-01/?utm_source=openai)) Similarly, Citi has increased its near-term and 2025 average gold price forecasts, raising its three-month price target to $3,000 per ounce from $2,800, attributing the bullish trend to trade wars, geopolitical tensions, and strong central bank purchases. ([reuters.com](https://www.reuters.com/markets/commodities/citi-raises-gold-forecasts-tariff-uncertainty-central-bank-demand-2025-02-06/?utm_source=openai))",
+  "Trading Decision": {
+    "entryPoint": 305.76,
+    "takeProfit": 310,
+    "stopLoss": 300
+  },
+  "usage": {
+    "input_tokens": 862,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 411,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1273
+  },
+  "timestamp": "2025-07-07T15:01:00.381Z"
+}

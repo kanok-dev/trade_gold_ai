@@ -618,41 +618,319 @@ class GoldTradingAPIServer {
       const credibilityScore = validation.credibilityScore || 0
       const dataQuality = validation.dataQuality || 'unknown'
 
-      // Format the sonar analysis for Line
-      return (
-        `🔍 SONAR GOLD ANALYSIS\n` +
-        `🕐 ${new Date().toLocaleString()}\n` +
-        `📅 Range: ${sonarResult.dateRange || 'Last 24h'}\n\n` +
-        `💰 PRICE DATA:\n` +
-        `• Spot Price: $${analysis.spot_price || 'N/A'}\n` +
-        `• Sentiment: ${(analysis.sentiment || 'neutral').toUpperCase()}\n` +
-        `• Signal: ${(analysis.signal || 'hold').toUpperCase()}\n` +
-        `• Confidence: ${(analysis.confidence || 'medium').toUpperCase()}\n\n` +
-        `📊 MARKET FACTORS:\n` +
-        `• Fed Policy: ${(analysis.fed_policy_impact || 'neutral').toUpperCase()}\n` +
-        `• DXY Impact: ${(analysis.dxy_impact || 'neutral').toUpperCase()}\n` +
-        `• NFP Impact: ${(analysis.nfp_impact || 'neutral').toUpperCase()}\n` +
-        `• Inflation: ${(analysis.inflation_data || 'moderate').toUpperCase()}\n` +
-        `• Geopolitical: ${(analysis.geopolitical_risk || 'medium').toUpperCase()}\n\n` +
-        `🔑 KEY DRIVERS:\n` +
-        (analysis.key_drivers && Array.isArray(analysis.key_drivers)
-          ? analysis.key_drivers
-              .slice(0, 3)
-              .map((driver, i) => `${i + 1}. ${driver}`)
-              .join('\n')
-          : 'No key drivers available') +
-        '\n\n' +
-        `📝 SUMMARY:\n${analysis.summary || 'No summary available'}\n\n` +
-        `🏆 DATA QUALITY:\n` +
-        `• Score: ${credibilityScore}/100\n` +
-        `• Quality: ${dataQuality.toUpperCase()}\n` +
-        `• Status: ${sonarResult.status || 'completed'}\n\n` +
-        `⚡ Powered by Sonar AI`
-      )
+      // Check if this is a unified_analysis structure
+      if (analysis.unified_analysis) {
+        return this.formatUnifiedAnalysisForLine(analysis, validation, sonarResult)
+      } else {
+        return this.formatLegacyAnalysisForLine(analysis, validation, sonarResult)
+      }
     } catch (error) {
       console.error('❌ Error formatting sonar result for Line:', error)
       return `❌ Sonar Analysis Formatting Error\n\nUnable to format analysis results.`
     }
+  }
+
+  formatUnifiedAnalysisForLine(analysis, validation, sonarResult) {
+    const unified = analysis.unified_analysis
+    const credibilityScore = validation.credibilityScore || 0
+    const dataQuality = validation.dataQuality || 'unknown'
+
+    // Extract price data from unified structure
+    const spotPrice = unified.spot_price || 'N/A'
+
+    // Format price change
+    let priceChangeText = ''
+    if (unified.price_change) {
+      if (unified.price_change.daily_pct !== undefined && unified.price_change.daily_pct !== null) {
+        const changeSymbol = unified.price_change.daily_pct >= 0 ? '+' : ''
+        priceChangeText += `📈 Daily Change: ${changeSymbol}${unified.price_change.daily_pct}%\n`
+      }
+      if (unified.price_change.weekly_pct !== undefined && unified.price_change.weekly_pct !== null) {
+        const changeSymbol = unified.price_change.weekly_pct >= 0 ? '+' : ''
+        priceChangeText += `📈 Weekly Change: ${changeSymbol}${unified.price_change.weekly_pct}%\n`
+      }
+    }
+
+    // Format sentiment from unified structure
+    const sentiment = unified.market_sentiment || {}
+    const sentimentEmojis = { bullish: '📈', bearish: '📉', neutral: '🤝' }
+    const sentimentEmoji = sentimentEmojis[sentiment.overall] || '📊'
+    const confidenceEmojis = { high: '🔒', medium: '⚖️', low: '⚠️' }
+    const confidenceEmoji = confidenceEmojis[sentiment.confidence] || '📊'
+
+    // Format signals from unified structure
+    const signals = unified.signals || {}
+    const signalEmojis = { strong_buy: '🚀', buy: '📈', hold: '🤝', sell: '📉', strong_sell: '🔻' }
+    let signalsText = ''
+    if (signals.short_term) {
+      signalsText += `${signalEmojis[signals.short_term] || '🎯'} Short-term: ${signals.short_term.toUpperCase()}\n`
+    }
+    if (signals.medium_term) {
+      signalsText += `${signalEmojis[signals.medium_term] || '🎯'} Medium-term: ${signals.medium_term.toUpperCase()}\n`
+    }
+    if (signals.long_term) {
+      signalsText += `${signalEmojis[signals.long_term] || '🎯'} Long-term: ${signals.long_term.toUpperCase()}\n`
+    }
+
+    // Format technical analysis from unified structure
+    let technicalText = ''
+    if (unified.technical_indicators) {
+      const tech = unified.technical_indicators
+      technicalText = `\n📊 TECHNICAL ANALYSIS:\n`
+
+      if (tech.trend) {
+        const trendEmojis = { bullish: '📈', bearish: '📉', neutral: '➡️' }
+        const trendEmoji = trendEmojis[tech.trend] || '📊'
+        technicalText += `📈 Trend: ${trendEmoji} ${tech.trend.toUpperCase()}\n`
+      }
+
+      if (tech.rsi_14) {
+        technicalText += `📊 RSI (14): ${tech.rsi_14}\n`
+      }
+
+      if (Array.isArray(tech.supports) && tech.supports.length > 0) {
+        technicalText += `🛡️ Support Levels: $${tech.supports.join(', $')}\n`
+      }
+
+      if (Array.isArray(tech.resistances) && tech.resistances.length > 0) {
+        technicalText += `⛔ Resistance Levels: $${tech.resistances.join(', $')}\n`
+      }
+    }
+
+    // Format news from unified structure
+    let newsText = ''
+    if (Array.isArray(unified.news_highlights) && unified.news_highlights.length > 0) {
+      newsText = `📰 News Coverage: ${unified.news_highlights.length} articles analyzed\n`
+      const topNews = unified.news_highlights.slice(0, 3)
+      if (topNews.length > 0) {
+        const impactEmojis = { high: '🔥', medium: '⚡', low: '📄' }
+        const newsEmojis = { bullish: '📈', bearish: '📉', neutral: '🤝' }
+
+        topNews.forEach((article, index) => {
+          if (article && article.headline) {
+            const impactEmoji = impactEmojis[article.impact] || '📄'
+            const newsEmoji = newsEmojis[article.sentiment] || '📊'
+            newsText += `   ${index + 1}. ${impactEmoji} ${newsEmoji} ${article.headline.substring(0, 80)}...\n`
+          }
+        })
+      }
+    }
+
+    // Format trading levels from final_decision
+    let tradingText = ''
+    if (unified.final_decision) {
+      const decision = unified.final_decision
+      tradingText = `\n🎯 TRADING RECOMMENDATION:\n`
+
+      if (decision.action) {
+        const actionEmoji = signalEmojis[decision.action] || '🎯'
+        tradingText += `${actionEmoji} Action: ${decision.action.toUpperCase()}\n`
+      }
+
+      if (decision.confidence) {
+        tradingText += `🔒 Confidence: ${decision.confidence}%\n`
+      }
+
+      if (decision.entryPoint) {
+        tradingText += `🎯 Entry Point: $${decision.entryPoint}\n`
+      }
+
+      if (decision.stopLoss) {
+        tradingText += `🛑 Stop Loss: $${decision.stopLoss}\n`
+      }
+
+      if (Array.isArray(decision.takeProfit) && decision.takeProfit.length > 0) {
+        tradingText += `🎯 Take Profit: $${decision.takeProfit.join(', $')}\n`
+      }
+
+      if (decision.reasoning) {
+        tradingText += `💭 Reasoning: ${decision.reasoning.substring(0, 150)}...\n`
+      }
+    }
+
+    // Build the complete message for unified analysis
+    return (
+      `🔍 UNIFIED GOLD ANALYSIS\n` +
+      `🕐 ${new Date().toLocaleString()}\n` +
+      `📅 Source: ${analysis.source || 'AI Merged'}\n` +
+      `⚡ Freshness: ${analysis.data_freshness_minutes || 0} minutes\n\n` +
+      `💰 Current Gold Price: $${spotPrice}\n` +
+      priceChangeText +
+      `${sentimentEmoji} Market Sentiment: ${(sentiment.overall || 'neutral').toUpperCase()}\n` +
+      `${confidenceEmoji} Confidence: ${(sentiment.confidence || 'medium').toUpperCase()}\n\n` +
+      `🎯 TRADING SIGNALS:\n` +
+      signalsText +
+      (sentiment.summary ? `\n📝 Market Summary: ${sentiment.summary.substring(0, 200)}...\n` : '') +
+      (newsText ? '\n' + newsText : '') +
+      technicalText +
+      tradingText +
+      `\n📊 Data Quality: ${dataQuality} (${credibilityScore}/100)\n` +
+      `⚡ Powered by AI Unified Analysis`
+    )
+  }
+
+  formatLegacyAnalysisForLine(analysis, validation, sonarResult) {
+    const credibilityScore = validation.credibilityScore || 0
+    const dataQuality = validation.dataQuality || 'unknown'
+
+    // Extract price data from legacy format
+    const priceData = analysis.priceData || {}
+    const spotPrice = priceData.spotPrice || analysis.spot_price || 'N/A'
+    const change24h = priceData.change24h
+    const changePercent24h = priceData.changePercent24h
+    const sources = priceData.sources || []
+
+    // Format price change
+    let priceChangeText = ''
+    if (change24h !== undefined && changePercent24h !== undefined) {
+      const changeSymbol = change24h >= 0 ? '+' : ''
+      priceChangeText = `📈 24h Change: ${changeSymbol}$${change24h} (${changePercent24h}%)\n`
+    }
+
+    // Format price sources
+    let priceSourcesText = ''
+    if (sources.length > 0) {
+      priceSourcesText = `📊 Price Sources: ${sources.length} confirmed sources\n`
+    }
+
+    // Format sentiment emoji
+    const sentimentEmojis = { bullish: '📈', bearish: '📉', neutral: '🤝' }
+    const sentimentEmoji = sentimentEmojis[analysis.sentiment] || '📊'
+
+    // Format signal emoji
+    const signalEmojis = { strong_buy: '🚀', buy: '📈', hold: '🤝', sell: '📉', strong_sell: '🔻' }
+    const signalEmoji = signalEmojis[analysis.signal] || '🎯'
+
+    // Format confidence emoji
+    const confidenceEmojis = { high: '🔒', medium: '⚖️', low: '⚠️' }
+    const confidenceEmoji = confidenceEmojis[analysis.confidence] || '📊'
+
+    // Format key factors
+    const keyFactors = analysis.keyFactors || analysis.key_drivers || []
+    let keyFactorsText = 'No key factors available'
+    if (Array.isArray(keyFactors) && keyFactors.length > 0) {
+      keyFactorsText =
+        `🔑 Key Factors (${keyFactors.length}):\n` +
+        keyFactors
+          .slice(0, 3)
+          .map((factor, i) => `   ${i + 1}. ${factor}`)
+          .join('\n')
+    }
+
+    // Format news coverage
+    let newsText = ''
+    if (analysis.news24h && Array.isArray(analysis.news24h)) {
+      newsText = `📰 News Coverage: ${analysis.news24h.length} articles analyzed\n`
+      const topNews = analysis.news24h.slice(0, 3)
+      if (topNews.length > 0) {
+        const impactEmojis = { high: '🔥', medium: '⚡', low: '📄' }
+        const newsEmojis = { bullish: '📈', bearish: '📉', neutral: '🤝' }
+
+        topNews.forEach((article, index) => {
+          if (article && article.headline) {
+            const impactEmoji = impactEmojis[article.impact] || '📄'
+            const newsEmoji = newsEmojis[article.sentiment] || '📊'
+            newsText += `   ${index + 1}. ${impactEmoji} ${newsEmoji} ${article.headline.substring(0, 80)}...\n`
+          }
+        })
+      }
+    }
+
+    // Format technical analysis
+    let technicalText = ''
+    if (analysis.technicalView) {
+      const tech = analysis.technicalView
+      technicalText = `\n📊 TECHNICAL ANALYSIS:\n`
+
+      if (tech.trend) {
+        const trendEmojis = { bullish: '📈', bearish: '📉', neutral: '➡️' }
+        const trendEmoji = trendEmojis[tech.trend] || '📊'
+        technicalText += `📈 Trend: ${trendEmoji} ${tech.trend.toUpperCase()}\n`
+      }
+
+      if (tech.supportLevels && Array.isArray(tech.supportLevels)) {
+        technicalText += `🛡️ Support Levels: $${tech.supportLevels.join(', $')}\n`
+      }
+
+      if (tech.resistanceLevels && Array.isArray(tech.resistanceLevels)) {
+        technicalText += `⛔ Resistance Levels: $${tech.resistanceLevels.join(', $')}\n`
+      }
+
+      if (tech.rsi) {
+        technicalText += `📊 RSI: ${tech.rsi}\n`
+      }
+    }
+
+    // Format trading levels
+    let tradingText = ''
+    if (analysis.entryPoint || analysis.stopLoss || analysis.takeProfit) {
+      tradingText = `\n🎯 TRADING LEVELS:\n`
+
+      if (analysis.entryPoint) {
+        tradingText += `🎯 Entry Point: $${analysis.entryPoint}\n`
+      }
+
+      if (analysis.stopLoss) {
+        tradingText += `🛑 Stop Loss: $${analysis.stopLoss}\n`
+      }
+
+      if (analysis.takeProfit && Array.isArray(analysis.takeProfit)) {
+        tradingText += `🎯 Take Profit: $${analysis.takeProfit.join(', $')}\n`
+      }
+    }
+
+    // Format additional metrics
+    let additionalMetrics = ''
+
+    if (analysis.riskLevel) {
+      const riskEmojis = { high: '🚨', medium: '⚠️', low: '✅' }
+      const riskEmoji = riskEmojis[analysis.riskLevel] || '📊'
+      additionalMetrics += `⚠️ Risk Level: ${riskEmoji} ${analysis.riskLevel.toUpperCase()}\n`
+    }
+
+    if (analysis.timeHorizon) {
+      additionalMetrics += `⏰ Time Horizon: ${analysis.timeHorizon.toUpperCase()}\n`
+    }
+
+    if (analysis.institutionalFlow) {
+      const flowEmojis = { buying: '💰', selling: '💸', neutral: '🤝' }
+      const flowEmoji = flowEmojis[analysis.institutionalFlow] || '📊'
+      additionalMetrics += `🏛️ Institutional Flow: ${flowEmoji} ${analysis.institutionalFlow.toUpperCase()}\n`
+    }
+
+    if (analysis.fedImpact) {
+      additionalMetrics += `🏛️ Fed Impact: ${analysis.fedImpact}\n`
+    }
+
+    if (analysis.currencyImpact) {
+      additionalMetrics += `💵 Currency Impact: ${analysis.currencyImpact}\n`
+    }
+
+    if (analysis.priceTarget) {
+      additionalMetrics += `🎯 Price Target: ${analysis.priceTarget}\n`
+    }
+
+    // Build the complete message for legacy analysis
+    return (
+      `🔍 SONAR GOLD ANALYSIS\n` +
+      `🕐 ${new Date().toLocaleString()}\n` +
+      `📅 Range: ${sonarResult.dateRange || 'Last 24h'}\n\n` +
+      `💰 Current Gold Price: $${spotPrice}\n` +
+      priceChangeText +
+      priceSourcesText +
+      `${sentimentEmoji} Market Sentiment: ${(analysis.sentiment || 'neutral').toUpperCase()}\n` +
+      `${signalEmoji} Trading Signal: ${(analysis.signal || 'hold').toUpperCase()}\n` +
+      `${confidenceEmoji} Confidence: ${(analysis.confidence || 'medium').toUpperCase()}\n` +
+      `📝 Summary: ${analysis.summary || 'No summary available'}\n` +
+      keyFactorsText +
+      '\n' +
+      (newsText ? '\n' + newsText : '') +
+      technicalText +
+      tradingText +
+      (additionalMetrics ? '\n' + additionalMetrics : '') +
+      `\n📊 Data Quality: ${dataQuality} (${credibilityScore}/100)\n` +
+      `⚡ Powered by Sonar AI`
+    )
   }
 
   setupLegacyRoutes() {
