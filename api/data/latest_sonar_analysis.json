@@ -1,24 +1,87 @@
 {
-  "timestamp": "2025-07-03T16:12:44.615Z",
+  "timestamp": "2025-07-07T09:47:08.641Z",
   "response": {
-    "id": "d1197e7a-5436-4214-bc23-e6e9b730ec0b",
+    "id": "0ecee6f4-481c-49be-b959-2ec9f2016fbd",
     "model": "sonar-pro",
-    "created": 1751559164,
+    "created": 1751881628,
     "usage": {
-      "prompt_tokens": 738,
-      "completion_tokens": 1090,
-      "total_tokens": 1828,
-      "search_context_size": "low"
+      "prompt_tokens": 104,
+      "completion_tokens": 219,
+      "total_tokens": 323,
+      "search_context_size": "high"
     },
     "citations": [
-      "https://www.tradingview.com/news/reuters.com,2025:newsml_L1N3T0078:0-gold-holds-in-narrow-range-as-spotlight-shifts-to-us-jobs-data/"
+      "https://goldprice.org/gold-price-today/2025-07-06",
+      "https://www.morningstar.com/news/dow-jones/20250706656/week-ahead-for-fx-bonds-tariff-deadline-asia-rate-decisions-in-focus",
+      "https://timesofindia.indiatimes.com/business/india-business/gold-price-outlook-fed-policy-july-9-tariff-deadline-and-data-cues-may-swing-yellow-metal-analysts-see-long-term-bullish-case/articleshow/122281309.cms",
+      "https://www.pymnts.com/news/banking/2025/fed-votes-advance-proposal-ease-banks-capital-requirements/",
+      "https://timesofindia.indiatimes.com/business/india-business/gold-price-prediction-what-is-the-gold-rate-outlook-for-july-07-2025-week-should-you-buy-or-sell-mcx-gold/articleshow/122288940.cms",
+      "https://www.idnfinancials.com/news/55690/goldman-sachs-the-fed-2025-ready-to-cut-interest-rates-three-times",
+      "https://tradingeconomics.com/commodity/gold",
+      "https://www.nhregister.com/realestate/article/chances-of-fed-interest-rate-cut-plunge-after-20420843.php",
+      "https://www.youtube.com/watch?v=LgQalgIAhD0",
+      "https://www.fxleaders.com/news/2025/07/06/weekly-gold-price-forecast-xau-holds-above-3300-but-bearish-signals-emerge/"
     ],
     "search_results": [
       {
-        "title": "Gold holds in narrow range as spotlight shifts to US jobs data",
-        "url": "https://www.tradingview.com/news/reuters.com,2025:newsml_L1N3T0078:0-gold-holds-in-narrow-range-as-spotlight-shifts-to-us-jobs-data/",
-        "date": "2025-07-03",
-        "last_updated": "2025-07-03"
+        "title": "Gold Price on 06 July 2025",
+        "url": "https://goldprice.org/gold-price-today/2025-07-06",
+        "date": "2025-07-07",
+        "last_updated": "2025-07-07"
+      },
+      {
+        "title": "Week Ahead for FX, Bonds: Tariff Deadline, Asia Rate ...",
+        "url": "https://www.morningstar.com/news/dow-jones/20250706656/week-ahead-for-fx-bonds-tariff-deadline-asia-rate-decisions-in-focus",
+        "date": "2025-07-06",
+        "last_updated": "2025-07-06"
+      },
+      {
+        "title": "Gold price outlook: Fed policy, July 9 tariff deadline and ...",
+        "url": "https://timesofindia.indiatimes.com/business/india-business/gold-price-outlook-fed-policy-july-9-tariff-deadline-and-data-cues-may-swing-yellow-metal-analysts-see-long-term-bullish-case/articleshow/122281309.cms",
+        "date": "2025-07-06",
+        "last_updated": "2025-07-06"
+      },
+      {
+        "title": "Fed Votes to Advance Proposal to Ease Banks' Capital ...",
+        "url": "https://www.pymnts.com/news/banking/2025/fed-votes-advance-proposal-ease-banks-capital-requirements/",
+        "date": "2025-07-06",
+        "last_updated": "2025-06-25"
+      },
+      {
+        "title": "Gold price prediction: What's the gold rate outlook for July 7 ...",
+        "url": "https://timesofindia.indiatimes.com/business/india-business/gold-price-prediction-what-is-the-gold-rate-outlook-for-july-07-2025-week-should-you-buy-or-sell-mcx-gold/articleshow/122288940.cms",
+        "date": "2025-07-07",
+        "last_updated": "2025-07-07"
+      },
+      {
+        "title": "Goldman Sachs: The Fed 2025 ready to cut interest rates ...",
+        "url": "https://www.idnfinancials.com/news/55690/goldman-sachs-the-fed-2025-ready-to-cut-interest-rates-three-times",
+        "date": "2025-07-07",
+        "last_updated": null
+      },
+      {
+        "title": "Gold - Price - Chart - Historical Data - News",
+        "url": "https://tradingeconomics.com/commodity/gold",
+        "date": "2025-07-07",
+        "last_updated": "2025-05-21"
+      },
+      {
+        "title": "Chances of Fed Interest Rate Cut Plunge After Strong Jobs ...",
+        "url": "https://www.nhregister.com/realestate/article/chances-of-fed-interest-rate-cut-plunge-after-20420843.php",
+        "date": "2025-07-06",
+        "last_updated": null
+      },
+      {
+        "title": "XAUUSD (GOLD) Full Top-Down Technical Analysis for ...",
+        "url": "https://www.youtube.com/watch?v=LgQalgIAhD0",
+        "date": "2025-07-06",
+        "last_updated": "2025-07-06"
+      },
+      {
+        "title": "Weekly Gold Price Forecast: XAU Holds Above ...",
+        "url": "https://www.fxleaders.com/news/2025/07/06/weekly-gold-price-forecast-xau-holds-above-3300-but-bearish-signals-emerge/",
+        "date": "2025-07-07",
+        "last_updated": "2025-07-06"
       }
     ],
     "object": "chat.completion",
@@ -28,7 +91,7 @@
         "finish_reason": "stop",
         "message": {
           "role": "assistant",
-          "content": "## Gold Market Analysis\n\n### Recent News and Price Movements\n\nIn the last 24 hours, gold prices have been relatively stable, with spot gold edging down by 0.1% to $3,352.59 an ounce as of early Thursday, while U.S. gold futures rose 0.1% to $3,363.10[1]. The market is awaiting U.S. non-farm payrolls data, which could influence the Federal Reserve's interest rate decisions. Recent ADP data showing a decline in private payrolls has provided some support for gold, but the upcoming jobs report is crucial for market direction[1].\n\n### Current Market Conditions\n\n- **Spot Price**: $3,352.59\n- **24h Change**: -0.1%\n- **Weekly Change**: Not specified in recent reports\n- **Last Updated**: 08:01 GMT\n\n### Technical Analysis\n\nThe technical view for gold remains neutral, with prices trading in a narrow range. Key support levels are around $3,300 and $3,250, while resistance levels are at $3,400 and $3,450. The Relative Strength Index (RSI) is not provided in recent reports, but it is crucial for determining overbought or oversold conditions.\n\n### Sentiment and Confidence\n\nThe overall sentiment in the gold market is neutral, with confidence being medium due to the anticipation of economic data releases. The signal for trading is to hold, as the market awaits clearer direction from upcoming economic indicators.\n\n### Key Factors and Federal Reserve Impact\n\nKey factors influencing gold prices include economic data releases, Federal Reserve policy, and geopolitical tensions. The Federal Reserve's stance on interest rates will significantly impact gold prices, as lower rates typically support gold.\n\n### Institutional Flow and Currency Impact\n\nInstitutional flow is neutral, with no significant buying or selling trends reported recently. The impact of currency, particularly the USD/DXY correlation, remains a factor, as a stronger dollar can negatively affect gold prices.\n\n### Trading Recommendations\n\nFor traders, the current strategy should focus on waiting for clearer market direction post-economic data releases. Entry points could be considered around support levels, with stop-losses set below these levels and take-profit targets at resistance levels.\n\n### JSON Analysis\n\n```json\n{\n  \"timestamp\": \"2025-07-03T08:01:00Z\",\n  \"priceData\": {\n    \"spotPrice\": 3352.59,\n    \"change24h\": -0.1,\n    \"changePercent24h\": -0.1,\n    \"changeWeekly\": null,\n    \"lastUpdated\": \"08:01 UTC\",\n    \"sources\": [\n      {\"name\": \"Reuters\", \"price\": 3352.59, \"time\": \"08:01\"},\n      {\"name\": \"TradingView\", \"price\": 3363.10, \"time\": \"08:01\"}\n    ]\n  },\n  \"news24h\": [\n    {\n      \"headline\": \"Gold holds in narrow range as spotlight shifts to US jobs data\",\n      \"source\": \"Reuters\",\n      \"originalUrl\": \"https://www.tradingview.com/news/reuters.com,2025:newsml_L1N3T0078:0-gold-holds-in-narrow-range-as-spotlight-shifts-to-us-jobs-data/\",\n      \"timePublished\": \"07/03/2025 08:01\",\n      \"sentiment\": \"neutral\",\n      \"impact\": \"high\",\n      \"category\": \"fed\"\n    }\n  ],\n  \"sentiment\": \"neutral\",\n  \"confidence\": \"medium\",\n  \"signal\": \"hold\",\n  \"keyFactors\": [\"economic data releases\", \"Federal Reserve policy\", \"geopolitical tensions\"],\n  \"fedImpact\": \"The Federal Reserve's interest rate decisions will significantly influence gold prices.\",\n  \"technicalView\": {\n    \"trend\": \"neutral\",\n    \"supportLevels\": [3300, 3250],\n    \"resistanceLevels\": [3400, 3450],\n    \"rsi\": null,\n    \"keyLevels\": \"Support at $3,300 and resistance at $3,400\"\n  },\n  \"riskLevel\": \"medium\",\n  \"timeHorizon\": \"short-term\",\n  \"priceTarget\": \"Potential upside to $3,400, downside to $3,250\",\n  \"entryPoint\": 3300,\n  \"stopLoss\": 3250,\n  \"takeProfit\": [3400, 3450],\n  \"institutionalFlow\": \"neutral\",\n  \"currencyImpact\": \"USD strength negatively impacts gold prices\",\n  \"summary\": \"Hold positions until clearer market direction emerges post-economic data releases.\"\n}\n```\n\n### Actionable Trading Insights\n\n1. **Wait for Economic Data**: The upcoming U.S. non-farm payrolls report will be crucial for determining market direction.\n2. **Support and Resistance Levels**: Use $3,300 and $3,250 as support levels, and $3,400 and $3,450 as resistance levels for trading decisions.\n3. **Risk Management**: Set stop-losses below support levels and take-profit targets at resistance levels to manage risk effectively.\n4. **Market Sentiment**: Monitor market sentiment closely, as it can shift rapidly based on economic indicators and geopolitical events."
+          "content": "{\n\"spot_price\": 3311.32,\n\"sentiment\": \"bearish\",\n\"confidence\": \"high\",\n\"signal\": \"strong_sell\",\n\"summary\": \"Gold price fell to 3,311.32 USD/oz on July 7, down 0.71% from the previous day, marking a six-week low amid improving risk appetite and stronger than expected US jobs data. Near-term outlook remains volatile due to multiple market-moving factors.\",\n\"key_drivers\": [\n\"US_nonfarm_payrolls_impact\", \"Federal_Reserve_policy_expectations\", \"DXY_dollar_index\", \"CPI_inflation_data\", \"10-year_Treasury_yields\", \"geopolitical_tensions\", \"market_sentiment\", \"overnight_trading\", \"Asia/Europe/US_sessions\", \"news_reporting_sources\"\n],\n\"nfp_impact\": \"positive\", \"fed_policy_impact\": \"neutral\", \"dxy_impact\": \"neutral\", \"inflation_data\": \"moderate\", \"geopolitical_risk\": \"high\"\n}\n"
         },
         "delta": {
           "role": "assistant",

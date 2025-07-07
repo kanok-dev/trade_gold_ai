@@ -19,6 +19,9 @@ import notificationService from './services/notificationService.js'
 import newsService from './services/newsService.js'
 import analysisService from './services/analysisService.js'
 
+// Import sonar bot
+import { runGoldAnalysis, analyzeGoldMarket } from './backup/legacy-bots/sonar-bot2.js'
+
 dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url)
@@ -313,7 +316,7 @@ class GoldTradingAPIServer {
         success: false,
         error: 'Endpoint not found',
         path: req.originalUrl,
-        availableEndpoints: ['/health', '/api/status', '/api/analysis/*', '/api/trading/*', '/api/portfolio/*', '/webhook/line', '/api/line/config', '/api/line/command']
+        availableEndpoints: ['/health', '/api/status', '/api/analysis/*', '/api/trading/*', '/api/portfolio/*', '/api/sonar/analyze', '/api/sonar/status', '/api/sonar/latest', '/webhook/line', '/api/line/config', '/api/line/command']
       })
     })
   }
@@ -439,6 +442,7 @@ class GoldTradingAPIServer {
               `📰 /news - Get latest market news\n` +
               `💰 /price - Get current gold price\n` +
               `📊 /analysis - Get market analysis\n` +
+              `🔍 /sonar - Run Sonar analysis\n` +
               `🆔 /myid - Get your user ID\n` +
               `❓ /help - Show this help message`
           )
@@ -516,11 +520,63 @@ class GoldTradingAPIServer {
             }
           }
 
+        case '/sonar':
+        case 'sonar':
+          try {
+            console.log('🔍 Sonar analysis requested via Line command')
+
+            // Send initial message
+            await notificationService.sendLineOAMessage(userId, '🔍 Starting Sonar analysis... This may take a moment.')
+
+            const startTime = Date.now()
+            const result = await runGoldAnalysis()
+            const endTime = Date.now()
+            const duration = ((endTime - startTime) / 1000).toFixed(2)
+
+            if (result.success) {
+              // Store the result
+              this.dataStore.lastAnalysis = {
+                ...result,
+                source: 'sonar-bot',
+                duration: `${duration}s`
+              }
+
+              // Format and send the sonar analysis
+              const formattedMessage = this.formatSonarForLine(result)
+              await notificationService.sendLineOAMessage(userId, formattedMessage)
+
+              return {
+                command: 'sonar',
+                response: 'Sonar analysis completed and sent',
+                data: result,
+                duration: `${duration}s`
+              }
+            } else {
+              await notificationService.sendLineOAMessage(userId, `❌ Sonar Analysis Failed\n\n` + `🔧 Error: ${result.error}\n` + `⏱️ Duration: ${duration}s\n` + `🔄 Please try again later`)
+
+              return {
+                command: 'sonar',
+                response: 'Sonar analysis failed - error message sent',
+                error: result.error,
+                duration: `${duration}s`
+              }
+            }
+          } catch (error) {
+            console.error('❌ Error in sonar analysis:', error)
+            await notificationService.sendLineOAMessage(userId, `🚨 Sonar Analysis Error\n\n` + `💥 System Error: ${error.message}\n` + `🔄 Please try again later`)
+
+            return {
+              command: 'sonar',
+              response: 'Sonar analysis system error',
+              error: error.message
+            }
+          }
+
         case '/help':
         case 'help':
           await notificationService.sendLineOAMessage(
             userId,
-            `📋 Available Commands:\n\n` + `📰 /news - Latest market news\n` + `💰 /price - Current gold price\n` + `📊 /analysis - Market analysis\n` + `🆔 /myid - Your user ID\n` + `❓ /help - This help message`
+            `📋 Available Commands:\n\n` + `📰 /news - Latest market news\n` + `💰 /price - Current gold price\n` + `📊 /analysis - Market analysis\n` + `🔍 /sonar - Sonar AI analysis\n` + `🆔 /myid - Your user ID\n` + `❓ /help - This help message`
           )
           return { command: 'help', response: 'Help message sent' }
 
@@ -532,6 +588,61 @@ class GoldTradingAPIServer {
       console.error('❌ Error handling Line command:', error)
       await notificationService.sendLineOAMessage(userId, `🚨 Sorry, there was an error processing your command. Please try again later.`)
       throw error
+    }
+  }
+
+  formatSonarForLine(sonarResult) {
+    try {
+      if (!sonarResult.success || !sonarResult.analysis) {
+        return `❌ Sonar Analysis Failed\n\nNo valid analysis data available.`
+      }
+
+      // Try to parse the analysis JSON
+      let analysis
+      try {
+        analysis = typeof sonarResult.analysis === 'string' ? JSON.parse(sonarResult.analysis) : sonarResult.analysis
+      } catch (error) {
+        return `❌ Sonar Analysis Error\n\nFailed to parse analysis data.`
+      }
+
+      const validation = sonarResult.validation || {}
+      const credibilityScore = validation.credibilityScore || 0
+      const dataQuality = validation.dataQuality || 'unknown'
+
+      // Format the sonar analysis for Line
+      return (
+        `🔍 SONAR GOLD ANALYSIS\n` +
+        `🕐 ${new Date().toLocaleString()}\n` +
+        `📅 Range: ${sonarResult.dateRange || 'Last 24h'}\n\n` +
+        `💰 PRICE DATA:\n` +
+        `• Spot Price: $${analysis.spot_price || 'N/A'}\n` +
+        `• Sentiment: ${(analysis.sentiment || 'neutral').toUpperCase()}\n` +
+        `• Signal: ${(analysis.signal || 'hold').toUpperCase()}\n` +
+        `• Confidence: ${(analysis.confidence || 'medium').toUpperCase()}\n\n` +
+        `📊 MARKET FACTORS:\n` +
+        `• Fed Policy: ${(analysis.fed_policy_impact || 'neutral').toUpperCase()}\n` +
+        `• DXY Impact: ${(analysis.dxy_impact || 'neutral').toUpperCase()}\n` +
+        `• NFP Impact: ${(analysis.nfp_impact || 'neutral').toUpperCase()}\n` +
+        `• Inflation: ${(analysis.inflation_data || 'moderate').toUpperCase()}\n` +
+        `• Geopolitical: ${(analysis.geopolitical_risk || 'medium').toUpperCase()}\n\n` +
+        `🔑 KEY DRIVERS:\n` +
+        (analysis.key_drivers && Array.isArray(analysis.key_drivers)
+          ? analysis.key_drivers
+              .slice(0, 3)
+              .map((driver, i) => `${i + 1}. ${driver}`)
+              .join('\n')
+          : 'No key drivers available') +
+        '\n\n' +
+        `📝 SUMMARY:\n${analysis.summary || 'No summary available'}\n\n` +
+        `🏆 DATA QUALITY:\n` +
+        `• Score: ${credibilityScore}/100\n` +
+        `• Quality: ${dataQuality.toUpperCase()}\n` +
+        `• Status: ${sonarResult.status || 'completed'}\n\n` +
+        `⚡ Powered by Sonar AI`
+      )
+    } catch (error) {
+      console.error('❌ Error formatting sonar result for Line:', error)
+      return `❌ Sonar Analysis Formatting Error\n\nUnable to format analysis results.`
     }
   }
 
@@ -590,6 +701,88 @@ class GoldTradingAPIServer {
         })
       } catch (error) {
         console.error('❌ Analysis trigger failed:', error)
+        res.status(500).json({
+          success: false,
+          error: error.message
+        })
+      }
+    })
+
+    // Sonar bot endpoints
+    this.app.post('/api/sonar/analyze', async (req, res) => {
+      try {
+        console.log('🔍 Sonar bot analysis requested via API')
+        const startTime = Date.now()
+
+        // Run the sonar analysis
+        const result = await runGoldAnalysis()
+        const endTime = Date.now()
+        const duration = ((endTime - startTime) / 1000).toFixed(2)
+
+        // Store the result in dataStore
+        if (result.success) {
+          this.dataStore.lastAnalysis = {
+            ...result,
+            source: 'sonar-bot',
+            duration: `${duration}s`
+          }
+        }
+
+        res.json({
+          success: result.success,
+          message: result.success ? 'Sonar analysis completed successfully' : 'Sonar analysis failed',
+          data: result,
+          executionTime: `${duration}s`
+        })
+      } catch (error) {
+        console.error('❌ Sonar analysis failed:', error)
+        res.status(500).json({
+          success: false,
+          error: error.message,
+          message: 'Sonar analysis encountered an error'
+        })
+      }
+    })
+
+    this.app.get('/api/sonar/status', (req, res) => {
+      try {
+        const lastSonarAnalysis = this.dataStore.lastAnalysis?.source === 'sonar-bot' ? this.dataStore.lastAnalysis : null
+
+        res.json({
+          success: true,
+          data: {
+            available: true,
+            lastAnalysis: lastSonarAnalysis?.timestamp || null,
+            credibilityScore: lastSonarAnalysis?.validation?.credibilityScore || null,
+            dateRange: lastSonarAnalysis?.dateRange || null,
+            status: lastSonarAnalysis?.status || 'not_run'
+          }
+        })
+      } catch (error) {
+        res.status(500).json({
+          success: false,
+          error: error.message
+        })
+      }
+    })
+
+    this.app.get('/api/sonar/latest', (req, res) => {
+      try {
+        const lastSonarAnalysis = this.dataStore.lastAnalysis?.source === 'sonar-bot' ? this.dataStore.lastAnalysis : null
+
+        if (!lastSonarAnalysis) {
+          return res.status(404).json({
+            success: false,
+            error: 'No sonar analysis available',
+            message: 'Run /api/sonar/analyze first to generate analysis'
+          })
+        }
+
+        res.json({
+          success: true,
+          data: lastSonarAnalysis
+        })
+      } catch (error) {
         res.status(500).json({
           success: false,
           error: error.message
