@@ -14,7 +14,7 @@ export default defineConfig({
     }
   },
   preview: {
-    allowedHosts: 'all'
+    allowedHosts: ['golden-ai.kanoks.me', 'localhost', '127.0.0.1']
   },
   build: {
     outDir: 'dist',
