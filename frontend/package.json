@@ -7,7 +7,7 @@
     "dev": "vite",
     "prebuild": "npm install",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --port 4173 --host 0.0.0.0",
     "serve": "vite preview --port 3000",
     "demo": "vite --port 3001 --open"
   },
