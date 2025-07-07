@@ -93,7 +93,16 @@ class GoldTradingAPIServer {
     // CORS configuration
     this.app.use(
       cors({
-        origin: ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:4173', 'https://trade-gold-ai.onrender.com', 'golden-api.kanoks.me'], // Frontend URLs
+        origin: [
+          'http://localhost:3000',
+          'http://localhost:5173',
+          'http://localhost:4173',
+          'https://trade-gold-ai.onrender.com',
+          'https://golden-ai.kanoks.me',
+          'https://golden-api.kanoks.me',
+          'http://golden-ai.kanoks.me',
+          'http://golden-api.kanoks.me'
+        ], // Frontend URLs
         credentials: true,
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization']
