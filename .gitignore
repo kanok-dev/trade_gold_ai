@@ -63,3 +63,7 @@ Thumbs.db
 
 # Build output
 dist/
+
+/api/data/*
+
+api/data/*.json
