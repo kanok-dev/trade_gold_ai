@@ -74,6 +74,10 @@ class ApiService {
     return this.makeRequest(`/api/analysis/history?days=${days}`)
   }
 
+  async getRealtimeGoldPrice() {
+    return this.makeRequest('/api/price/realtime')
+  }
+
   // New endpoint for OpenAI Bot 2 analysis data
   async getOpenAIAnalysis() {
     try {

@@ -11,6 +11,8 @@ import RiskFactorsCard from './RiskFactorsCard'
 
 const EnhancedDashboard = () => {
   const [analysisData, setAnalysisData] = useState(null)
+  const [realtimePrice, setRealtimePrice] = useState(null)
+  const [priceLoading, setPriceLoading] = useState(true)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [lastUpdate, setLastUpdate] = useState(new Date())
@@ -19,12 +21,30 @@ const EnhancedDashboard = () => {
 
   useEffect(() => {
     loadAnalysisData()
+    loadRealtimePrice()
 
-    // Set up auto-refresh every 60 seconds
-    const interval = setInterval(loadAnalysisData, 60000)
+    // Set up auto-refresh
+    const analysisInterval = setInterval(loadAnalysisData, 60000)
+    const priceInterval = setInterval(loadRealtimePrice, 30000) // Refresh price every 30 seconds
 
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(analysisInterval)
+      clearInterval(priceInterval)
+    }
   }, [])
+
+  const loadRealtimePrice = async () => {
+    try {
+      const response = await ApiService.getRealtimeGoldPrice()
+      if (response.success && response.data) {
+        setRealtimePrice(response.data)
+      } else {
+        console.error('Failed to fetch real-time price:', response.error)
+      }
+    } catch (err) {
+      console.error('❌ Error loading real-time price:', err)
+    }
+  }
 
   const loadAnalysisData = async () => {
     try {
@@ -37,12 +57,14 @@ const EnhancedDashboard = () => {
 
         if (unifiedData) {
           const timestamp = response.data?.metadata?.processing_time || response.data?.timestamp
+          console.log('timestamp', timestamp)
           setAnalysisData(unifiedData)
           setDataFreshness(response.data.data_freshness_minutes || null)
           setLastUpdate(new Date())
           setAnalysisTimestamp(timestamp || null)
+
           setError(null)
-          console.log('✅ Unified analysis data loaded successfully')
+          // console.log('✅ Unified analysis data loaded successfully')
         } else {
           throw new Error('No unified analysis data found in response')
         }
@@ -86,7 +108,7 @@ const EnhancedDashboard = () => {
   return (
     <div className='space-y-4 sm:space-y-6'>
       {/* Debug info - remove in production */}
-      {analysisData && (
+      {/* {analysisData && (
         <div className='text-xs text-gray-500 p-2 bg-gray-800/20 rounded'>
           <details>
             <summary>Debug Info (click to expand)</summary>
@@ -110,17 +132,17 @@ const EnhancedDashboard = () => {
             </pre>
           </details>
         </div>
-      )}
+      )} */}
 
       {/* Header Section */}
       <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 glass-card p-4 rounded-xl'>
         <div className='flex flex-col space-y-2'>
           <div className='flex items-center gap-2'>
-            <span className='text-sm text-gray-300'>Last Update: {lastUpdate.toLocaleTimeString('en-US', { timeZone: 'Asia/Bangkok' })}</span>
-            {dataFreshness && <span className='text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full'>Data: {dataFreshness}min old</span>}
+            {/* <span className='text-sm text-gray-300'>Last Update: {lastUpdate.toLocaleTimeString('en-US', { timeZone: 'Asia/Bangkok' })}</span> */}
+            {/* {dataFreshness && <span className='text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full'>Data: {dataFreshness}min old</span>} */}
           </div>
           {/* Show timestamp from unified analysis metadata */}
-          <span className='text-xs text-gray-400'>Analysis Time: {analysisTimestamp ? new Date(analysisTimestamp).toLocaleString('en-US', { timeZone: 'Asia/Bangkok' }) : 'N/A'}</span>
+          <span className='text-sm text-gray-300'>Analysis Time: {analysisTimestamp ? new Date(analysisTimestamp).toLocaleString('en-US', { timeZone: 'Asia/Bangkok' }) : 'N/A'}</span>
         </div>
 
         <button
@@ -139,46 +161,36 @@ const EnhancedDashboard = () => {
           <div className='glass-card p-4 sm:p-6 rounded-xl h-full'>
             <h2 className='text-lg sm:text-xl font-semibold text-gray-200 mb-4 flex items-center gap-2'>💰 Gold Price Analysis</h2>
 
-            {analysisData?.spot_price ? (
+            {realtimePrice ? (
               <div>
                 <div className='text-center mb-6'>
-                  <div className='text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2'>
-                    $
-                    {typeof analysisData.spot_price === 'number'
-                      ? analysisData.spot_price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                      : analysisData.spot_price.value?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                  </div>
-                  <div className={`text-base sm:text-lg font-medium px-3 py-1 rounded-full inline-flex items-center gap-1 ${(analysisData.price_change?.daily_pct || 0) >= 0 ? 'text-green-400 bg-green-500/20' : 'text-red-400 bg-red-500/20'}`}>
-                    <span>{(analysisData.price_change?.daily_pct || 0) >= 0 ? '↗' : '↘'}</span>
-                    {(analysisData.price_change?.daily_pct || 0) >= 0 ? '+' : ''}
-                    {analysisData.price_change?.daily_pct?.toFixed(2)}%
+                  <div className='text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2'>$ {realtimePrice.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                  <div className={`text-base sm:text-lg font-medium px-3 py-1 rounded-full inline-flex items-center gap-1 ${(analysisData?.price_change?.daily_pct || 0) >= 0 ? 'text-green-400 bg-green-500/20' : 'text-red-400 bg-red-500/20'}`}>
+                    <span>{(analysisData?.price_change?.daily_pct || 0) >= 0 ? '↗' : '↘'}</span>
+                    {(analysisData?.price_change?.daily_pct || 0) >= 0 ? '+' : ''}
+                    {analysisData?.price_change?.daily_pct?.toFixed(2) || '0.00'}%
                   </div>
                 </div>
 
                 <div className='grid grid-cols-2 gap-3 sm:gap-4 mb-4'>
                   <div className='bg-gray-800/50 p-3 rounded-lg'>
                     <div className='text-xs text-gray-400 mb-1'>Weekly Change</div>
-                    <div className={`text-sm font-medium ${(analysisData.price_change?.weekly_pct || 0) >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                      {(analysisData.price_change?.weekly_pct || 0) >= 0 ? '+' : ''}
-                      {analysisData.price_change?.weekly_pct?.toFixed(2)}%
+                    <div className={`text-sm font-medium ${(analysisData?.price_change?.weekly_pct || 0) >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                      {(analysisData?.price_change?.weekly_pct || 0) >= 0 ? '+' : ''}
+                      {analysisData?.price_change?.weekly_pct?.toFixed(2) || '0.00'}%
                     </div>
                   </div>
 
                   <div className='bg-gray-800/50 p-3 rounded-lg'>
                     <div className='text-xs text-gray-400 mb-1'>Source</div>
-                    <div className='text-sm font-medium text-gray-300'>{typeof analysisData.spot_price === 'object' ? analysisData.spot_price.source : 'Unified AI Analysis'}</div>
+                    <div className='text-sm font-medium text-gray-300'>{realtimePrice.source}</div>
                   </div>
                 </div>
 
-                <div className='text-xs text-gray-400 text-center'>
-                  Last Updated:{' '}
-                  {typeof analysisData.spot_price === 'object' && analysisData.spot_price.timestamp
-                    ? new Date(analysisData.spot_price.timestamp).toLocaleString('en-US', { timeZone: 'Asia/Bangkok' })
-                    : lastUpdate.toLocaleString('en-US', { timeZone: 'Asia/Bangkok' })}
-                </div>
+                <div className='text-xs text-gray-400 text-center'>Last Updated: {new Date(realtimePrice.timestamp).toLocaleString('en-US', { timeZone: 'Asia/Bangkok' })}</div>
               </div>
             ) : (
-              <div className='text-center text-gray-400 py-8'>No price data available</div>
+              <div className='text-center text-gray-400 py-8'>Loading price data...</div>
             )}
           </div>
         </div>

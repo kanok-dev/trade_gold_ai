@@ -285,6 +285,37 @@ class GoldTradingAPIServer {
       }
     })
 
+    // Real-time price endpoint
+    this.app.get('/api/price/realtime', async (req, res) => {
+      try {
+        console.log('💰 Fetching real-time gold price directly via API...')
+        const priceData = await newsService.getTradeviewXAUUSDPriceRealtime()
+
+        if (priceData.price !== null && priceData.price !== undefined) {
+          res.json({
+            success: true,
+            data: {
+              price: priceData.price,
+              source: priceData.source,
+              timestamp: priceData.timestamp
+            }
+          })
+        } else {
+          res.status(503).json({
+            success: false,
+            error: priceData.error || 'Price data unavailable'
+          })
+        }
+      } catch (error) {
+        console.error('❌ Error fetching real-time price:', error)
+        res.status(500).json({
+          success: false,
+          error: 'Gold price service temporarily unavailable',
+          details: error.message
+        })
+      }
+    })
+
     // Mount API route modules
     this.app.use(
       '/api/analysis',
