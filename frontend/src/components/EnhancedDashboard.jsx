@@ -15,6 +15,7 @@ const EnhancedDashboard = () => {
   const [error, setError] = useState(null)
   const [lastUpdate, setLastUpdate] = useState(new Date())
   const [dataFreshness, setDataFreshness] = useState(null)
+  const [analysisTimestamp, setAnalysisTimestamp] = useState(null)
 
   useEffect(() => {
     loadAnalysisData()
@@ -29,29 +30,17 @@ const EnhancedDashboard = () => {
     try {
       console.log('📊 Loading enhanced unified analysis data...') // Load from the unified analysis endpoint
       const response = await ApiService.getLatestAnalysis()
-      console.log('📊 Response from unified analysis:', response)
 
       if (response.success && response.data) {
         // Extract the unified analysis data
         const unifiedData = response.data.unified_analysis
 
         if (unifiedData) {
-          console.log('📊 Unified data structure:', {
-            spot_price: unifiedData.spot_price,
-            price_change: unifiedData.price_change,
-            technical_indicators: unifiedData.technical_indicators,
-            signals: unifiedData.signals,
-            market_sentiment: unifiedData.market_sentiment,
-            final_decision: unifiedData.final_decision,
-            news_highlights_count: unifiedData.news_highlights?.length,
-            forecast_scenarios: unifiedData.forecast_scenarios,
-            key_events_count: unifiedData.key_events?.length,
-            risk_factors_count: unifiedData.risk_factors?.length
-          })
-
+          const timestamp = response.data?.metadata?.processing_time || response.data?.timestamp
           setAnalysisData(unifiedData)
           setDataFreshness(response.data.data_freshness_minutes || null)
           setLastUpdate(new Date())
+          setAnalysisTimestamp(timestamp || null)
           setError(null)
           console.log('✅ Unified analysis data loaded successfully')
         } else {
@@ -127,11 +116,11 @@ const EnhancedDashboard = () => {
       <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 glass-card p-4 rounded-xl'>
         <div className='flex flex-col space-y-2'>
           <div className='flex items-center gap-2'>
-            <span className='text-sm text-gray-300'>Last Update: {lastUpdate.toLocaleTimeString()}</span>
+            <span className='text-sm text-gray-300'>Last Update: {lastUpdate.toLocaleTimeString('en-US', { timeZone: 'Asia/Bangkok' })}</span>
             {dataFreshness && <span className='text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full'>Data: {dataFreshness}min old</span>}
           </div>
           {/* Show timestamp from unified analysis metadata */}
-          <span className='text-xs text-gray-400'>Analysis Time: {new Date().toLocaleString()}</span>
+          <span className='text-xs text-gray-400'>Analysis Time: {analysisTimestamp ? new Date(analysisTimestamp).toLocaleString('en-US', { timeZone: 'Asia/Bangkok' }) : 'N/A'}</span>
         </div>
 
         <button
@@ -182,7 +171,10 @@ const EnhancedDashboard = () => {
                 </div>
 
                 <div className='text-xs text-gray-400 text-center'>
-                  Last Updated: {typeof analysisData.spot_price === 'object' && analysisData.spot_price.timestamp ? new Date(analysisData.spot_price.timestamp).toLocaleString() : lastUpdate.toLocaleString()}
+                  Last Updated:{' '}
+                  {typeof analysisData.spot_price === 'object' && analysisData.spot_price.timestamp
+                    ? new Date(analysisData.spot_price.timestamp).toLocaleString('en-US', { timeZone: 'Asia/Bangkok' })
+                    : lastUpdate.toLocaleString('en-US', { timeZone: 'Asia/Bangkok' })}
                 </div>
               </div>
             ) : (

@@ -67,3 +67,11 @@ dist/
 /api/data/*
 
 api/data/*.json
+
+# API specific
+/api/node_modules/
+/api/logs/
+/api/pids/
+/api/coverage/
+/api/.nyc_output/
+/api/data/
